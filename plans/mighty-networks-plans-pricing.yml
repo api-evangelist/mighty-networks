@@ -1,0 +1,58 @@
+aid: mighty-networks
+name: Mighty Networks Plans and Pricing
+description: >-
+  Published Mighty Networks subscription plans as listed on the public pricing
+  page. Developer API access begins on the Scale plan; the beta Headless GraphQL
+  API is a Mighty Pro capability. Prices are in USD and were captured on
+  2026-07-05 - always confirm current pricing on the Mighty Networks pricing page.
+source: https://www.mightynetworks.com/pricing
+currency: USD
+captured: '2026-07-05'
+plans:
+- name: Launch
+  monthlyPrice: 79
+  annualPrice: 950
+  unit: per month
+  apiAccess: false
+  zapier: false
+  note: >-
+    Entry paid plan. No direct Admin API access. Includes 1 host and 10
+    moderators. Automation is available via third-party tools rather than the
+    Admin API.
+- name: Scale
+  monthlyPrice: 179
+  unit: per month
+  apiAccess: true
+  zapier: true
+  includedAdminApiRequests: 5000
+  overagePerRequest: 0.002
+  note: >-
+    First tier with developer features - Limited API Access with 5,000 included
+    Admin API requests per month and Zapier integration. Additional requests are
+    billed as overage.
+- name: Growth
+  monthlyPrice: null
+  unit: custom
+  apiAccess: true
+  zapier: true
+  note: >-
+    Custom-priced plan with Admin API access and custom request limits set by the
+    account team.
+- name: Mighty Pro
+  monthlyPrice: null
+  unit: custom
+  apiAccess: true
+  zapier: true
+  headlessApi: true
+  note: >-
+    Fully custom, branded-app tier. Includes Admin API access with custom request
+    limits plus access to the beta Headless GraphQL API. Pricing requires a demo
+    or sales conversation.
+freeTrial:
+  available: true
+  lengthDays: 14
+  creditCardRequired: false
+  note: 14-day free trial with no credit card required.
+notes: >-
+  Plan names, prices, and included allowances change over time. The Admin API is
+  documented as requiring a network on the Scale, Growth, or Mighty Pro plan.

@@ -1,0 +1,291 @@
+aid: mighty-networks
+url: https://raw.githubusercontent.com/api-evangelist/mighty-networks/refs/heads/main/apis.yml
+name: Mighty Networks
+kind: company
+description: Mighty Networks is a community, courses, and membership platform where
+  creators, brands, and businesses run branded networks made up of spaces, members,
+  posts, events, courses, and paid plans. After years of offering only a Zapier
+  integration, Mighty Networks now ships a documented public Admin API - a REST
+  interface (OpenAPI 3.1, base https://api.mn.co/admin/v1) authenticated with a
+  Bearer API token for managing members, spaces, posts, events, courses, plans,
+  subscriptions, badges, tags, custom fields, and invites - plus a beta Headless
+  GraphQL API for building custom user-context clients and 40-plus outbound webhook
+  event types. API access requires a Scale, Growth, or Mighty Pro plan.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Community
+- Courses
+- Membership
+- Creator Economy
+- Events
+- Subscriptions
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: mighty-networks:mighty-networks-members-api
+  name: Mighty Networks Members API
+  tags:
+  - Members
+  - People
+  - Roles
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/members
+    type: Documentation
+  - url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Create, list, get, update, ban, and remove members across a network,
+    its spaces, and its plans. Look up members by id, email, member id, or user id,
+    manage network and space roles, and directly add members to free plans.
+- aid: mighty-networks:mighty-networks-spaces-api
+  name: Mighty Networks Spaces API
+  tags:
+  - Spaces
+  - Structure
+  - Collections
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/spaces
+    type: Documentation
+  - url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Manage spaces - the organizational units that hold content and members
+    within a network. Create, list, get, update, and delete spaces, list a member's
+    spaces, and organize spaces into collections.
+- aid: mighty-networks:mighty-networks-posts-api
+  name: Mighty Networks Posts API
+  tags:
+  - Posts
+  - Articles
+  - Content
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/posts
+    type: Documentation
+  - url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Create, list, get, update, and delete posts and articles across the
+    network, optionally notifying members when new content is published.
+- aid: mighty-networks:mighty-networks-comments-reactions-api
+  name: Mighty Networks Comments and Reactions API
+  tags:
+  - Comments
+  - Reactions
+  - Engagement
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/posts
+    type: Documentation
+  - url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Manage engagement on content - create, list, get, and delete comments
+    on posts, add and remove reactions on posts and comments, and mute or unmute a
+    post for a specific user.
+- aid: mighty-networks:mighty-networks-events-api
+  name: Mighty Networks Events and RSVPs API
+  tags:
+  - Events
+  - RSVPs
+  - Livestream
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Create, list, get, update, and delete scheduled events, and manage the
+    RSVPs members create against them - create or update, list, get, and delete an
+    RSVP for a given event.
+- aid: mighty-networks:mighty-networks-courses-api
+  name: Mighty Networks Courses API
+  tags:
+  - Courses
+  - Coursework
+  - Lessons
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Build and manage course content within a space course - create, list,
+    get, update, and delete coursework items such as lessons, quizzes, and sections.
+- aid: mighty-networks:mighty-networks-plans-subscriptions-api
+  name: Mighty Networks Plans and Subscriptions API
+  tags:
+  - Plans
+  - Subscriptions
+  - Purchases
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Manage monetization - list and get plans, archive plans, list the
+    members on a plan, and manage the purchases and payment subscriptions members
+    hold, including canceling a subscription or revoking purchase access.
+- aid: mighty-networks:mighty-networks-invites-api
+  name: Mighty Networks Invites API
+  tags:
+  - Invites
+  - Onboarding
+  - Access
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Invite people into a network or a specific plan - create and send
+    invites, list network and plan invites, get an invite, update, resend, revoke,
+    and delete unaccepted invites.
+- aid: mighty-networks:mighty-networks-badges-tags-api
+  name: Mighty Networks Badges and Tags API
+  tags:
+  - Badges
+  - Tags
+  - Gamification
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Drive gamification and segmentation - create, update, and delete
+    badges and tags, list them for the network, and add or remove badges and tags
+    on individual members.
+- aid: mighty-networks:mighty-networks-custom-fields-api
+  name: Mighty Networks Custom Fields API
+  tags:
+  - Custom Fields
+  - Profiles
+  - Answers
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Define and collect structured member profile data - create, get,
+    update, and delete custom fields and their dropdown options, and create, read,
+    update, and delete each member's answers to those fields.
+- aid: mighty-networks:mighty-networks-polls-api
+  name: Mighty Networks Polls and Questions API
+  tags:
+  - Polls
+  - Questions
+  - Engagement
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Create, list, get, update, and delete polls and questions that let
+    members share opinions and engage with each other across the network.
+- aid: mighty-networks:mighty-networks-networks-api
+  name: Mighty Networks Network and Collections API
+  tags:
+  - Networks
+  - Collections
+  - Assets
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/networks
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/networks
+    type: Documentation
+  - url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    type: APIReference
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Read details of the network that owns the requesting API key, manage
+    collections that group spaces, upload image and file assets for use in content,
+    and inspect the authenticated access token via the Me endpoint.
+- aid: mighty-networks:mighty-networks-webhooks-api
+  name: Mighty Networks Webhooks
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
+  baseURL: https://api.mn.co/admin/v1
+  properties:
+  - url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
+    type: Documentation
+  - url: openapi/mighty-networks-admin-api-openapi.json
+    type: OpenAPI
+  description: Subscribe to more than forty outbound webhook event types delivered as
+    HTTP POST callbacks - member joins and updates, posts and articles, comments,
+    reactions, course progress, events and RSVPs, polls, purchases, subscriptions,
+    plan changes, badges, tags, and custom field responses.
+- aid: mighty-networks:mighty-networks-headless-graphql-api
+  name: Mighty Networks Headless GraphQL API
+  tags:
+  - GraphQL
+  - Headless
+  - OAuth
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mightynetworks.com/headless-api
+  baseURL: https://api.mn.co/networks
+  properties:
+  - url: https://docs.mightynetworks.com/headless-api
+    type: Documentation
+  - url: https://docs.mightynetworks.com/headless-authentication
+    type: Authentication
+  description: Beta GraphQL interface that powers the official Mighty Networks
+    clients, for building custom user-context clients, integrations, and back-office
+    tools. Requests go to /networks/:network_id_or_subdomain/graphql and use OAuth
+    2.0 short-lived access tokens acting on behalf of a specific member, moderator,
+    or host. Available on Mighty Pro.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/mighty-networks
+- type: Website
+  url: https://www.mightynetworks.com
+- type: Documentation
+  url: https://docs.mightynetworks.com
+- type: Changelog
+  url: https://docs.mightynetworks.com/admin-api-changelog
+- type: Plans
+  url: plans/mighty-networks-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/mighty-networks-rate-limits.yml
+- type: FinOps
+  url: finops/mighty-networks-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

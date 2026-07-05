@@ -1,0 +1,45 @@
+aid: mighty-networks
+name: Mighty Networks FinOps
+description: >-
+  Cost and financial-operations view of consuming the Mighty Networks Admin and
+  Headless APIs. API access is bundled into the SaaS subscription rather than sold
+  as standalone metered infrastructure - you pay for a plan, and the plan carries
+  an included monthly Admin API request allowance with overage on Scale. Captured
+  2026-07-05 in USD.
+source: https://www.mightynetworks.com/pricing
+currency: USD
+captured: '2026-07-05'
+model: >-
+  Subscription-bundled API access. There is no separate API-only price. A paid
+  network subscription (Scale, Growth, or Mighty Pro) is required for the Admin
+  API, and the plan determines the included monthly request allowance.
+costDrivers:
+- driver: Plan subscription
+  detail: >-
+    Base monthly (or annual) fee for the network. Scale is 179 per month and is
+    the entry point for Admin API access; Growth and Mighty Pro are custom-priced.
+- driver: Admin API request volume
+  detail: >-
+    Scale includes 5,000 Admin API requests per month; requests beyond that are
+    billed at 0.002 per request. Growth and Mighty Pro carry custom allowances.
+- driver: Headless API usage
+  detail: >-
+    The beta Headless GraphQL API is a Mighty Pro capability with its own custom
+    request allowance negotiated with sales.
+- driver: Payment processing
+  detail: >-
+    Member payments collected through the platform (plans, subscriptions,
+    purchases) can carry transaction and Stripe processing fees separate from API
+    costs; these are a revenue-side cost, not an API-consumption cost.
+optimization:
+- Batch and cache reads, and page with per_page=100, to stay within the included
+  monthly request allowance and avoid Scale overage charges.
+- Prefer outbound webhooks over polling loops - reacting to member, content,
+  course, and payment events consumes far fewer Admin API requests than repeatedly
+  listing resources.
+- Match the plan tier to actual monthly request volume rather than defaulting to a
+  higher tier; move to a custom Growth or Mighty Pro allowance only when Scale
+  overage consistently exceeds the cost of the next tier.
+notes: >-
+  Pricing and allowances are subject to change; confirm current numbers on the
+  Mighty Networks pricing page and in the Admin API documentation.

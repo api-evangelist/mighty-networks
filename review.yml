@@ -1,0 +1,119 @@
+aid: mighty-networks
+name: Mighty Networks
+review:
+  question: Does Mighty Networks expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Mighty Networks' documented public API
+    surface is request/response REST (the Admin API) plus a GraphQL Headless API
+    (over HTTPS request/response), and outbound webhooks. The webhooks are
+    server-to-endpoint HTTP POST callbacks, not a bidirectional or server-push
+    streaming transport that a consumer connects to. There is no documented
+    WebSocket (ws:// or wss://) endpoint on Mighty Networks' own public API to
+    model, so no AsyncAPI document was created. The webhook catalog is captured
+    in the apis.yml as a Webhooks API entry instead.
+findings:
+  summary: |
+    Mighty Networks does NOT publish a documented public WebSocket API. What it
+    does now publish - a significant change from its historical Zapier-only
+    posture - is a documented public Admin API. The Admin API is REST, described
+    by an OpenAPI 3.1 document (base https://api.mn.co/admin/v1, server
+    https://api.mn.co), authenticated with a long-lived Bearer API token from the
+    network admin panel. It exposes 137 operations across 25 resource groups
+    (Members, Spaces, Posts, Comments, Reactions, Events, RSVPs, Courseworks,
+    Plans, Subscriptions, Purchases, Invites, Badges, Tags, Custom Fields,
+    Options, Answers, Polls, Networks, Collections, Assets, Mute, Password Resets,
+    Abuse Reports, and Me). Alongside it is a beta Headless GraphQL API
+    (POST https://api.mn.co/networks/:network_id_or_subdomain/graphql) that uses
+    OAuth 2.0 short-lived, user-context access tokens. Realtime notification is
+    delivered by 40+ outbound webhook event types (HTTP POST callbacks), not by a
+    WebSocket. API access requires a Scale, Growth, or Mighty Pro plan.
+  publicApiStatus: |
+    Real and documented. Historically Mighty Networks offered only a Zapier
+    integration (API key, Business/Scale plan and above) and no traditional
+    developer API. As of this review the Admin API is out of beta at v1.0.0 with
+    a public OpenAPI spec, a developer portal at docs.mightynetworks.com, an
+    interactive API reference, quickstart, authentication, error-handling,
+    pagination, and changelog guides, plus a beta Headless GraphQL API.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.mn.co/admin/v1
+      documented: true
+      note: Admin API. OpenAPI 3.1, Bearer token auth. 137 operations, 25 resource groups.
+    - protocol: GraphQL
+      scheme: https
+      baseURL: https://api.mn.co/networks/:network_id_or_subdomain/graphql
+      documented: true
+      note: Headless API (beta). OAuth 2.0 short-lived user-context tokens. POST request/response.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: 40+ outbound event types delivered as HTTP POST callbacks. Server-to-endpoint, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Admin API, Headless API, or webhook reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/me
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/members
+    - POST   https://api.mn.co/admin/v1/networks/{network_id}/members
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/spaces
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/spaces/{space_id}/members
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/spaces/{space_id}/courseworks
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/posts
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/posts/{post_id}/comments
+    - POST   https://api.mn.co/admin/v1/networks/{network_id}/posts/{post_id}/reactions
+    - POST   https://api.mn.co/admin/v1/networks/{network_id}/posts/{post_id}/mute
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/events
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/plans/{plan_id}/members
+    - GET    https://api.mn.co/admin/v1/networks/{network_id}/plans/{plan_id}/invites
+  endpointsModeled:
+    note: |
+      The apis.yml groups the ~137 real Admin API operations into 14 logical
+      REST/webhook APIs plus 1 Headless GraphQL API for cataloging. The grouping
+      is an editorial modeling convenience; every endpoint referenced is present
+      in the published OpenAPI document at
+      https://api.mn.co/admin/v1/spec.json (mirrored in openapi/).
+  websocket:
+    documented: false
+    note: No ws:// or wss:// endpoint documented on Mighty Networks' own API.
+sources:
+  - url: https://docs.mightynetworks.com
+    type: Documentation
+    note: Developer portal home. Points to Admin API, Headless API, and webhooks.
+  - url: https://docs.mightynetworks.com/admin-api
+    type: Documentation
+    note: Admin API overview. Base https://api.mn.co/admin, resources, monthly quotas.
+  - url: https://docs.mightynetworks.com/authentication
+    type: Documentation
+    note: Bearer token auth. Authorization Bearer YOUR_API_TOKEN. Base https://api.mn.co/admin/v1/.
+  - url: https://api.mn.co/admin/v1/spec.json
+    type: OpenAPI
+    note: OpenAPI 3.1.0, version 1.0.0, server https://api.mn.co. 61 paths, 137 operations, 25 tags. Mirrored in openapi/.
+  - url: https://docs.mightynetworks.com/headless-api
+    type: Documentation
+    note: Beta GraphQL Headless API. POST /networks/:network_id/graphql, OAuth 2.0 user-context tokens.
+  - url: https://docs.mightynetworks.com/api-pagination
+    type: Documentation
+    note: page/per_page pagination (per_page max 100), links.next; rate-limit guidance but no fixed per-second ceiling.
+  - url: https://www.mightynetworks.com/pricing
+    type: Plans
+    note: Launch 79/mo (no API), Scale 179/mo (5,000 Admin API req/mo, 0.002 overage, Zapier), Growth/Mighty Pro custom (Pro adds Headless API).
+  - url: https://docs.mightynetworks.com/for-hosts/analytics-and-integrations/does-mighty-networks-have-an-api
+    type: Documentation
+    note: Confirms Admin API on Scale plan and above; Headless API in beta; Launch uses Zapier instead.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Mighty Networks' own public API is
+    request/response REST (Admin API) plus request/response GraphQL (Headless
+    API), with realtime delivered by outbound HTTP webhook callbacks. No AsyncAPI
+    document was created because there is no server-push/bidirectional streaming
+    transport on Mighty Networks' own API to model; the webhook catalog is
+    represented as a Webhooks API entry in apis.yml.

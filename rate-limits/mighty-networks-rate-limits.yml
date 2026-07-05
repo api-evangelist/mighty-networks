@@ -1,0 +1,47 @@
+aid: mighty-networks
+name: Mighty Networks API Rate Limits and Quotas
+description: >-
+  Rate limiting, pagination, and monthly request quota behavior for the Mighty
+  Networks Admin API as documented on 2026-07-05. Mighty Networks meters Admin
+  API usage primarily as a monthly request quota tied to the plan, with overage
+  billing rather than a published fixed per-second ceiling.
+source: https://docs.mightynetworks.com/api-pagination
+captured: '2026-07-05'
+authentication:
+  scheme: Bearer
+  header: Authorization
+  note: Admin API uses a long-lived Bearer API token from the network admin panel.
+quotas:
+- plan: Scale
+  includedRequestsPerMonth: 5000
+  overagePerRequest: 0.002
+  currency: USD
+- plan: Growth
+  includedRequestsPerMonth: custom
+  note: Custom monthly allowance set by the account team.
+- plan: Mighty Pro
+  includedRequestsPerMonth: custom
+  note: Custom monthly allowance; also includes Headless API request allowance.
+pagination:
+  pageParam: page
+  pageDefault: 1
+  perPageParam: per_page
+  perPageDefault: 25
+  perPageMax: 100
+  cursor: false
+  note: >-
+    List endpoints return an items array plus a links object. When links.next is
+    present there are more pages; when it is null or absent the last page has been
+    reached.
+guidance:
+- Use the maximum per_page of 100 to reduce the number of requests.
+- Follow links.next rather than guessing total page counts.
+- Prefer sequential pagination over parallel requests - parallel pagination can
+  quickly exhaust the monthly request quota.
+- Add delays between requests (the docs suggest on the order of 100ms) and
+  implement retry logic with backoff.
+perSecondLimit:
+  documented: false
+  note: >-
+    No fixed per-second or per-minute rate limit is published. Metering is by
+    monthly request quota per plan, with overage charged per request on Scale.
