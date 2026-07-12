@@ -272,6 +272,10 @@ apis:
     2.0 short-lived access tokens acting on behalf of a specific member, moderator,
     or host. Available on Mighty Pro.
 common:
+- type: DomainSecurity
+  url: security/mighty-networks-domain-security.yml
+- type: Authentication
+  url: authentication/mighty-networks-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/mighty-networks
 - type: Website
