@@ -272,6 +272,8 @@ apis:
     2.0 short-lived access tokens acting on behalf of a specific member, moderator,
     or host. Available on Mighty Pro.
 common:
+- type: AgenticAccess
+  url: agentic-access/mighty-networks-agentic-access.yml
 - type: DomainSecurity
   url: security/mighty-networks-domain-security.yml
 - type: Authentication
