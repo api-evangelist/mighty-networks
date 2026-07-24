@@ -1,0 +1,496 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Badges API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Badges
+  description: Manage badges for your network
+paths:
+  /admin/v1/networks/{network_id}/members/{member_id}/badges:
+    get:
+      summary: Return badges for the given member
+      operationId: list_badges
+      tags:
+      - Badges
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of badge objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponsePaged'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Add a badge to the given member
+      operationId: create_badges
+      tags:
+      - Badges
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberBadgeRequest'
+      responses:
+        '201':
+          description: The badge was added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponse'
+        '404':
+          description: Member or badge not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/members/{member_id}/badges/{badge_id}/:
+    get:
+      summary: Return a single badge by ID for the given member
+      operationId: show_badge
+      tags:
+      - Badges
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - name: badge_id
+        in: path
+        required: true
+        description: ID of the badge
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A badge object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponse'
+        '404':
+          description: Member or badge not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Remove a badge from the given member
+      operationId: delete_badges
+      tags:
+      - Badges
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - name: badge_id
+        in: path
+        required: true
+        description: ID of the badge
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Badge removed successfully
+        '404':
+          description: Member or badge not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/badges:
+    get:
+      summary: Return all badges for the network
+      operationId: list_badges
+      tags:
+      - Badges
+      parameters:
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of badge objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponsePaged'
+    post:
+      summary: Create a new badge
+      operationId: create_badges
+      tags:
+      - Badges
+      parameters:
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgeRequest'
+      responses:
+        '201':
+          description: The created badge object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/badges/{id}/:
+    get:
+      summary: Return a single badge by ID
+      operationId: show_badge
+      tags:
+      - Badges
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the badge
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A badge object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponse'
+        '404':
+          description: Badge not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Update a badge
+      operationId: update_badges
+      tags:
+      - Badges
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the badge
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Request to update a badge
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the badge
+                  example: Top Contributor
+                description:
+                  type: string
+                  description: The description of the badge
+                  example: Awarded to active community members
+                color:
+                  type: string
+                  description: The hex color code for the badge
+                  example: '#FF5733'
+                avatar_id:
+                  type: integer
+                  format: uint64
+                  description: The ID of the asset to use as the badge image
+                  example: 12345
+      responses:
+        '200':
+          description: The updated badge object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponse'
+        '404':
+          description: Badge not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a badge
+      operationId: replace_badges
+      tags:
+      - Badges
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the badge
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgeUpdateRequest'
+      responses:
+        '200':
+          description: The updated badge object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeResponse'
+        '404':
+          description: Badge not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a badge
+      operationId: delete_badges
+      tags:
+      - Badges
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the badge
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Badge deleted successfully
+        '404':
+          description: Badge not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    MemberBadgeRequest:
+      description: Request to add a badge to a member
+      type: object
+      required:
+      - badge_id
+      properties:
+        badge_id:
+          type: integer
+          format: uint64
+          description: The ID of the badge to add to the member
+          example: 12345
+    BadgeResponse:
+      description: Badges are custom field values used to recognize and reward members
+      type: object
+      required:
+      - created_at
+      - custom_field_id
+      - id
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded for exceptional contributions
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FFD700'
+        custom_field_id:
+          type: integer
+          format: uint64
+          description: The ID of the custom field this badge belongs to
+        avatar_url:
+          type: string
+          description: URL to the badge image
+    BadgeUpdateRequest:
+      description: Request to update a badge
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded to active community members
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FF5733'
+        avatar_id:
+          type: integer
+          format: uint64
+          description: The ID of the asset to use as the badge image
+          example: 12345
+    BadgeRequest:
+      description: Request to create a badge
+      type: object
+      required:
+      - avatar_id
+      - title
+      properties:
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded to active community members
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FF5733'
+        avatar_id:
+          type: integer
+          format: uint64
+          description: The ID of the asset to use as the badge image
+          example: 12345
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

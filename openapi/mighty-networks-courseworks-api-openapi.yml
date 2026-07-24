@@ -1,0 +1,448 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Courseworks API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Courseworks
+  description: Manage course content (lessons, quizzes, sections)
+paths:
+  /admin/v1/networks/{network_id}/spaces/{space_id}/courseworks:
+    get:
+      summary: Returns a list of coursework items for the given space (course)
+      operationId: list_courseworks
+      tags:
+      - Courseworks
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: The ID of the course (space) to fetch coursework from
+        schema:
+          type: integer
+          format: uint64
+      - name: type
+        in: query
+        required: false
+        description: Filter by coursework type (lesson, quiz, section, overview)
+        schema:
+          type: string
+      - name: parent_id
+        in: query
+        required: false
+        description: Filter by parent coursework ID
+        schema:
+          type: integer
+          format: uint64
+      - name: status
+        in: query
+        required: false
+        description: Filter by visibility status (posted, hidden, pending)
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of coursework items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseworkResponsePaged'
+        '404':
+          description: Space not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new coursework item (lesson, quiz, or section)
+      operationId: create_courseworks
+      tags:
+      - Courseworks
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: The ID of the course (space) to create coursework in
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseworkRequest'
+      responses:
+        '201':
+          description: Returns the newly created coursework item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseworkResponse'
+        '404':
+          description: Space or parent not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid coursework data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/spaces/{space_id}/courseworks/{id}/:
+    get:
+      summary: Returns a single coursework item by ID
+      operationId: show_coursework
+      tags:
+      - Courseworks
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: The ID of the course (space)
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the coursework item
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A coursework item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseworkResponse'
+        '404':
+          description: Coursework not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Update an existing coursework item
+      operationId: update_courseworks
+      tags:
+      - Courseworks
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: The ID of the course (space)
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the coursework item to update
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Update fields for a coursework item
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the coursework item
+                description:
+                  type: string
+                  description: The description/body content of the coursework item
+                status:
+                  type: string
+                  description: The visibility status (posted, hidden, pending)
+                parent_id:
+                  type: integer
+                  format: uint64
+                  description: Move to a new parent coursework item (section or overview)
+                completion_criteria:
+                  type: string
+                  description: How completion is tracked (none, visited, button, video, minimum_correct_percentage)
+                unlocking_criteria:
+                  type: string
+                  description: When content becomes available (none, sequential, time_from_course_join, scheduled_date)
+      responses:
+        '200':
+          description: Returns the updated coursework item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseworkResponse'
+        '404':
+          description: Coursework not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid coursework data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update an existing coursework item
+      operationId: replace_courseworks
+      tags:
+      - Courseworks
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: The ID of the course (space)
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the coursework item to update
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourseworkUpdateRequest'
+      responses:
+        '200':
+          description: Returns the updated coursework item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseworkResponse'
+        '404':
+          description: Coursework not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid coursework data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a coursework item
+      operationId: delete_courseworks
+      tags:
+      - Courseworks
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: The ID of the course (space)
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the coursework item to delete
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Coursework successfully deleted
+        '404':
+          description: Coursework not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    CourseworkRequest:
+      description: Coursework items (lessons, quizzes, sections) within a course
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          description: The type of coursework to create (lesson, quiz, or section)
+        parent_id:
+          type: integer
+          format: uint64
+          description: The ID of the parent coursework item (section or overview). If omitted, defaults to course overview
+        title:
+          type: string
+          description: The title of the coursework item
+        description:
+          type: string
+          description: The description/body content of the coursework item
+        status:
+          type: string
+          description: The visibility status (posted, hidden, pending). Defaults to hidden
+        completion_criteria:
+          type: string
+          description: How completion is tracked (none, visited, button, video, minimum_correct_percentage)
+        unlocking_criteria:
+          type: string
+          description: When content becomes available (none, sequential, time_from_course_join, scheduled_date)
+    CourseworkResponse:
+      description: Coursework items (lessons, quizzes, sections) within a course
+      type: object
+      required:
+      - children_count
+      - completion_criteria
+      - created_at
+      - id
+      - permalink
+      - position
+      - space_id
+      - status
+      - title
+      - type
+      - unlocking_criteria
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the course (space) this coursework belongs to
+        type:
+          type: string
+          description: The type of coursework (lesson, quiz, section, or overview)
+        parent_id:
+          type: integer
+          format: uint64
+          description: The ID of the parent coursework item (section or overview)
+        parent_type:
+          type: string
+          description: The type of the parent (section or overview)
+        title:
+          type: string
+          description: The title of the coursework item
+        description:
+          type: string
+          description: The description/body content of the coursework item
+        status:
+          type: string
+          description: The visibility status (posted, hidden, pending)
+        position:
+          type: integer
+          format: uint64
+          description: The position within siblings (for ordering)
+        completion_criteria:
+          type: string
+          description: How completion is tracked
+        unlocking_criteria:
+          type: string
+          description: When content becomes available
+        children_count:
+          type: integer
+          format: uint64
+          description: Number of direct children (for sections)
+        permalink:
+          type: string
+          format: url
+          description: The coursework item's unique address within the network
+    CourseworkUpdateRequest:
+      description: Update fields for a coursework item
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the coursework item
+        description:
+          type: string
+          description: The description/body content of the coursework item
+        status:
+          type: string
+          description: The visibility status (posted, hidden, pending)
+        parent_id:
+          type: integer
+          format: uint64
+          description: Move to a new parent coursework item (section or overview)
+        completion_criteria:
+          type: string
+          description: How completion is tracked (none, visited, button, video, minimum_correct_percentage)
+        unlocking_criteria:
+          type: string
+          description: When content becomes available (none, sequential, time_from_course_join, scheduled_date)
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

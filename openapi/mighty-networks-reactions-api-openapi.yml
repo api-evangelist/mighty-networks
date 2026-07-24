@@ -1,0 +1,329 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Reactions API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Reactions
+  description: Manage reactions on comments
+paths:
+  /admin/v1/networks/{network_id}/posts/{post_id}/reactions:
+    get:
+      summary: Returns a list of reactions for a specific post
+      operationId: list_reactions
+      tags:
+      - Reactions
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of reaction objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReactionResponsePaged'
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new reaction on a post
+      operationId: create_reactions
+      tags:
+      - Reactions
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReactionRequest'
+      responses:
+        '201':
+          description: Returns the newly created reaction on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReactionResponse'
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid reaction data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete the reaction from a post
+      operationId: delete_reactions
+      tags:
+      - Reactions
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Reaction successfully deleted
+        '404':
+          description: Post or reaction not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/comments/{comment_id}/reactions:
+    get:
+      summary: Returns a list of reactions for a specific comment
+      operationId: list_reactions
+      tags:
+      - Reactions
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        description: The ID of the comment
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of reaction objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReactionResponsePaged'
+        '404':
+          description: Comment not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new reaction on a comment
+      operationId: create_reactions
+      tags:
+      - Reactions
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        description: The ID of the comment
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReactionRequest'
+      responses:
+        '201':
+          description: Returns the newly created reaction on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReactionResponse'
+        '404':
+          description: Comment not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid reaction data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete the reaction from a comment
+      operationId: delete_reactions
+      tags:
+      - Reactions
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        description: The ID of the comment
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Reaction successfully deleted
+        '404':
+          description: Comment or reaction not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ReactionResponse:
+      description: A reaction to a post or comment
+      type: object
+      required:
+      - base_emoji
+      - created_at
+      - emoji
+      - id
+      - member_id
+      - network_id
+      - space_id
+      - targetable_id
+      - targetable_space_id
+      - targetable_type
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the reaction was created
+          example: 123
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network where the reaction was created
+          example: 100
+        targetable_id:
+          type: integer
+          format: uint64
+          description: The ID of the post or comment being reacted to
+          example: 456
+        targetable_type:
+          type: string
+          description: The type of object being reacted to (Post or Comment)
+          example: Post
+        targetable_space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the target post or comment is located
+          example: 123
+        emoji:
+          type: string
+          description: The emoji used for the reaction (may include skin tone modifiers)
+          example: 👍
+        base_emoji:
+          type: string
+          description: The base emoji without skin tone modifiers
+          example: 👍
+        member_id:
+          type: integer
+          format: uint64
+          description: The ID of the member who created the reaction
+          example: 789
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    ReactionRequest:
+      description: A reaction request for creating reactions on posts or comments
+      type: object
+      required:
+      - emoji
+      properties:
+        emoji:
+          type: string
+          description: The emoji used for the reaction (may include skin tone modifiers)
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

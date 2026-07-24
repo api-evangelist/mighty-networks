@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Mute API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Mute
+  description: Mute posts for users
+paths:
+  /admin/v1/networks/{network_id}/posts/{post_id}/mute:
+    post:
+      summary: Mute a post for a specific user (unfollow notifications)
+      operationId: create_mute
+      tags:
+      - Mute
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: query
+        required: true
+        description: The ID of the user to mute the post for
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Post successfully muted for the user
+        '404':
+          description: Post or user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Unmute a post for a specific user (refollow notifications)
+      operationId: delete_mute
+      tags:
+      - Mute
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: query
+        required: true
+        description: The ID of the user to unmute the post for
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Post successfully unmuted for the user
+        '404':
+          description: Post or user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

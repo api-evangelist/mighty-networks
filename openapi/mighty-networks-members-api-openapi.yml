@@ -1,0 +1,935 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Members API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Members
+  description: Manage members of your network
+paths:
+  /admin/v1/networks/{network_id}/spaces/{space_id}/members:
+    get:
+      summary: Return members of the given space
+      operationId: list_members
+      tags:
+      - Members
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: ID of the space
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of member objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponsePaged'
+        '404':
+          description: Space not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Add a user as a member to the space
+      operationId: create_members
+      tags:
+      - Members
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: ID of the space
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: query
+        required: true
+        description: ID of the user to add
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: The newly created member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: User or space not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error (e.g., user already a member)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/spaces/{space_id}/members/{user_id}/:
+    get:
+      summary: Return a single member by user ID
+      operationId: show_member
+      tags:
+      - Members
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: ID of the space
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: path
+        required: true
+        description: ID of the user
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Update a member's role in the space
+      operationId: update_members
+      tags:
+      - Members
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: ID of the space
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: path
+        required: true
+        description: ID of the user
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Request body for updating a member's role and profile information
+              type: object
+              properties:
+                role:
+                  type: string
+                  description: New role for the member (host, moderator, contributor)
+                  example: moderator
+                email:
+                  type: string
+                  format: email
+                  description: New email address for the member
+                  example: newemail@example.com
+                first_name:
+                  type: string
+                  description: New first name for the member
+                  example: Jane
+                last_name:
+                  type: string
+                  description: New last name for the member
+                  example: Smith
+      responses:
+        '200':
+          description: The updated member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid role value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a member's role in the space
+      operationId: replace_members
+      tags:
+      - Members
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: ID of the space
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: path
+        required: true
+        description: ID of the user
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberUpdateRequest'
+      responses:
+        '200':
+          description: The updated member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid role value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Remove a member from the space
+      operationId: delete_members
+      tags:
+      - Members
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: ID of the space
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: path
+        required: true
+        description: ID of the user to remove
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: User successfully removed from space (returns empty object)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '403':
+          description: Member cannot be removed while they hold a paid plan in this space
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/spaces/{space_id}/members/{user_id}/ban:
+    post:
+      summary: Ban a user from the network
+      operationId: create_members
+      tags:
+      - Members
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        description: ID of the space
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: path
+        required: true
+        description: ID of the user to ban
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BanRequest'
+      responses:
+        '200':
+          description: User successfully banned (returns empty object)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/plans/{plan_id}/members:
+    get:
+      summary: Return members of the given plan
+      operationId: list_members
+      tags:
+      - Members
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of member objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponsePaged'
+        '404':
+          description: Plan not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: 'Add a member directly to a free/nonpaid plan, granting them access
+
+
+        The member will be granted access immediately; no invite is sent.
+
+        '
+      operationId: create_members
+      tags:
+      - Members
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: user_id
+        in: query
+        required: false
+        description: The user ID to add
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: The plan object with the member added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanResponse'
+        '404':
+          description: Plan or user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters or user already has access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/plans/{plan_id}/members/{member_id}/:
+    get:
+      summary: Return a single member by member ID
+      operationId: show_member
+      tags:
+      - Members
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: member_id
+        in: path
+        required: true
+        description: The ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found or does not have access to this plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/members:
+    get:
+      summary: Return members of the given network
+      operationId: list_members
+      tags:
+      - Members
+      parameters:
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of member objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponsePaged'
+    post:
+      summary: Create a new member in the network
+      operationId: create_members
+      tags:
+      - Members
+      parameters:
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberCreateRequest'
+      responses:
+        '201':
+          description: The newly created member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '422':
+          description: Validation error (e.g., invalid role, invalid member_type, unknown space, user already a member)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/members/{id}/:
+    get:
+      summary: Return a single member by ID
+      operationId: show_member
+      tags:
+      - Members
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Update a member's role in the network
+      operationId: update_members
+      tags:
+      - Members
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Request body for updating a member's role and profile information
+              type: object
+              properties:
+                role:
+                  type: string
+                  description: New role for the member (host, moderator, contributor)
+                  example: moderator
+                email:
+                  type: string
+                  format: email
+                  description: New email address for the member
+                  example: newemail@example.com
+                first_name:
+                  type: string
+                  description: New first name for the member
+                  example: Jane
+                last_name:
+                  type: string
+                  description: New last name for the member
+                  example: Smith
+      responses:
+        '200':
+          description: The updated member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid role value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a member's role in the network
+      operationId: replace_members
+      tags:
+      - Members
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberUpdateRequest'
+      responses:
+        '200':
+          description: The updated member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid role value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a member's account (soft delete)
+      operationId: delete_members
+      tags:
+      - Members
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Member successfully deleted
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Member cannot be deleted (e.g., owns spaces that cannot be deleted)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/members/by_email:
+    get:
+      summary: Return a single member by email address
+      operationId: show_member
+      tags:
+      - Members
+      parameters:
+      - name: email
+        in: query
+        required: true
+        description: Email address of the member
+        schema:
+          type: string
+          format: email
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A member object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/members/{id}/network_membership:
+    delete:
+      summary: Remove a member from the network (can rejoin)
+      operationId: delete_members
+      tags:
+      - Members
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - name: cancel_plans
+        in: query
+        required: false
+        description: Whether to also cancel the member's purchased plans
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Member successfully removed from network
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    MemberCreateRequest:
+      description: Request body for creating a new member in the network
+      type: object
+      required:
+      - email
+      - first_name
+      - last_name
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the new member
+          example: user@example.com
+        first_name:
+          type: string
+          description: First name of the new member
+          example: John
+        last_name:
+          type: string
+          description: Last name of the new member
+          example: Doe
+        role:
+          type: string
+          description: Role for the member (host, moderator, contributor). Defaults to 'contributor'.
+          example: contributor
+        member_type:
+          type: string
+          description: Type of member to create. 'full' (default) joins the whole network; 'limited' is added only to the spaces listed in space_ids.
+          example: full
+        space_ids:
+          type: array
+          description: IDs of the spaces a limited member joins. Required when member_type is 'limited'; ignored otherwise. Duplicate IDs are ignored.
+          items:
+            type: integer
+            format: uint64
+        send_welcome_email:
+          type: boolean
+          description: Whether to send a welcome email to the new member. Defaults to true.
+          example: true
+    EmptyResponse:
+      description: Empty response body
+      type: object
+      required: []
+      properties: {}
+    MemberUpdateRequest:
+      description: Request body for updating a member's role and profile information
+      type: object
+      required: []
+      properties:
+        role:
+          type: string
+          description: New role for the member (host, moderator, contributor)
+          example: moderator
+        email:
+          type: string
+          format: email
+          description: New email address for the member
+          example: newemail@example.com
+        first_name:
+          type: string
+          description: New first name for the member
+          example: Jane
+        last_name:
+          type: string
+          description: New last name for the member
+          example: Smith
+    PlanResponse:
+      description: A plan represents a purchasable offering in your network
+      type: object
+      required:
+      - created_at
+      - id
+      - name
+      - permalink
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        name:
+          type: string
+          description: The plan's name
+        description:
+          type: string
+          description: The plan's description
+        status:
+          type: string
+          description: The plan's status (visible, hidden, pending, rejected, archived, legacy)
+        pricing_type:
+          type: string
+          description: The pricing type (free, subscription, one_time, installment, one_time_installment, token_gated, nonpaid)
+        visible_to_members:
+          type: boolean
+          description: Whether the plan is visible to members
+        external:
+          type: boolean
+          description: Whether the plan includes network membership
+        multiple:
+          type: boolean
+          description: Whether the plan includes multiple spaces
+        permalink:
+          type: string
+          description: Canonical URL to the plan's about page
+    MemberResponse:
+      description: A member of a network
+      type: object
+      required:
+      - created_at
+      - email
+      - id
+      - member_type
+      - permalink
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        email:
+          type: string
+          format: email
+          description: The member's email address
+          example: ada.lovelace@example.com
+        member_type:
+          type: string
+          description: 'The member''s type: ''full'' (belongs to the network) or ''limited'' (belongs only to specific spaces)'
+        first_name:
+          type: string
+          description: The member's first name
+        last_name:
+          type: string
+          description: The member's last name
+        time_zone:
+          type: string
+          description: The member's time zone
+        location:
+          type: string
+          description: The member's location
+        bio:
+          type: string
+          description: The member's bio
+        referral_count:
+          type: integer
+          format: uint64
+          description: Number of referrals made by this member
+        avatar:
+          type: string
+          description: URL to the member's avatar image
+        categories:
+          type: string
+          description: Array of category objects with id and title
+        permalink:
+          type: string
+          description: Canonical URL to the member's profile page
+        ambassador_level:
+          type: string
+          description: The member's ambassador level
+    BanRequest:
+      description: Request body for banning a user from the network
+      type: object
+      required: []
+      properties:
+        ban_reason:
+          type: string
+          description: The reason for banning the user
+          example: Spam
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

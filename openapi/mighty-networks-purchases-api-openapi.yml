@@ -1,0 +1,273 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Purchases API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Purchases
+  description: Manage purchases and subscriptions for your network
+paths:
+  /admin/v1/networks/{network_id}/purchases:
+    get:
+      summary: Return purchases and subscriptions for the given network
+      operationId: list_purchases
+      tags:
+      - Purchases
+      parameters:
+      - name: plan_id
+        in: query
+        required: false
+        description: Filter by plan ID
+        schema:
+          type: integer
+          format: uint64
+      - name: member_id
+        in: query
+        required: false
+        description: Filter by member ID (user ID)
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of purchase objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseResponsePaged'
+  /admin/v1/networks/{network_id}/purchases/{id}/:
+    get:
+      summary: Return a single purchase by ID
+      operationId: show_purchase
+      tags:
+      - Purchases
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the purchase
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A purchase object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseResponse'
+        '404':
+          description: Purchase not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: 'Remove a member from a plan (revoke purchase access). Note: Cannot remove members from Apple In-App Purchases.'
+      operationId: delete_purchases
+      tags:
+      - Purchases
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the purchase
+        schema:
+          type: integer
+          format: uint64
+      - name: immediate
+        in: query
+        required: false
+        description: Cancel immediately without grace period
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: Successfully removed member from plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseResponse'
+        '404':
+          description: Purchase not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Cannot remove member from plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    PurchaseResponse:
+      description: A purchase of a plan by a member
+      type: object
+      required:
+      - member_email
+      - member_id
+      - plan
+      - purchase
+      properties:
+        member_id:
+          type: integer
+          format: uint64
+          description: ID of the member who made the purchase
+        member_email:
+          type: string
+          format: email
+          description: Email of the member
+          example: ada.lovelace@example.com
+        member_first_name:
+          type: string
+          description: Member's first name
+        member_last_name:
+          type: string
+          description: Member's last name
+        member_time_zone:
+          type: string
+          description: Member's time zone
+        member_location:
+          type: string
+          description: Member's location
+        member_referral_count:
+          type: integer
+          format: uint64
+          description: Number of referrals made by this member
+        member_avatar:
+          type: string
+          description: URL to the member's avatar image
+        member_categories:
+          type: string
+          description: Array of category objects with id and title
+        member_permalink:
+          type: string
+          description: URL to member's profile page
+        member_ambassador_level:
+          type: string
+          description: The member's ambassador level
+        plan:
+          description: The purchase plan
+          $ref: '#/components/schemas/PurchasePlanResponse'
+        purchase:
+          description: Detailed purchase information
+          $ref: '#/components/schemas/PurchaseDetailResponse'
+    PurchaseDetailResponse:
+      description: Detailed purchase information
+      type: object
+      required:
+      - created_at
+      - id
+      - purchased_at
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        tax_percent:
+          type: integer
+          format: uint64
+          description: Tax percentage applied
+        payment_platform:
+          type: string
+          description: Payment platform (stripe, apple, web3)
+        purchased_at:
+          type: string
+          format: date-time
+          description: When the purchase was made
+          example: '2026-07-05T21:11:42+00:00'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+    PurchasePlanResponse:
+      description: Plan information for a purchase
+      type: object
+      required:
+      - amount
+      - currency
+      - has_free_trial
+      - interval
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The plan ID (null when the underlying bundle has been deleted)
+        name:
+          type: string
+          description: The plan name (null when the underlying bundle has been deleted)
+        amount:
+          type: integer
+          format: uint64
+          description: The plan amount in cents
+        currency:
+          type: string
+          description: The plan currency code
+        interval:
+          type: string
+          description: The billing interval (one_time for purchases)
+        type:
+          type: string
+          description: The plan type (free or one-time-payment)
+        has_free_trial:
+          type: boolean
+          description: Whether the plan has a free trial
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

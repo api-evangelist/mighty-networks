@@ -1,0 +1,483 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Tags API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Tags
+  description: Manage tags for your network
+paths:
+  /admin/v1/networks/{network_id}/members/{member_id}/tags:
+    get:
+      summary: Return tags for the given member
+      operationId: list_tags
+      tags:
+      - Tags
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of tag objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponsePaged'
+        '404':
+          description: Member not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Add a tag to a member
+      operationId: create_tags
+      tags:
+      - Tags
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberTagAddRequest'
+      responses:
+        '200':
+          description: The tag that was added to the member
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponse'
+        '404':
+          description: Member or tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/members/{member_id}/tags/{tag_id}/:
+    get:
+      summary: Return a single tag by ID for the given member
+      operationId: show_tag
+      tags:
+      - Tags
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - name: tag_id
+        in: path
+        required: true
+        description: ID of the tag
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A tag object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponse'
+        '404':
+          description: Member or tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Remove a tag from a member
+      operationId: delete_tags
+      tags:
+      - Tags
+      parameters:
+      - name: member_id
+        in: path
+        required: true
+        description: ID of the member
+        schema:
+          type: integer
+          format: uint64
+      - name: tag_id
+        in: path
+        required: true
+        description: ID of the tag to remove
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Tag successfully removed from member
+        '404':
+          description: member or tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/tags:
+    get:
+      summary: Return all tags for the network
+      operationId: list_tags
+      tags:
+      - Tags
+      parameters:
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of tag objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponsePaged'
+    post:
+      summary: Create a new tag
+      operationId: create_tags
+      tags:
+      - Tags
+      parameters:
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagRequest'
+      responses:
+        '201':
+          description: The created tag object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/tags/{id}/:
+    get:
+      summary: Return a single tag by ID
+      operationId: show_tag
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the tag
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A tag object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponse'
+        '404':
+          description: Tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Update a tag
+      operationId: update_tags
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the tag
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Request to update a tag
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the tag
+                  example: VIP Member
+                description:
+                  type: string
+                  description: The description of the tag
+                  example: Premium tier members
+                color:
+                  type: string
+                  description: The hex color code for the tag
+                  example: '#FF5733'
+      responses:
+        '200':
+          description: The updated tag object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponse'
+        '404':
+          description: Tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a tag
+      operationId: replace_tags
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the tag
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagUpdateRequest'
+      responses:
+        '200':
+          description: The updated tag object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagResponse'
+        '404':
+          description: Tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a tag
+      operationId: delete_tags
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the tag
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Tag deleted successfully
+        '404':
+          description: Tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    TagUpdateRequest:
+      description: Request to update a tag
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the tag
+          example: VIP Member
+        description:
+          type: string
+          description: The description of the tag
+          example: Premium tier members
+        color:
+          type: string
+          description: The hex color code for the tag
+          example: '#FF5733'
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    TagResponse:
+      description: Tags are custom field values used to categorize and label members
+      type: object
+      required:
+      - created_at
+      - custom_field_id
+      - id
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        title:
+          type: string
+          description: The title of the tag
+          example: VIP Member
+        description:
+          type: string
+          description: The description of the tag
+          example: Premium tier members
+        color:
+          type: string
+          description: The hex color code for the tag
+          example: '#FF5733'
+        custom_field_id:
+          type: integer
+          format: uint64
+          description: The ID of the custom field this tag belongs to
+    MemberTagAddRequest:
+      description: Request to add a tag to a member
+      type: object
+      required:
+      - tag_id
+      properties:
+        tag_id:
+          type: integer
+          format: uint64
+          description: The ID of the tag to add to the member
+          example: 123
+    TagRequest:
+      description: Request to create a tag
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+          description: The title of the tag
+          example: VIP Member
+        description:
+          type: string
+          description: The description of the tag
+          example: Premium tier members
+        color:
+          type: string
+          description: The hex color code for the tag
+          example: '#FF5733'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,166 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Assets API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Assets
+  description: Manage assets for your network
+paths:
+  /admin/v1/networks/{network_id}/assets:
+    post:
+      summary: Upload a new asset (image or file)
+      operationId: create_assets
+      tags:
+      - Assets
+      parameters:
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit as multipart/form-data
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                asset_style:
+                  type: string
+                  description: The style/purpose of the asset
+                  enum:
+                  - avatar
+                  - avatar_suggestion
+                  - header_suggestion
+                  - avatar_dark_mode
+                  - thumbnail
+                  - square_thumbnail
+                  - bundle_description
+                  - landing_page_background
+                  - landing_page_video
+                  - customer_site_logo
+                  - space_avatar
+                  - space_description
+                  - brand_banner_on_color
+                  - brand_banner_on_white
+                  - brand_banner_dark_mode
+                  - background_image_banner
+                  - background_image_banner_fixed_ratio
+                  - post_description
+                  - landing_page_description
+                  - cover
+                  - post
+                  - comment
+                  - file
+                  - header
+                  - cinema_header
+                  - profile_prompt_answer
+                  - new_member_pitch
+                  - embedded_link
+                  - user_cover
+                  - video
+                  - course_video
+                  - live_mp4_recording
+                  - live_mp4_recording_backup
+                  - comment_video
+                  - ai_interaction
+                  - automation_action_image
+                  - landing_page_content
+                  - seo_image
+                  - voice_note
+                asset_file:
+                  type: string
+                  format: binary
+                  description: The file to upload
+                source_url:
+                  type: string
+                  format: url
+                  description: URL to download asset from (alternative to asset_file)
+                input_type:
+                  type: string
+                  description: Deprecated - do not use
+                  deprecated: true
+                original_aspect_ratio:
+                  type: string
+                  description: Original aspect ratio of the asset
+                metadata:
+                  type: object
+                  description: Additional metadata for the asset (e.g., is_main_image, is_video_image)
+      responses:
+        '201':
+          description: The created asset object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+        '400':
+          description: Invalid request - missing required parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Missing, invalid, expired, or revoked access token, or network mismatch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    AssetResponse:
+      description: File or media asset attached to content
+      type: object
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        url:
+          type: string
+          format: url
+          description: URL to access the asset
+        type:
+          type: string
+          description: The type of asset (Asset, StaticAsset, etc.)
+        name:
+          type: string
+          description: Original filename of the asset
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

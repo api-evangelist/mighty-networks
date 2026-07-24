@@ -1,0 +1,538 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Invites API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Invites
+  description: Invites allow you to invite users to your network
+paths:
+  /admin/v1/networks/{network_id}/plans/{plan_id}/invites:
+    get:
+      summary: Return all invites for the given plan
+      operationId: list_invites
+      tags:
+      - Invites
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of invite objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponsePaged'
+        '404':
+          description: Plan not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create an invite to a plan
+      operationId: create_invites
+      tags:
+      - Invites
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan to invite to
+        schema:
+          type: integer
+          format: uint64
+      - name: email
+        in: query
+        required: false
+        description: The email address to invite
+        schema:
+          type: string
+      - name: user_id
+        in: query
+        required: false
+        description: The user ID to invite
+        schema:
+          type: integer
+          format: uint64
+      - name: message
+        in: query
+        required: false
+        description: Optional invite message
+        schema:
+          type: string
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: The created invite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponse'
+        '404':
+          description: Plan not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid invite parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/plans/{plan_id}/invites/{id}/:
+    get:
+      summary: Return a single invite by ID
+      operationId: show_invite
+      tags:
+      - Invites
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the invite
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: An invite object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponse'
+        '404':
+          description: Invite not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Resend an existing invite
+      operationId: update_invites
+      tags:
+      - Invites
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the invite to resend
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: The updated invite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponse'
+        '404':
+          description: Invite not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid invite (e.g., already converted)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Resend an existing invite
+      operationId: replace_invites
+      tags:
+      - Invites
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the invite to resend
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: The updated invite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponse'
+        '404':
+          description: Invite not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid invite (e.g., already converted)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Revoke an unaccepted invite
+      operationId: delete_invites
+      tags:
+      - Invites
+      parameters:
+      - name: plan_id
+        in: path
+        required: true
+        description: The ID of the plan
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the invite to revoke
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Returns a 204 No-Content on success, with no response body
+        '404':
+          description: Invite not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Returns a 409 Conflict when the invite has already been accepted. To revoke access to an invited member, use the Plan Members API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/invites:
+    get:
+      summary: Returns a list of invitations for the current network
+      operationId: list_invites
+      tags:
+      - Invites
+      parameters:
+      - name: email
+        in: query
+        required: false
+        description: Filter invites by recipient email address
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of invites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponsePaged'
+    post:
+      summary: Create a new invite and send an email to the intended recipient
+      operationId: create_invites
+      tags:
+      - Invites
+      parameters:
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteRequest'
+      responses:
+        '200':
+          description: Returns the newly created invite on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponse'
+        '422':
+          description: Validation error (e.g., invalid email, user already invited)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/invites/{id}/:
+    patch:
+      summary: Update an invite
+      operationId: update_invites
+      tags:
+      - Invites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the invite to update
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Invites allow users and admins to invite new users to the network
+              type: object
+              properties:
+                recipient_email:
+                  type: string
+                  description: The recipients email address
+                  example: claude@example.com
+                recipient_first_name:
+                  type: string
+                  description: The recipient's first name
+                  example: Claude
+                recipient_last_name:
+                  type: string
+                  description: The recipient's last name
+                  example: Monet
+                user_id:
+                  type: integer
+                  format: uint64
+                  description: 'The ID of the user to record as the creator of the invite.
+
+
+                    If not provided, defaults to the owner of the authored API key.
+
+                    '
+      responses:
+        '200':
+          description: Updates an invite and returns its new state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponse'
+    put:
+      summary: Update an invite
+      operationId: replace_invites
+      tags:
+      - Invites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the invite to update
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteRequest'
+      responses:
+        '200':
+          description: Updates an invite and returns its new state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteResponse'
+    delete:
+      summary: Delete an unaccepted invite
+      operationId: delete_invites
+      tags:
+      - Invites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the invite to update
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Returns a 204 No-Content on success, with no response body
+        '404':
+          description: Invite not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: 'Returns a 409 Conflict when the invite has already been accepted.
+
+
+            To revoke access to an invited member, use the Membership API
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    InviteResponse:
+      description: Invites allow users and admins to invite new users to the network
+      type: object
+      required:
+      - created_at
+      - id
+      - recipient_email
+      - recipient_first_name
+      - recipient_last_name
+      - sender_id
+      - updated_at
+      properties:
+        recipient_email:
+          type: string
+          description: The recipients email address
+          example: claude@example.com
+        recipient_first_name:
+          type: string
+          description: The recipient's first name
+          example: Claude
+        recipient_last_name:
+          type: string
+          description: The recipient's last name
+          example: Monet
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        sender_id:
+          type: integer
+          format: uint64
+          description: The ID of the user that created the invitation
+        user_id:
+          type: integer
+          format: uint64
+          description: 'Deprecated: Use sender_id instead'
+          deprecated: true
+    InviteRequest:
+      description: Invites allow users and admins to invite new users to the network
+      type: object
+      required:
+      - recipient_email
+      properties:
+        recipient_email:
+          type: string
+          description: The recipients email address
+          example: claude@example.com
+        recipient_first_name:
+          type: string
+          description: The recipient's first name
+          example: Claude
+        recipient_last_name:
+          type: string
+          description: The recipient's last name
+          example: Monet
+        user_id:
+          type: integer
+          format: uint64
+          description: 'The ID of the user to record as the creator of the invite.
+
+
+            If not provided, defaults to the owner of the authored API key.
+
+            '
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

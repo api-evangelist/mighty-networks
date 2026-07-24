@@ -1,0 +1,320 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Subscriptions API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Subscriptions
+  description: Manage payment subscriptions - recurring payments from members to hosts for plans
+paths:
+  /admin/v1/networks/{network_id}/subscriptions:
+    get:
+      summary: List all payment subscriptions for the network
+      operationId: list_subscriptions
+      tags:
+      - Subscriptions
+      parameters:
+      - name: status
+        in: query
+        required: false
+        description: 'Filter by status: ''canceled'' for archived subscriptions'
+        schema:
+          type: string
+      - name: member_id
+        in: query
+        required: false
+        description: Filter by member (user) ID
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: Returns paginated list of subscriptions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponsePaged'
+  /admin/v1/networks/{network_id}/subscriptions/{id}:
+    get:
+      summary: Get details of a specific payment subscription
+      operationId: show_subscription
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: Returns the subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+        '404':
+          description: Subscription not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Cancel a payment subscription
+      operationId: delete_subscriptions
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID
+        schema:
+          type: integer
+          format: uint64
+      - name: when
+        in: query
+        required: false
+        description: 'When to cancel: ''now'' (immediate) or ''end_of_billing_cycle'' (default: ''end_of_billing_cycle'')'
+        schema:
+          type: string
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: Returns the canceled subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+        '400':
+          description: Invalid 'when' parameter value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Subscription not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Subscription is already canceled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    SubscriptionDetailResponse:
+      description: Detailed subscription information
+      type: object
+      required:
+      - id
+      - purchased_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        current_period_start:
+          type: string
+          format: date-time
+          description: Start of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        current_period_end:
+          type: string
+          format: date-time
+          description: End of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        payment_platform:
+          type: string
+          description: Payment platform (stripe, apple, etc.)
+        canceled_at:
+          type: string
+          format: date-time
+          description: When the subscription was canceled
+          example: '2026-07-05T21:11:42+00:00'
+        trial_length:
+          type: integer
+          format: uint64
+          description: Length of trial in days
+        trial_start:
+          type: string
+          format: date-time
+          description: Trial start date
+          example: '2026-07-05T21:11:42+00:00'
+        trial_end:
+          type: string
+          format: date-time
+          description: Trial end date
+          example: '2026-07-05T21:11:42+00:00'
+        purchased_at:
+          type: string
+          format: date-time
+          description: When the subscription was purchased
+          example: '2026-07-05T21:11:42+00:00'
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    SubscriptionPlanResponse:
+      description: Plan information for a subscription
+      type: object
+      required:
+      - amount
+      - currency
+      - has_free_trial
+      - interval
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The plan ID (null when the underlying bundle has been deleted)
+        name:
+          type: string
+          description: The plan name (null when the underlying bundle has been deleted)
+        amount:
+          type: integer
+          format: uint64
+          description: The plan amount in cents
+        currency:
+          type: string
+          description: The plan currency code
+        interval:
+          type: string
+          description: The billing interval (day, week, month, year, etc.)
+        type:
+          type: string
+          description: The plan type (free, subscription, one-time-payment)
+        has_free_trial:
+          type: boolean
+          description: Whether the plan has a free trial
+    CategoryResponse:
+      description: A category (segment) in the network
+      type: object
+      required:
+      - id
+      - title
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The category's integer ID
+        title:
+          type: string
+          description: The category's title
+    SubscriptionResponse:
+      description: A payment subscription for a plan
+      type: object
+      required:
+      - created_at
+      - email
+      - member_id
+      - permalink
+      - plan
+      - subscription
+      - updated_at
+      properties:
+        member_id:
+          type: integer
+          format: uint64
+          description: The subscriber's integer ID
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the subscriber was created
+          example: '2026-07-05T21:11:42+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the subscriber was last modified
+          example: '2026-07-05T21:11:42+00:00'
+        email:
+          type: string
+          format: email
+          description: The subscriber's email address
+          example: ada.lovelace@example.com
+        first_name:
+          type: string
+          description: The subscriber's first name
+        last_name:
+          type: string
+          description: The subscriber's last name
+        time_zone:
+          type: string
+          description: The subscriber's time zone
+        location:
+          type: string
+          description: The subscriber's location
+        referral_count:
+          type: integer
+          format: uint64
+          description: Number of referrals made by this subscriber
+        avatar:
+          type: string
+          description: URL to the subscriber's avatar image
+        categories:
+          type: array
+          description: Array of category objects. Contains the user's primary segment if present.
+          items:
+            $ref: '#/components/schemas/CategoryResponse'
+        permalink:
+          type: string
+          description: Canonical URL to the subscriber's profile page
+        ambassador_level:
+          type: string
+          description: The subscriber's ambassador level
+        plan:
+          description: The subscription plan
+          $ref: '#/components/schemas/SubscriptionPlanResponse'
+        subscription:
+          description: Detailed subscription information
+          $ref: '#/components/schemas/SubscriptionDetailResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

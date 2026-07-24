@@ -1,0 +1,383 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Posts API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Posts
+  description: Posts also include Articles.
+paths:
+  /admin/v1/networks/{network_id}/posts:
+    get:
+      summary: Returns a list of posts for the current network
+      operationId: list_posts
+      tags:
+      - Posts
+      parameters:
+      - name: space_id
+        in: query
+        required: false
+        description: Filter posts by space ID
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of posts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponsePaged'
+    post:
+      summary: Create a new post, and optionally notify the network
+      operationId: create_posts
+      tags:
+      - Posts
+      parameters:
+      - name: notify
+        in: query
+        required: false
+        description: Whether or not to notify the network
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequest'
+      responses:
+        '201':
+          description: Returns the newly created post on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '404':
+          description: Space not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid post data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/posts/{id}/:
+    get:
+      summary: Query details of a specific post by its ID
+      operationId: show_post
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the post to fetch
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: Details about the requested post
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Update an existing post or article
+      operationId: update_posts
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the post to update
+        schema:
+          type: integer
+          format: uint64
+      - name: notify
+        in: query
+        required: false
+        description: Whether or not to notify the network
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Request to update a post or article
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the post
+                description:
+                  type: string
+                  description: The description/body content of the post
+      responses:
+        '200':
+          description: Returns the updated post on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid post data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update an existing post or article
+      operationId: replace_posts
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the post to update
+        schema:
+          type: integer
+          format: uint64
+      - name: notify
+        in: query
+        required: false
+        description: Whether or not to notify the network
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostUpdateRequest'
+      responses:
+        '200':
+          description: Returns the updated post on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid post data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a post or article
+      operationId: delete_posts
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the post to delete
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Post successfully deleted
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    PostResponse:
+      description: Posts are created by users within spaces
+      type: object
+      required:
+      - comments_enabled
+      - content_type
+      - created_at
+      - creator_id
+      - description
+      - id
+      - images
+      - last_activity_at
+      - permalink
+      - post_type
+      - published_at
+      - space_id
+      - status
+      - summary
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        creator_id:
+          type: integer
+          format: uint64
+          description: The ID of the user that created the post
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the post was created
+        summary:
+          type: string
+          description: A short summary of the post's contents
+        description:
+          type: string
+          description: The posts description
+        post_type:
+          type: string
+          description: The type of post
+        images:
+          type: array
+          description: An array of image URLs associated with the post
+          items:
+            type: string
+        title:
+          type: string
+          description: The title of the post
+        status:
+          type: string
+          description: The post's current status
+        published_at:
+          type: string
+          format: date-time
+          description: The date the post was published
+          example: '2026-07-05T21:11:42+00:00'
+        last_activity_at:
+          type: string
+          format: date-time
+          description: The time the of last activity on the post
+          example: '2026-07-05T21:11:42+00:00'
+        content_type:
+          type: string
+          description: The type of post content attached to the post
+        comments_enabled:
+          type: boolean
+          description: Whether or not comments are enabled on this post
+        permalink:
+          type: string
+          format: url
+          description: The post's unique address within the network
+    PostRequest:
+      description: Posts are created by users within spaces
+      type: object
+      required:
+      - space_id
+      - title
+      properties:
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space to post in
+        title:
+          type: string
+          description: The title of the post
+        description:
+          type: string
+          description: The description/body content of the post
+        post_type:
+          type: string
+          description: The type of post to create (e.g., 'article')
+    PostUpdateRequest:
+      description: Request to update a post or article
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the post
+        description:
+          type: string
+          description: The description/body content of the post
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,332 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Networks Admin AbuseReports Comments API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Comments
+  description: Manage comments on posts
+paths:
+  /admin/v1/networks/{network_id}/posts/{post_id}/comments:
+    get:
+      summary: Returns a list of comments for a specific post
+      operationId: list_comments
+      tags:
+      - Comments
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+          format: uint64
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page (max 100)
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: A paginated set of comment objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponsePaged'
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new comment on a post
+      operationId: create_comments
+      tags:
+      - Comments
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      requestBody:
+        description: Submit results as JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+      responses:
+        '201':
+          description: Returns the newly created comment on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid comment data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /admin/v1/networks/{network_id}/posts/{post_id}/comments/{id}/:
+    get:
+      summary: Query details of a specific comment by its ID
+      operationId: show_comment
+      tags:
+      - Comments
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the comment
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: Details about the requested comment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '404':
+          description: Post or comment not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a comment from a post
+      operationId: delete_comments
+      tags:
+      - Comments
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+          format: uint64
+      - name: id
+        in: path
+        required: true
+        description: The ID of the comment to delete
+        schema:
+          type: integer
+          format: uint64
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '204':
+          description: Comment successfully deleted
+        '404':
+          description: Post or comment not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    EmbeddedLinkResponse:
+      description: Embedded link preview data for rich link previews
+      type: object
+      required:
+      - id
+      - url
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        url:
+          type: string
+          format: url
+          description: The URL of the embedded link
+        title:
+          type: string
+          description: The title of the linked content
+        description:
+          type: string
+          description: Description of the linked content
+        favicon_url:
+          type: string
+          format: url
+          description: URL to the favicon of the linked site
+    CommentRequest:
+      description: Comments are created by members on posts, chats, and other commentable content
+      type: object
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          description: The comment text content
+        reply_to_id:
+          type: integer
+          format: uint64
+          description: The ID of the parent comment if this is a reply
+    CommentResponse:
+      description: Comments are created by users on posts, chats, and other commentable content
+      type: object
+      required:
+      - author_id
+      - cheer_count
+      - created_at
+      - depth
+      - id
+      - permalink
+      - reply_count
+      - replyable
+      - space_id
+      - targetable_id
+      - targetable_type
+      - text
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        targetable_id:
+          type: integer
+          format: uint64
+          description: The ID of the item being commented on (e.g., post ID)
+        targetable_type:
+          type: string
+          description: The type of item being commented on (e.g., 'Post')
+        text:
+          type: string
+          description: The formatted comment text with HTML and links
+        replyable:
+          type: boolean
+          description: Whether this comment can be replied to
+        depth:
+          type: integer
+          format: uint64
+          description: The nesting depth of this comment (1 for top-level, 2+ for replies)
+        cheer_count:
+          type: integer
+          format: uint64
+          description: The number of cheers (likes) this comment has received
+        reply_count:
+          type: integer
+          format: uint64
+          description: The number of replies to this comment
+        reply_to_id:
+          type: integer
+          format: uint64
+          description: The ID of the parent comment if this is a reply
+        author_id:
+          type: integer
+          format: uint64
+          description: The ID of the user who created the comment
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the comment was created
+        files:
+          type: array
+          description: An array of file/asset objects attached to the comment
+          items:
+            $ref: '#/components/schemas/AssetResponse'
+        embedded_link:
+          description: Embedded link preview data
+          $ref: '#/components/schemas/EmbeddedLinkResponse'
+        permalink:
+          type: string
+          format: url
+          description: The comment's unique address within the network
+    AssetResponse:
+      description: File or media asset attached to content
+      type: object
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        url:
+          type: string
+          format: url
+          description: URL to access the asset
+        type:
+          type: string
+          description: The type of asset (Asset, StaticAsset, etc.)
+        name:
+          type: string
+          description: Original filename of the asset
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

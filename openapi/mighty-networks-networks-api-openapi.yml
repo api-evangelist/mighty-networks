@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: The Mighty Admin AbuseReports Networks API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Networks
+  description: Networks are the top-level organizational unit under which other resources are nested
+paths:
+  /admin/v1/networks/{network_id}/:
+    get:
+      summary: Returns details of the Network - must match the Network owning the requesting API key
+      operationId: show_network
+      tags:
+      - Networks
+      parameters:
+      - $ref: '#/components/parameters/networkId'
+      responses:
+        '200':
+          description: Returns the Networks attributes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkResponse'
+components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
+  schemas:
+    NetworkResponse:
+      description: Networks are the main organizational unit within Mighty, and house all other objects
+      type: object
+      required:
+      - created_at
+      - description
+      - id
+      - purpose
+      - subdomain
+      - subtitle
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        subdomain:
+          type: string
+          description: The network subdomain
+          example: paint-pals
+        title:
+          type: string
+          description: The network title
+          example: The Paint Pals Network
+        subtitle:
+          type: string
+          description: The network subtitle
+          example: A network for artists to share and collaborate
+        purpose:
+          type: string
+          description: The network purpose
+          example: Bring together artists interested in sharing their work and inspiring others
+        description:
+          type: string
+          description: The network description
+          example: A great network
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
