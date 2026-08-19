@@ -1,0 +1,1941 @@
+{
+  "item": [
+    {
+      "id": "9f093a60-980e-4a1d-9f16-77414c156005",
+      "name": "Collections",
+      "description": {
+        "content": "Manage collections in your network",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "687f1338-734c-43f2-bcd1-467b64d0645b",
+          "name": "Return all collections in the network",
+          "request": {
+            "name": "Return all collections in the network",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<uint64>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<uint64>",
+                  "description": "Items per page (max 100)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94d2038e-a26e-41fa-8a93-3f3ab79be02c",
+              "name": "A paginated set of collection objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "801e42e1-8737-455f-a0ca-cc2954eb29a3",
+          "name": "Create a new collection",
+          "request": {
+            "name": "Create a new collection",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a206e14-fbc8-4220-800d-9d7984a274b6",
+              "name": "The created collection object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Featured Courses\",\n  \"description\": \"Our most popular courses\",\n  \"visible_to_members\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"explorable\": false,\n  \"id\": 2821,\n  \"name\": \"string\",\n  \"position\": 9114,\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"visible_to_members\": true,\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c566523d-1c00-4f87-a6cc-171034063b4a",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Featured Courses\",\n  \"description\": \"Our most popular courses\",\n  \"visible_to_members\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cf42ba8-9edd-412f-92dc-525427460b51",
+              "name": "Validation error - e.g., max collections reached, name conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Featured Courses\",\n  \"description\": \"Our most popular courses\",\n  \"visible_to_members\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a23c4893-14cd-49d9-9a5e-a8a11602d811",
+          "name": "Return a single collection by ID",
+          "request": {
+            "name": "Return a single collection by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "collections",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the collection"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7dce78a7-173e-4dd9-9b2f-1561f4eca5db",
+              "name": "A collection object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"explorable\": false,\n  \"id\": 2821,\n  \"name\": \"string\",\n  \"position\": 9114,\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"visible_to_members\": true,\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "631c65d5-5686-4bd3-84aa-c777edd9d094",
+              "name": "Collection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0a51877-65e4-4041-8611-0ba6df2b1cb4",
+          "name": "Update a collection by its ID",
+          "request": {
+            "name": "Update a collection by its ID",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "collections",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) The ID of the collection to update"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73302473-8259-4b5a-84e4-aac91efefd20",
+              "name": "The updated collection object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"explorable\": false,\n  \"id\": 2821,\n  \"name\": \"string\",\n  \"position\": 9114,\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"visible_to_members\": true,\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da0aac0e-9e8b-4ed2-9a60-ca3afcbd2745",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32d106f5-bca9-426a-8d72-7fa3c1ccf064",
+              "name": "Collection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c11fd2bb-5425-4d99-8538-f7e1fb9bf55c",
+              "name": "Validation error - e.g., cannot update system collections, name conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "203c55cc-b17b-4574-8980-88d3236af1b5",
+          "name": "Update a collection by its ID",
+          "request": {
+            "name": "Update a collection by its ID",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "collections",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) The ID of the collection to update"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ebbc3a0-ee58-4249-855d-59615000f001",
+              "name": "The updated collection object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"explorable\": false,\n  \"id\": 2821,\n  \"name\": \"string\",\n  \"position\": 9114,\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"visible_to_members\": true,\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a064c1bf-f515-4d10-bd33-00e61e0b3388",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b91dec0-deec-4119-b393-fb5b831ef7f5",
+              "name": "Collection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "219d96c8-af89-412a-803a-d8df4ec1a158",
+              "name": "Validation error - e.g., cannot update system collections, name conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the collection to update"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Collection\",\n  \"description\": \"Updated description\",\n  \"visible_to_members\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbef7512-d547-436c-ae70-e455f38b1aab",
+          "name": "Delete a collection",
+          "request": {
+            "name": "Delete a collection",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "collections",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the collection"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb5b79d9-13e0-4603-bdd4-39c38a05a497",
+              "name": "Collection successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "190db033-8c59-4d13-b9dc-2bd6d8babd49",
+              "name": "Collection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de46dec6-588e-48e2-98d6-0576b1a3f516",
+              "name": "Cannot delete collection (e.g., collection still contains spaces)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f7bd542-8245-4fcd-9471-f0eea3feee01",
+          "name": "Reorder spaces within a collection",
+          "request": {
+            "name": "Reorder spaces within a collection",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "collections",
+                ":id",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<uint64>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<uint64>",
+                  "description": "Items per page (max 100)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the collection"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"spaces\": [\n    {\n      \"position\": \"<uint64>\",\n      \"space_id\": \"<uint64>\"\n    },\n    {\n      \"position\": \"<uint64>\",\n      \"space_id\": \"<uint64>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "530c0c4d-6265-4d20-9052-c41541bba9bd",
+              "name": "The updated list of spaces with their positions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spaces\": [\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    },\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de0a3448-63d8-4b64-bcb2-a90513522af3",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spaces\": [\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    },\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6eaa361f-892d-4cff-a4e9-44772243d6f5",
+              "name": "Collection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spaces\": [\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    },\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bba03bc1-b72f-4ec1-a51c-c7883f635312",
+              "name": "Validation error - e.g., space not in collection, invalid position",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "collections",
+                    ":id",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the collection"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spaces\": [\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    },\n    {\n      \"position\": 1,\n      \"space_id\": 123\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mn.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d5eb8b9-4a0c-4a36-a2ae-32f216199a52",
+    "name": "The Mighty Networks Admin AbuseReports Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API for managing your Mighty Networks network",
+      "type": "text/plain"
+    }
+  }
+}

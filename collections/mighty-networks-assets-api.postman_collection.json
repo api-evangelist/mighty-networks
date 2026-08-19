@@ -1,0 +1,581 @@
+{
+  "item": [
+    {
+      "id": "ee5ff0ca-ec33-4a9e-8101-9fa69e7d0caa",
+      "name": "Assets",
+      "description": {
+        "content": "Manage assets for your network",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc5cbdd7-bd03-4252-a283-024374c5a85a",
+          "name": "Upload a new asset (image or file)",
+          "request": {
+            "name": "Upload a new asset (image or file)",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "asset_style",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The style/purpose of the asset (This can only be one of avatar,avatar_suggestion,header_suggestion,avatar_dark_mode,thumbnail,square_thumbnail,bundle_description,landing_page_background,landing_page_video,customer_site_logo,space_avatar,space_description,brand_banner_on_color,brand_banner_on_white,brand_banner_dark_mode,background_image_banner,background_image_banner_fixed_ratio,post_description,landing_page_description,cover,post,comment,file,header,cinema_header,profile_prompt_answer,new_member_pitch,embedded_link,user_cover,video,course_video,live_mp4_recording,live_mp4_recording_backup,comment_video,ai_interaction,automation_action_image,landing_page_content,seo_image,voice_note)"
+                },
+                {
+                  "key": "asset_file",
+                  "type": "file",
+                  "description": "The file to upload"
+                },
+                {
+                  "key": "source_url",
+                  "value": "<url>",
+                  "type": "text",
+                  "description": "URL to download asset from (alternative to asset_file)"
+                },
+                {
+                  "key": "input_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Deprecated - do not use"
+                },
+                {
+                  "key": "original_aspect_ratio",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Original aspect ratio of the asset"
+                },
+                {
+                  "key": "metadata",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": "Additional metadata for the asset (e.g., is_main_image, is_video_image)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f7ab6a4a-a5d6-4100-890d-a87cdc44b226",
+              "name": "The created asset object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The style/purpose of the asset (This can only be one of avatar,avatar_suggestion,header_suggestion,avatar_dark_mode,thumbnail,square_thumbnail,bundle_description,landing_page_background,landing_page_video,customer_site_logo,space_avatar,space_description,brand_banner_on_color,brand_banner_on_white,brand_banner_dark_mode,background_image_banner,background_image_banner_fixed_ratio,post_description,landing_page_description,cover,post,comment,file,header,cinema_header,profile_prompt_answer,new_member_pitch,embedded_link,user_cover,video,course_video,live_mp4_recording,live_mp4_recording_backup,comment_video,ai_interaction,automation_action_image,landing_page_content,seo_image,voice_note)",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_style",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download asset from (alternative to asset_file)",
+                        "type": "text/plain"
+                      },
+                      "key": "source_url",
+                      "value": "<url>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated - do not use",
+                        "type": "text/plain"
+                      },
+                      "key": "input_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Original aspect ratio of the asset",
+                        "type": "text/plain"
+                      },
+                      "key": "original_aspect_ratio",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Additional metadata for the asset (e.g., is_main_image, is_video_image)",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<object>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8540,\n  \"type\": \"string\",\n  \"url\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3d3ba35-43cf-4e81-905d-ac7169cb6d7c",
+              "name": "Invalid request - missing required parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The style/purpose of the asset (This can only be one of avatar,avatar_suggestion,header_suggestion,avatar_dark_mode,thumbnail,square_thumbnail,bundle_description,landing_page_background,landing_page_video,customer_site_logo,space_avatar,space_description,brand_banner_on_color,brand_banner_on_white,brand_banner_dark_mode,background_image_banner,background_image_banner_fixed_ratio,post_description,landing_page_description,cover,post,comment,file,header,cinema_header,profile_prompt_answer,new_member_pitch,embedded_link,user_cover,video,course_video,live_mp4_recording,live_mp4_recording_backup,comment_video,ai_interaction,automation_action_image,landing_page_content,seo_image,voice_note)",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_style",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download asset from (alternative to asset_file)",
+                        "type": "text/plain"
+                      },
+                      "key": "source_url",
+                      "value": "<url>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated - do not use",
+                        "type": "text/plain"
+                      },
+                      "key": "input_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Original aspect ratio of the asset",
+                        "type": "text/plain"
+                      },
+                      "key": "original_aspect_ratio",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Additional metadata for the asset (e.g., is_main_image, is_video_image)",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<object>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ad637f6-e8f9-4831-bd70-96b34d60012e",
+              "name": "Missing, invalid, expired, or revoked access token, or network mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The style/purpose of the asset (This can only be one of avatar,avatar_suggestion,header_suggestion,avatar_dark_mode,thumbnail,square_thumbnail,bundle_description,landing_page_background,landing_page_video,customer_site_logo,space_avatar,space_description,brand_banner_on_color,brand_banner_on_white,brand_banner_dark_mode,background_image_banner,background_image_banner_fixed_ratio,post_description,landing_page_description,cover,post,comment,file,header,cinema_header,profile_prompt_answer,new_member_pitch,embedded_link,user_cover,video,course_video,live_mp4_recording,live_mp4_recording_backup,comment_video,ai_interaction,automation_action_image,landing_page_content,seo_image,voice_note)",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_style",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download asset from (alternative to asset_file)",
+                        "type": "text/plain"
+                      },
+                      "key": "source_url",
+                      "value": "<url>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated - do not use",
+                        "type": "text/plain"
+                      },
+                      "key": "input_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Original aspect ratio of the asset",
+                        "type": "text/plain"
+                      },
+                      "key": "original_aspect_ratio",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Additional metadata for the asset (e.g., is_main_image, is_video_image)",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<object>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a3bb2ea-f65f-4a5e-a8ee-90aeb9d5efad",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The style/purpose of the asset (This can only be one of avatar,avatar_suggestion,header_suggestion,avatar_dark_mode,thumbnail,square_thumbnail,bundle_description,landing_page_background,landing_page_video,customer_site_logo,space_avatar,space_description,brand_banner_on_color,brand_banner_on_white,brand_banner_dark_mode,background_image_banner,background_image_banner_fixed_ratio,post_description,landing_page_description,cover,post,comment,file,header,cinema_header,profile_prompt_answer,new_member_pitch,embedded_link,user_cover,video,course_video,live_mp4_recording,live_mp4_recording_backup,comment_video,ai_interaction,automation_action_image,landing_page_content,seo_image,voice_note)",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_style",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "asset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to download asset from (alternative to asset_file)",
+                        "type": "text/plain"
+                      },
+                      "key": "source_url",
+                      "value": "<url>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Deprecated - do not use",
+                        "type": "text/plain"
+                      },
+                      "key": "input_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Original aspect ratio of the asset",
+                        "type": "text/plain"
+                      },
+                      "key": "original_aspect_ratio",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Additional metadata for the asset (e.g., is_main_image, is_video_image)",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<object>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mn.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "447acc66-4977-46cf-9966-ba77d433847f",
+    "name": "The Mighty Networks Admin AbuseReports Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API for managing your Mighty Networks network",
+      "type": "text/plain"
+    }
+  }
+}

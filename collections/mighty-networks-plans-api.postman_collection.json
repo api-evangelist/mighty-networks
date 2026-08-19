@@ -1,0 +1,1073 @@
+{
+  "item": [
+    {
+      "id": "e376145e-ca19-4cb9-b15b-e2a7f53b2438",
+      "name": "Plans",
+      "description": {
+        "content": "Manage plans in your network",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8449330-1a5e-4ddf-b2c5-374110f5fcef",
+          "name": "Return all plans that a member has access to",
+          "request": {
+            "name": "Return all plans that a member has access to",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "members",
+                ":member_id",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<uint64>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<uint64>",
+                  "description": "Items per page (max 100)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "member_id",
+                  "description": "(Required) The ID of the member"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62119e79-9a2e-405e-bcfe-b612db2d860a",
+              "name": "A paginated set of plan objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "members",
+                    ":member_id",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "member_id",
+                      "description": "(Required) The ID of the member"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1337c26e-1067-42ea-bf7c-96a430be65d2",
+              "name": "Member not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "members",
+                    ":member_id",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "member_id",
+                      "description": "(Required) The ID of the member"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f02c041f-59d5-4a31-b87c-b48eed55ce9f",
+          "name": "Return all plans in the network",
+          "request": {
+            "name": "Return all plans in the network",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<uint64>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<uint64>",
+                  "description": "Items per page (max 100)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e2497b3-239e-4e97-821f-88e258f9c840",
+              "name": "A paginated set of plan objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05c80653-dee8-46fa-a025-1e0f6400bdb5",
+          "name": "Return a single plan by ID",
+          "request": {
+            "name": "Return a single plan by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "plans",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) The ID of the plan to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9e79ecd-28a9-45cb-91c6-51406492d88b",
+              "name": "A plan object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the plan to retrieve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"id\": 7005,\n  \"name\": \"string\",\n  \"permalink\": \"string\",\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"description\": \"string\",\n  \"status\": \"string\",\n  \"pricing_type\": \"string\",\n  \"visible_to_members\": false,\n  \"external\": false,\n  \"multiple\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36b7b4b1-3a4a-4745-b966-4072559841b0",
+              "name": "Plan not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the plan to retrieve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da2da85b-a092-4ff5-b6cc-3fa9ab536656",
+          "name": "Archive a plan. This will cancel all associated subscriptions and revoke access.",
+          "request": {
+            "name": "Archive a plan. This will cancel all associated subscriptions and revoke access.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "plans",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) The ID of the plan to archive"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8ec819b-892c-4e6e-b8d9-8aeb705e9a9c",
+              "name": "Plan successfully archived",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the plan to archive"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b82e2a9-b18c-4a8e-95ba-b15f7dfd7418",
+              "name": "Plan not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the plan to archive"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b398f09-5532-47d7-82aa-04de15ff9849",
+              "name": "Cannot archive plan (may contain active Apple products)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the plan to archive"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a12aca6-8964-43f7-945e-1b52514761f4",
+          "name": "Remove a member from a plan by canceling their subscription or purchase",
+          "request": {
+            "name": "Remove a member from a plan by canceling their subscription or purchase",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "plans",
+                ":plan_id",
+                "members",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "plan_id",
+                  "description": "(Required) The ID of the plan"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) The ID of the member (user) to remove"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77c57249-3799-4ed0-a7ed-0d0cc1ecb06e",
+              "name": "Successfully removed member from plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":plan_id",
+                    "members",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "plan_id",
+                      "description": "(Required) The ID of the plan"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the member (user) to remove"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "887e460b-2f1b-4512-84ea-7add2b6cd695",
+              "name": "Plan or member not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":plan_id",
+                    "members",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "plan_id",
+                      "description": "(Required) The ID of the plan"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the member (user) to remove"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6485517-137e-42ae-8dd1-4fd2306432a0",
+              "name": "Unable to remove member (may not have access to this plan)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "plans",
+                    ":plan_id",
+                    "members",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "plan_id",
+                      "description": "(Required) The ID of the plan"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) The ID of the member (user) to remove"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mn.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9dd30a57-de4a-46dc-8b91-1f5354b58e88",
+    "name": "The Mighty Networks Admin AbuseReports Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API for managing your Mighty Networks network",
+      "type": "text/plain"
+    }
+  }
+}

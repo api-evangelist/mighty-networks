@@ -1,0 +1,1831 @@
+{
+  "item": [
+    {
+      "id": "03a9d07e-446b-4dfa-9d44-f72da1bdb440",
+      "name": "Rsvps",
+      "description": {
+        "content": "Manage event RSVPs for your network",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "976fb56e-a44b-47cb-8604-f1fd33f7d6b8",
+          "name": "List RSVPs for an event",
+          "request": {
+            "name": "List RSVPs for an event",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "events",
+                ":event_id",
+                "rsvps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instance_at",
+                  "value": "<dateTime>",
+                  "description": "Filter RSVPs for a specific recurring event instance"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<uint64>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<uint64>",
+                  "description": "Items per page (max 100)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "event_id",
+                  "description": "(Required) ID of the event"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7523fa8f-89ab-42df-b8f1-3fc273397453",
+              "name": "A paginated set of RSVP objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64fe6da9-9ba5-4e16-aaa3-f2f9a18e0ad7",
+              "name": "Event not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aedbf31f-5bac-4220-8ef6-ed61a45b71c5",
+          "name": "Create or update an RSVP for an event",
+          "request": {
+            "name": "Create or update an RSVP for an event",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "events",
+                ":event_id",
+                "rsvps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "event_id",
+                  "description": "(Required) ID of the event"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member_id\": \"<uint64>\",\n  \"status\": \"<string>\",\n  \"instance_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8d2824c-dd1f-494b-8064-4a14a904b023",
+              "name": "The created or updated RSVP object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"creator\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"email\": \"ada.lovelace@example.com\",\n      \"id\": 1363,\n      \"member_type\": \"string\",\n      \"permalink\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"time_zone\": \"string\",\n      \"location\": \"string\",\n      \"bio\": \"string\",\n      \"referral_count\": 3604,\n      \"avatar\": \"string\",\n      \"categories\": \"string\",\n      \"ambassador_level\": \"string\"\n    },\n    \"creator_id\": 5433,\n    \"event_type\": \"string\",\n    \"id\": 4217,\n    \"permalink\": \"string\",\n    \"post_in_feed\": true,\n    \"post_type\": \"string\",\n    \"restricted_event\": false,\n    \"rsvp_closed\": true,\n    \"rsvp_enabled\": false,\n    \"space\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"id\": 8361,\n      \"name\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"collection_id\": 7597\n    },\n    \"space_id\": 2047,\n    \"starts_at\": \"string\",\n    \"summary\": \"string\",\n    \"time_zone\": \"string\",\n    \"title\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"ends_at\": \"string\",\n    \"location\": \"string\",\n    \"frequency\": \"string\",\n    \"interval\": 1609,\n    \"images\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"id\": 8076,\n  \"member\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"email\": \"ada.lovelace@example.com\",\n    \"id\": 6390,\n    \"member_type\": \"string\",\n    \"permalink\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"time_zone\": \"string\",\n    \"location\": \"string\",\n    \"bio\": \"string\",\n    \"referral_count\": 4705,\n    \"avatar\": \"string\",\n    \"categories\": \"string\",\n    \"ambassador_level\": \"string\"\n  },\n  \"status\": \"string\",\n  \"updated\": \"2026-07-05T21:11:42+00:00\",\n  \"event_instance\": {\n    \"ends_at\": \"2026-07-05T21:11:42+00:00\",\n    \"instance_index\": 5337,\n    \"post_id\": 3055,\n    \"starts_at\": \"2026-07-05T21:11:42+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9db4c45-7a7d-47da-b5a2-731a8bdf1699",
+              "name": "Member is not in this network",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1828a06-d022-4998-b62f-f4751e94e010",
+              "name": "Event or member not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9bea632-1772-4cd5-8d69-0468da5ff44a",
+              "name": "Invalid RSVP status or instance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc30ea78-23d3-4d57-a228-3dfac58bd582",
+          "name": "Get a specific RSVP by ID",
+          "request": {
+            "name": "Get a specific RSVP by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "events",
+                ":event_id",
+                "rsvps",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "event_id",
+                  "description": "(Required) ID of the event"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the RSVP"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f36e385-600d-4247-93e2-61fb2cb326a8",
+              "name": "An RSVP object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"creator\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"email\": \"ada.lovelace@example.com\",\n      \"id\": 1363,\n      \"member_type\": \"string\",\n      \"permalink\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"time_zone\": \"string\",\n      \"location\": \"string\",\n      \"bio\": \"string\",\n      \"referral_count\": 3604,\n      \"avatar\": \"string\",\n      \"categories\": \"string\",\n      \"ambassador_level\": \"string\"\n    },\n    \"creator_id\": 5433,\n    \"event_type\": \"string\",\n    \"id\": 4217,\n    \"permalink\": \"string\",\n    \"post_in_feed\": true,\n    \"post_type\": \"string\",\n    \"restricted_event\": false,\n    \"rsvp_closed\": true,\n    \"rsvp_enabled\": false,\n    \"space\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"id\": 8361,\n      \"name\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"collection_id\": 7597\n    },\n    \"space_id\": 2047,\n    \"starts_at\": \"string\",\n    \"summary\": \"string\",\n    \"time_zone\": \"string\",\n    \"title\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"ends_at\": \"string\",\n    \"location\": \"string\",\n    \"frequency\": \"string\",\n    \"interval\": 1609,\n    \"images\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"id\": 8076,\n  \"member\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"email\": \"ada.lovelace@example.com\",\n    \"id\": 6390,\n    \"member_type\": \"string\",\n    \"permalink\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"time_zone\": \"string\",\n    \"location\": \"string\",\n    \"bio\": \"string\",\n    \"referral_count\": 4705,\n    \"avatar\": \"string\",\n    \"categories\": \"string\",\n    \"ambassador_level\": \"string\"\n  },\n  \"status\": \"string\",\n  \"updated\": \"2026-07-05T21:11:42+00:00\",\n  \"event_instance\": {\n    \"ends_at\": \"2026-07-05T21:11:42+00:00\",\n    \"instance_index\": 5337,\n    \"post_id\": 3055,\n    \"starts_at\": \"2026-07-05T21:11:42+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d4f587a-9c45-49b8-92ee-e44ab81fb4f1",
+              "name": "RSVP not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a87b00c0-d790-4f4e-a391-c0cac54090a0",
+          "name": "Update an existing RSVP",
+          "request": {
+            "name": "Update an existing RSVP",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "events",
+                ":event_id",
+                "rsvps",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "event_id",
+                  "description": "(Required) ID of the event"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the RSVP"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member_id\": \"<uint64>\",\n  \"status\": \"<string>\",\n  \"instance_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6473130-a82e-4f94-b7c1-730905a5adbf",
+              "name": "The updated RSVP object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"creator\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"email\": \"ada.lovelace@example.com\",\n      \"id\": 1363,\n      \"member_type\": \"string\",\n      \"permalink\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"time_zone\": \"string\",\n      \"location\": \"string\",\n      \"bio\": \"string\",\n      \"referral_count\": 3604,\n      \"avatar\": \"string\",\n      \"categories\": \"string\",\n      \"ambassador_level\": \"string\"\n    },\n    \"creator_id\": 5433,\n    \"event_type\": \"string\",\n    \"id\": 4217,\n    \"permalink\": \"string\",\n    \"post_in_feed\": true,\n    \"post_type\": \"string\",\n    \"restricted_event\": false,\n    \"rsvp_closed\": true,\n    \"rsvp_enabled\": false,\n    \"space\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"id\": 8361,\n      \"name\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"collection_id\": 7597\n    },\n    \"space_id\": 2047,\n    \"starts_at\": \"string\",\n    \"summary\": \"string\",\n    \"time_zone\": \"string\",\n    \"title\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"ends_at\": \"string\",\n    \"location\": \"string\",\n    \"frequency\": \"string\",\n    \"interval\": 1609,\n    \"images\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"id\": 8076,\n  \"member\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"email\": \"ada.lovelace@example.com\",\n    \"id\": 6390,\n    \"member_type\": \"string\",\n    \"permalink\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"time_zone\": \"string\",\n    \"location\": \"string\",\n    \"bio\": \"string\",\n    \"referral_count\": 4705,\n    \"avatar\": \"string\",\n    \"categories\": \"string\",\n    \"ambassador_level\": \"string\"\n  },\n  \"status\": \"string\",\n  \"updated\": \"2026-07-05T21:11:42+00:00\",\n  \"event_instance\": {\n    \"ends_at\": \"2026-07-05T21:11:42+00:00\",\n    \"instance_index\": 5337,\n    \"post_id\": 3055,\n    \"starts_at\": \"2026-07-05T21:11:42+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7c69db3-74a9-4da5-ba91-449cfd246e92",
+              "name": "Member is not in this network or RSVP cannot be updated due to event settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fef20253-f22f-4de2-b350-314c0fd050d4",
+              "name": "RSVP or member not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4606a68e-1a39-434c-804c-9c83085a4581",
+              "name": "Invalid RSVP status or instance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0d1e0f1-c687-4722-bf5d-50ee7b733f4d",
+          "name": "Update an existing RSVP",
+          "request": {
+            "name": "Update an existing RSVP",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "events",
+                ":event_id",
+                "rsvps",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "event_id",
+                  "description": "(Required) ID of the event"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the RSVP"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member_id\": \"<uint64>\",\n  \"status\": \"<string>\",\n  \"instance_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67bec606-3679-44c5-86d9-61a54ee379e2",
+              "name": "The updated RSVP object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"creator\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"email\": \"ada.lovelace@example.com\",\n      \"id\": 1363,\n      \"member_type\": \"string\",\n      \"permalink\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"time_zone\": \"string\",\n      \"location\": \"string\",\n      \"bio\": \"string\",\n      \"referral_count\": 3604,\n      \"avatar\": \"string\",\n      \"categories\": \"string\",\n      \"ambassador_level\": \"string\"\n    },\n    \"creator_id\": 5433,\n    \"event_type\": \"string\",\n    \"id\": 4217,\n    \"permalink\": \"string\",\n    \"post_in_feed\": true,\n    \"post_type\": \"string\",\n    \"restricted_event\": false,\n    \"rsvp_closed\": true,\n    \"rsvp_enabled\": false,\n    \"space\": {\n      \"created_at\": \"2026-07-05T21:11:41+00:00\",\n      \"id\": 8361,\n      \"name\": \"string\",\n      \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n      \"collection_id\": 7597\n    },\n    \"space_id\": 2047,\n    \"starts_at\": \"string\",\n    \"summary\": \"string\",\n    \"time_zone\": \"string\",\n    \"title\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"ends_at\": \"string\",\n    \"location\": \"string\",\n    \"frequency\": \"string\",\n    \"interval\": 1609,\n    \"images\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"id\": 8076,\n  \"member\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"email\": \"ada.lovelace@example.com\",\n    \"id\": 6390,\n    \"member_type\": \"string\",\n    \"permalink\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"time_zone\": \"string\",\n    \"location\": \"string\",\n    \"bio\": \"string\",\n    \"referral_count\": 4705,\n    \"avatar\": \"string\",\n    \"categories\": \"string\",\n    \"ambassador_level\": \"string\"\n  },\n  \"status\": \"string\",\n  \"updated\": \"2026-07-05T21:11:42+00:00\",\n  \"event_instance\": {\n    \"ends_at\": \"2026-07-05T21:11:42+00:00\",\n    \"instance_index\": 5337,\n    \"post_id\": 3055,\n    \"starts_at\": \"2026-07-05T21:11:42+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ebeb765-b9a6-4ef5-8ff3-9d1431d4373a",
+              "name": "Member is not in this network or RSVP cannot be updated due to event settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3a5f518-0fa2-4ecc-a6bb-e42d7d9d4a7b",
+              "name": "RSVP or member not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae6bbcfb-234a-446b-966b-42bfba3eb102",
+              "name": "Invalid RSVP status or instance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member_id\": 123,\n  \"status\": \"yes\",\n  \"instance_at\": \"2025-03-15T14:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba80260e-077b-4ab7-83a6-90d65c2b6a44",
+          "name": "Delete an RSVP",
+          "request": {
+            "name": "Delete an RSVP",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "events",
+                ":event_id",
+                "rsvps",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "event_id",
+                  "description": "(Required) ID of the event"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the RSVP"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37bba3b9-8e03-43bd-9239-18fdfc801104",
+              "name": "RSVP successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f4a0f60-95b0-4f9e-a097-1d0536bab4ce",
+              "name": "RSVP not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "events",
+                    ":event_id",
+                    "rsvps",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "event_id",
+                      "description": "(Required) ID of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the RSVP"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mn.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78bff6d3-79cb-4977-9c8d-f0c3aec961c5",
+    "name": "The Mighty Networks Admin AbuseReports Rsvps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API for managing your Mighty Networks network",
+      "type": "text/plain"
+    }
+  }
+}

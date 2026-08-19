@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Spaces API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return spaces for a given member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members/:member_id/spaces",
+            "params": [
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the member"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return spaces for a given member"
+        },
+        {
+          "info": {
+            "name": "Returns a list of spaces for the current network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Returns a list of spaces for the current network"
+        },
+        {
+          "info": {
+            "name": "Create a new space in the network",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces",
+            "params": [
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new space in the network"
+        },
+        {
+          "info": {
+            "name": "Query details of a specific space by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the space to fetch"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Query details of a specific space by its ID"
+        },
+        {
+          "info": {
+            "name": "Update a space by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the space to update"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a space by its ID"
+        },
+        {
+          "info": {
+            "name": "Update a space by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the space to update"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a space by its ID"
+        },
+        {
+          "info": {
+            "name": "Delete a space by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the space to delete"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Delete a space by its ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

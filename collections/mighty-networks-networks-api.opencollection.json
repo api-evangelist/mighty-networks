@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Admin AbuseReports Networks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns details of the Network - must match the Network owning the requesting API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/",
+            "params": [
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Returns details of the Network - must match the Network owning the requesting API key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

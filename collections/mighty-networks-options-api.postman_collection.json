@@ -1,0 +1,1448 @@
+{
+  "item": [
+    {
+      "id": "cec28f7c-8396-4a63-b998-9e94f49e05ec",
+      "name": "Options",
+      "description": {
+        "content": "Manage dropdown custom field options",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f39fe8c8-4bda-4666-93ce-ef3ed9e6e231",
+          "name": "Return all options for a custom field",
+          "request": {
+            "name": "Return all options for a custom field",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "custom_fields",
+                ":custom_field_id",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "Search term to filter options by title"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<uint64>",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<uint64>",
+                  "description": "Items per page (max 100)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "custom_field_id",
+                  "description": "(Required) ID of the custom field"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d243028-0caf-4a06-8521-0f3d15eb590b",
+              "name": "A paginated set of custom field option objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<uint64>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<uint64>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33a23cec-4dcb-4d34-90c1-5f3d4a3b465a",
+          "name": "Create a new option for a custom field",
+          "request": {
+            "name": "Create a new option for a custom field",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "custom_fields",
+                ":custom_field_id",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "custom_field_id",
+                  "description": "(Required) ID of the custom field"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32f8b6ae-0299-4865-8121-1412efb47257",
+              "name": "The created custom field option object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"creator_id\": 653,\n  \"custom_field_id\": 5347,\n  \"id\": 9933,\n  \"is_ad_hoc\": false,\n  \"member_count\": 5877,\n  \"title\": \"Blue\",\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "927a223c-4ddd-4e98-95b8-9bffa299c951",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3e53b7a-e4d9-4306-86d1-adea7f3c6d9f",
+          "name": "Return a single option by ID",
+          "request": {
+            "name": "Return a single option by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "custom_fields",
+                ":custom_field_id",
+                "options",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "custom_field_id",
+                  "description": "(Required) ID of the custom field"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the option"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1b02e7c-4387-4c0c-b4ff-1a0e0bfb4d2d",
+              "name": "A custom field option object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"creator_id\": 653,\n  \"custom_field_id\": 5347,\n  \"id\": 9933,\n  \"is_ad_hoc\": false,\n  \"member_count\": 5877,\n  \"title\": \"Blue\",\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1caaa8da-262b-41fe-94d1-85f2f9160679",
+              "name": "Option not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "905c7c6b-3fcd-4048-9335-f63ebdbe85fe",
+          "name": "Update an option",
+          "request": {
+            "name": "Update an option",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "custom_fields",
+                ":custom_field_id",
+                "options",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "custom_field_id",
+                  "description": "(Required) ID of the custom field"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the option"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "134d6bec-6018-4f13-96ad-9e3459b7d477",
+              "name": "The updated custom field option object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"creator_id\": 653,\n  \"custom_field_id\": 5347,\n  \"id\": 9933,\n  \"is_ad_hoc\": false,\n  \"member_count\": 5877,\n  \"title\": \"Blue\",\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "228e4968-d1b7-484e-aa58-07b5768c787e",
+              "name": "Option not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4bf1cd9-dc22-4da7-9586-7274d44e7a72",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c384c1be-aa69-4b70-ab1f-1e3efc20bb6a",
+          "name": "Update an option",
+          "request": {
+            "name": "Update an option",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "custom_fields",
+                ":custom_field_id",
+                "options",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "custom_field_id",
+                  "description": "(Required) ID of the custom field"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the option"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cda41df9-9e94-4b1f-b6d2-bd07bc2df866",
+              "name": "The updated custom field option object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"creator_id\": 653,\n  \"custom_field_id\": 5347,\n  \"id\": 9933,\n  \"is_ad_hoc\": false,\n  \"member_count\": 5877,\n  \"title\": \"Blue\",\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dce35fc5-e1c7-4869-a5b5-99e928ffc371",
+              "name": "Option not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8ec6320-3e97-4a8d-b35a-d4368777d95f",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Blue\",\n  \"description\": \"Select this if blue is your favorite color\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b36047e1-aefe-471f-b683-76bc1f6e1508",
+          "name": "Delete an option",
+          "request": {
+            "name": "Delete an option",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "custom_fields",
+                ":custom_field_id",
+                "options",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "custom_field_id",
+                  "description": "(Required) ID of the custom field"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "id",
+                  "description": "(Required) ID of the option"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e187b78c-3fb3-43a3-9140-7995b016ed3c",
+              "name": "Option deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53c95432-3e55-46e1-b4bd-fac93080233c",
+              "name": "Option not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "custom_fields",
+                    ":custom_field_id",
+                    "options",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "custom_field_id",
+                      "description": "(Required) ID of the custom field"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "id",
+                      "description": "(Required) ID of the option"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mn.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "68df1b15-ad41-4660-8af5-60d8af8501b9",
+    "name": "The Mighty Networks Admin AbuseReports Options API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API for managing your Mighty Networks network",
+      "type": "text/plain"
+    }
+  }
+}

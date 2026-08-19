@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Comments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of comments for a specific post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/comments",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Returns a list of comments for a specific post"
+        },
+        {
+          "info": {
+            "name": "Create a new comment on a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/comments",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new comment on a post"
+        },
+        {
+          "info": {
+            "name": "Query details of a specific comment by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/comments/:id/",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Query details of a specific comment by its ID"
+        },
+        {
+          "info": {
+            "name": "Delete a comment from a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/comments/:id/",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment to delete"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Delete a comment from a post"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

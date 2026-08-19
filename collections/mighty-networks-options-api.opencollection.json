@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Options API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Options",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return all options for a custom field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/custom_fields/:custom_field_id/options",
+            "params": [
+              {
+                "name": "custom_field_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the custom field"
+              },
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter options by title"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return all options for a custom field"
+        },
+        {
+          "info": {
+            "name": "Create a new option for a custom field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/custom_fields/:custom_field_id/options",
+            "params": [
+              {
+                "name": "custom_field_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the custom field"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new option for a custom field"
+        },
+        {
+          "info": {
+            "name": "Return a single option by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/custom_fields/:custom_field_id/options/:id/",
+            "params": [
+              {
+                "name": "custom_field_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the custom field"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the option"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return a single option by ID"
+        },
+        {
+          "info": {
+            "name": "Update an option",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/custom_fields/:custom_field_id/options/:id/",
+            "params": [
+              {
+                "name": "custom_field_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the custom field"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the option"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an option"
+        },
+        {
+          "info": {
+            "name": "Update an option",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/custom_fields/:custom_field_id/options/:id/",
+            "params": [
+              {
+                "name": "custom_field_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the custom field"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the option"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an option"
+        },
+        {
+          "info": {
+            "name": "Delete an option",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/custom_fields/:custom_field_id/options/:id/",
+            "params": [
+              {
+                "name": "custom_field_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the custom field"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the option"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Delete an option"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

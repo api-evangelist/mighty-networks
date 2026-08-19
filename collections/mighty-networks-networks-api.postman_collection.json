@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "f0cfa443-b895-44d1-bf3e-36ffd2c20c39",
+      "name": "Networks",
+      "description": {
+        "content": "Networks are the top-level organizational unit under which other resources are nested",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "890c3d6e-9cf1-4613-b542-c3672e0dcc6e",
+          "name": "Returns details of the Network - must match the Network owning the requesting API key",
+          "request": {
+            "name": "Returns details of the Network - must match the Network owning the requesting API key",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "199d2f84-b11c-4411-806c-a811a5b3e67b",
+              "name": "Returns the Networks attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2026-07-05T21:11:41+00:00\",\n  \"description\": \"A great network\",\n  \"id\": 4724,\n  \"purpose\": \"Bring together artists interested in sharing their work and inspiring others\",\n  \"subdomain\": \"paint-pals\",\n  \"subtitle\": \"A network for artists to share and collaborate\",\n  \"title\": \"The Paint Pals Network\",\n  \"updated_at\": \"2026-07-05T21:11:41+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mn.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ea213533-cf13-46b4-90b0-aeb59243d845",
+    "name": "The Mighty Admin AbuseReports Networks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API for managing your Mighty Networks network",
+      "type": "text/plain"
+    }
+  }
+}

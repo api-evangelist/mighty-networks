@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Subscriptions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all payment subscriptions for the network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/subscriptions",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status: 'canceled' for archived subscriptions"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by member (user) ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "List all payment subscriptions for the network"
+        },
+        {
+          "info": {
+            "name": "Get details of a specific payment subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Get details of a specific payment subscription"
+        },
+        {
+          "info": {
+            "name": "Cancel a payment subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID"
+              },
+              {
+                "name": "when",
+                "value": "",
+                "type": "query",
+                "description": "When to cancel: 'now' (immediate) or 'end_of_billing_cycle' (default: 'end_of_billing_cycle')"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Cancel a payment subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

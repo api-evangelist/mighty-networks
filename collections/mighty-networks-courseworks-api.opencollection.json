@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Courseworks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Courseworks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of coursework items for the given space (course)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/courseworks",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the course (space) to fetch coursework from"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by coursework type (lesson, quiz, section, overview)"
+              },
+              {
+                "name": "parent_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by parent coursework ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by visibility status (posted, hidden, pending)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Returns a list of coursework items for the given space (course)"
+        },
+        {
+          "info": {
+            "name": "Create a new coursework item (lesson, quiz, or section)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/courseworks",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the course (space) to create coursework in"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new coursework item (lesson, quiz, or section)"
+        },
+        {
+          "info": {
+            "name": "Returns a single coursework item by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/courseworks/:id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the course (space)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the coursework item"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Returns a single coursework item by ID"
+        },
+        {
+          "info": {
+            "name": "Update an existing coursework item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/courseworks/:id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the course (space)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the coursework item to update"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing coursework item"
+        },
+        {
+          "info": {
+            "name": "Update an existing coursework item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/courseworks/:id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the course (space)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the coursework item to update"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing coursework item"
+        },
+        {
+          "info": {
+            "name": "Delete a coursework item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/courseworks/:id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the course (space)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the coursework item to delete"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Delete a coursework item"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "4fa3eab5-bee4-43a7-bd0a-5a5872f56bde",
+      "name": "Me",
+      "description": {
+        "content": "Metadata about the requesting user",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8fec68c-3f7f-4fe6-92a6-05c3987cbbce",
+          "name": "Return information about the authenticated access token",
+          "request": {
+            "name": "Return information about the authenticated access token",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "v1",
+                "networks",
+                ":network_id",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint64>",
+                  "key": "network_id",
+                  "description": "(Required) The Network's unique integer ID, or subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f96cbf0d-1508-479f-8094-d3105a8c7718",
+              "name": "Returns a description of the currently authenticated user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "v1",
+                    "networks",
+                    ":network_id",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint64>",
+                      "key": "network_id",
+                      "description": "(Required) The Network's unique integer ID, or subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network\": {\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"description\": \"A great network\",\n    \"id\": 3391,\n    \"purpose\": \"Bring together artists interested in sharing their work and inspiring others\",\n    \"subdomain\": \"paint-pals\",\n    \"subtitle\": \"A network for artists to share and collaborate\",\n    \"title\": \"The Paint Pals Network\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\"\n  },\n  \"user\": {\n    \"admin\": false,\n    \"created_at\": \"2026-07-05T21:11:41+00:00\",\n    \"email\": \"ada.lovelace@example.com\",\n    \"id\": 2283,\n    \"name\": \"string\",\n    \"short_bio\": \"string\",\n    \"updated_at\": \"2026-07-05T21:11:41+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mn.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e0bdffa3-0b0e-4249-934b-88cafd5a323a",
+    "name": "The Mighty Networks Admin AbuseReports Me API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API for managing your Mighty Networks network",
+      "type": "text/plain"
+    }
+  }
+}

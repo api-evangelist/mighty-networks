@@ -1,0 +1,576 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Members API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return members of the given space",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/members",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the space"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return members of the given space"
+        },
+        {
+          "info": {
+            "name": "Add a user as a member to the space",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/members",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the space"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the user to add"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Add a user as a member to the space"
+        },
+        {
+          "info": {
+            "name": "Return a single member by user ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/members/:user_id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the space"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the user"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return a single member by user ID"
+        },
+        {
+          "info": {
+            "name": "Update a member's role in the space",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/members/:user_id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the space"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the user"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a member's role in the space"
+        },
+        {
+          "info": {
+            "name": "Update a member's role in the space",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/members/:user_id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the space"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the user"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a member's role in the space"
+        },
+        {
+          "info": {
+            "name": "Remove a member from the space",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/members/:user_id/",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the space"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the user to remove"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Remove a member from the space"
+        },
+        {
+          "info": {
+            "name": "Ban a user from the network",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/spaces/:space_id/members/:user_id/ban",
+            "params": [
+              {
+                "name": "space_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the space"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the user to ban"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ban a user from the network"
+        },
+        {
+          "info": {
+            "name": "Return members of the given plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/plans/:plan_id/members",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the plan"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return members of the given plan"
+        },
+        {
+          "info": {
+            "name": "Add a member directly to a free/nonpaid plan, granting them access\n\nThe member will be granted access immediately; no invite is sent.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/plans/:plan_id/members",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the plan"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The user ID to add"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Add a member directly to a free/nonpaid plan, granting them access\n\nThe member will be granted access immediately; no invite is sent.\n"
+        },
+        {
+          "info": {
+            "name": "Return a single member by member ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/plans/:plan_id/members/:member_id/",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the plan"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the member"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return a single member by member ID"
+        },
+        {
+          "info": {
+            "name": "Return members of the given network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return members of the given network"
+        },
+        {
+          "info": {
+            "name": "Create a new member in the network",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members",
+            "params": [
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new member in the network"
+        },
+        {
+          "info": {
+            "name": "Return a single member by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the member"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return a single member by ID"
+        },
+        {
+          "info": {
+            "name": "Update a member's role in the network",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the member"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a member's role in the network"
+        },
+        {
+          "info": {
+            "name": "Update a member's role in the network",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the member"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a member's role in the network"
+        },
+        {
+          "info": {
+            "name": "Delete a member's account (soft delete)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the member"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Delete a member's account (soft delete)"
+        },
+        {
+          "info": {
+            "name": "Return a single member by email address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members/by_email",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Email address of the member"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return a single member by email address"
+        },
+        {
+          "info": {
+            "name": "Remove a member from the network (can rejoin)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/members/:id/network_membership",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the member"
+              },
+              {
+                "name": "cancel_plans",
+                "value": "",
+                "type": "query",
+                "description": "Whether to also cancel the member's purchased plans"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Remove a member from the network (can rejoin)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

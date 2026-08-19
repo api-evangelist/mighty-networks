@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Reactions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of reactions for a specific post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/reactions",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Returns a list of reactions for a specific post"
+        },
+        {
+          "info": {
+            "name": "Create a new reaction on a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/reactions",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new reaction on a post"
+        },
+        {
+          "info": {
+            "name": "Delete the reaction from a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/reactions",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Delete the reaction from a post"
+        },
+        {
+          "info": {
+            "name": "Returns a list of reactions for a specific comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/comments/:comment_id/reactions",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Returns a list of reactions for a specific comment"
+        },
+        {
+          "info": {
+            "name": "Create a new reaction on a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/comments/:comment_id/reactions",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new reaction on a comment"
+        },
+        {
+          "info": {
+            "name": "Delete the reaction from a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/comments/:comment_id/reactions",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Delete the reaction from a comment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Assets API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload a new asset (image or file)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/assets",
+            "params": [
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "asset_style",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "asset_file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "source_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "input_type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "original_aspect_ratio",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a new asset (image or file)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

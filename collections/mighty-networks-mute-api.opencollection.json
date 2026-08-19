@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Mute API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mute",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Mute a post for a specific user (unfollow notifications)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/mute",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the user to mute the post for"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Mute a post for a specific user (unfollow notifications)"
+        },
+        {
+          "info": {
+            "name": "Unmute a post for a specific user (refollow notifications)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/posts/:post_id/mute",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the post"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the user to unmute the post for"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Unmute a post for a specific user (refollow notifications)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

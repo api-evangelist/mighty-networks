@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Mighty Networks Admin AbuseReports Purchases API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Purchases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return purchases and subscriptions for the given network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/purchases",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by plan ID"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by member ID (user ID)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page (max 100)"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return purchases and subscriptions for the given network"
+        },
+        {
+          "info": {
+            "name": "Return a single purchase by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/purchases/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the purchase"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Return a single purchase by ID"
+        },
+        {
+          "info": {
+            "name": "Remove a member from a plan (revoke purchase access). Note: Cannot remove members from Apple In-App Purchases.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mn.co/admin/v1/networks/:network_id/purchases/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the purchase"
+              },
+              {
+                "name": "immediate",
+                "value": "",
+                "type": "query",
+                "description": "Cancel immediately without grace period"
+              },
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path",
+                "description": "The Network's unique integer ID, or subdomain"
+              }
+            ]
+          },
+          "docs": "Remove a member from a plan (revoke purchase access). Note: Cannot remove members from Apple In-App Purchases."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
