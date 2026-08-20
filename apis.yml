@@ -30,6 +30,13 @@ tags:
 - Courses
 - Membership
 - Creator Economy
+- Event
+- Subscription
+tags_raw:
+- Community
+- Courses
+- Membership
+- Creator Economy
 - Events
 - Subscriptions
 created: '2026-07-05'
@@ -39,6 +46,10 @@ apis:
 - aid: mighty-networks:mighty-networks-headless-graphql-api
   name: Mighty Networks Headless GraphQL API
   tags:
+  - GraphQL
+  - Headless
+  - Authentication
+  tags_raw:
   - GraphQL
   - Headless
   - OAuth
@@ -62,6 +73,8 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
+  - Abuse Reports
+  tags_raw:
   - AbuseReports
   properties:
   - type: OpenAPI
@@ -282,6 +295,8 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -447,6 +462,8 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
+  - Custom Fields
+  tags_raw:
   - CustomFields
   properties:
   - type: OpenAPI
@@ -502,6 +519,8 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -1217,6 +1236,8 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
+  - RSVPs
+  tags_raw:
   - Rsvps
   properties:
   - type: OpenAPI
@@ -1328,6 +1349,8 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
