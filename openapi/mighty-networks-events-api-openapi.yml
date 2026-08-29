@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: The Mighty Networks Admin AbuseReports Events API
+  title: Mighty Networks Admin Events API
   description: An API for managing your Mighty Networks network
 servers:
 - url: https://api.mn.co
@@ -276,21 +276,94 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   schemas:
+    EventUpdateRequest:
+      description: Request body for updating an event
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The event title
+          example: Monthly Community Meetup
+        description:
+          type: string
+          description: The event description
+          example: Join us for our monthly community meetup
+        link:
+          type: string
+          description: External event link URL
+          example: https://zoom.us/j/123456789
+        starts_at:
+          type: string
+          format: date-time
+          description: The date and time the event starts (ISO8601 format)
+          example: '2025-01-15T14:00:00Z'
+        ends_at:
+          type: string
+          format: date-time
+          description: The date and time the event ends (ISO8601 format)
+          example: '2025-01-15T16:00:00Z'
+        event_type:
+          type: string
+          description: 'Type of event: ''online_meeting'', ''local_meetup'', etc.'
+          example: online_meeting
+        location:
+          type: string
+          description: Physical location of the event
+          example: San Francisco, CA
+        time_zone:
+          type: string
+          description: IANA timezone identifier for the event
+          example: America/Los_Angeles
+        rsvp_enabled:
+          type: boolean
+          description: 'Whether RSVPs are enabled (default: true)'
+          example: true
+        rsvp_closed:
+          type: boolean
+          description: 'Whether RSVPs are closed (default: false)'
+        restricted_event:
+          type: boolean
+          description: 'Whether event is restricted to specific members (default: false)'
+        post_in_feed:
+          type: boolean
+          description: 'Whether event appears in the activity feed (default: true)'
+          example: true
+        frequency:
+          type: string
+          description: 'Recurrence frequency: ''daily'', ''weekly'', ''monthly'', or ''yearly'''
+          example: weekly
+        interval:
+          type: integer
+          format: uint64
+          description: Recurrence interval (e.g., 1 for every week, 2 for every 2 weeks)
+          example: 1
+        by_days:
+          type: string
+          description: Comma-separated list of recurrence day abbreviations (SU/MO/TU/WE/TH/FR/SA)
+          example: MO,WE,FR
+        by_month_days:
+          type: string
+          description: Comma-separated list of Nth day-of-the-month for recurrence
+          example: 1,15
+        recurrence_count:
+          type: integer
+          format: uint64
+          description: How many times the event should recur
+        recur_until:
+          type: string
+          format: date-time
+          description: End date for recurrence
+          example: '2026-07-05T21:11:42+00:00'
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     EventResponse:
       description: Events are scheduled gatherings that members can RSVP to
       type: object
@@ -387,133 +460,6 @@ components:
           type: integer
           format: uint64
           description: Recurrence interval (e.g., 1 for every week, 2 for every 2 weeks)
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
-    EventUpdateRequest:
-      description: Request body for updating an event
-      type: object
-      required: []
-      properties:
-        title:
-          type: string
-          description: The event title
-          example: Monthly Community Meetup
-        description:
-          type: string
-          description: The event description
-          example: Join us for our monthly community meetup
-        link:
-          type: string
-          description: External event link URL
-          example: https://zoom.us/j/123456789
-        starts_at:
-          type: string
-          format: date-time
-          description: The date and time the event starts (ISO8601 format)
-          example: '2025-01-15T14:00:00Z'
-        ends_at:
-          type: string
-          format: date-time
-          description: The date and time the event ends (ISO8601 format)
-          example: '2025-01-15T16:00:00Z'
-        event_type:
-          type: string
-          description: 'Type of event: ''online_meeting'', ''local_meetup'', etc.'
-          example: online_meeting
-        location:
-          type: string
-          description: Physical location of the event
-          example: San Francisco, CA
-        time_zone:
-          type: string
-          description: IANA timezone identifier for the event
-          example: America/Los_Angeles
-        rsvp_enabled:
-          type: boolean
-          description: 'Whether RSVPs are enabled (default: true)'
-          example: true
-        rsvp_closed:
-          type: boolean
-          description: 'Whether RSVPs are closed (default: false)'
-        restricted_event:
-          type: boolean
-          description: 'Whether event is restricted to specific members (default: false)'
-        post_in_feed:
-          type: boolean
-          description: 'Whether event appears in the activity feed (default: true)'
-          example: true
-        frequency:
-          type: string
-          description: 'Recurrence frequency: ''daily'', ''weekly'', ''monthly'', or ''yearly'''
-          example: weekly
-        interval:
-          type: integer
-          format: uint64
-          description: Recurrence interval (e.g., 1 for every week, 2 for every 2 weeks)
-          example: 1
-        by_days:
-          type: string
-          description: Comma-separated list of recurrence day abbreviations (SU/MO/TU/WE/TH/FR/SA)
-          example: MO,WE,FR
-        by_month_days:
-          type: string
-          description: Comma-separated list of Nth day-of-the-month for recurrence
-          example: 1,15
-        recurrence_count:
-          type: integer
-          format: uint64
-          description: How many times the event should recur
-        recur_until:
-          type: string
-          format: date-time
-          description: End date for recurrence
-          example: '2026-07-05T21:11:42+00:00'
-    UserResponse:
-      type: object
-      required:
-      - admin
-      - created_at
-      - email
-      - id
-      - name
-      - short_bio
-      - updated_at
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The record's integer ID
-          example: '1234'
-        created_at:
-          type: string
-          format: date-time
-          description: The date and time the record was created
-          example: '2026-07-05T21:11:41+00:00'
-        updated_at:
-          type: string
-          format: date-time
-          description: The date and time the record was last modified
-          example: '2026-07-05T21:11:41+00:00'
-        name:
-          type: string
-          description: The user's full name
-        email:
-          type: string
-          format: email
-          description: The user's email address
-          example: ada.lovelace@example.com
-        short_bio:
-          type: string
-          description: A short biography of the user
-        admin:
-          type: boolean
-          description: Whether or not the user is an admin of the network
     EventCreateRequest:
       description: Request body for creating or updating an event
       type: object
@@ -605,6 +551,60 @@ components:
           format: date-time
           description: End date for recurrence
           example: '2026-07-05T21:11:42+00:00'
+    UserResponse:
+      type: object
+      required:
+      - admin
+      - created_at
+      - email
+      - id
+      - name
+      - short_bio
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        name:
+          type: string
+          description: The user's full name
+        email:
+          type: string
+          format: email
+          description: The user's email address
+          example: ada.lovelace@example.com
+        short_bio:
+          type: string
+          description: A short biography of the user
+        admin:
+          type: boolean
+          description: Whether or not the user is an admin of the network
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

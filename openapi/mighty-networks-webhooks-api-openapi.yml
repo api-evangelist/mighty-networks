@@ -1,0 +1,3290 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Mighty Networks Admin Webhooks API
+  description: An API for managing your Mighty Networks network
+servers:
+- url: https://api.mn.co
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+paths: {}
+webhooks:
+  RsvpUpdated:
+    post:
+      description: Triggered when an RSVP status is updated for an event
+      x-mint:
+        metadata:
+          sidebarTitle: RsvpUpdated
+          title: RsvpUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/RsvpResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  RsvpDeleted:
+    post:
+      description: Triggered when an RSVP is deleted for an event
+      x-mint:
+        metadata:
+          sidebarTitle: RsvpDeleted
+          title: RsvpDeleted
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/RsvpResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  RsvpCreated:
+    post:
+      description: Triggered when an RSVP is created for an event
+      x-mint:
+        metadata:
+          sidebarTitle: RsvpCreated
+          title: RsvpCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/RsvpResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  ReportedContentCreated:
+    post:
+      description: Triggered when content is reported (posts, comments, or chats)
+      x-mint:
+        metadata:
+          sidebarTitle: ReportedContentCreated
+          title: ReportedContentCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/ReportedContentCreatedPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  ReactionDeleted:
+    post:
+      description: Triggered when a reaction is deleted by a member from a post or comment
+      x-mint:
+        metadata:
+          sidebarTitle: ReactionDeleted
+          title: ReactionDeleted
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/ReactionResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  ReactionCreated:
+    post:
+      description: Triggered when a reaction is created by a member on a post or comment
+      x-mint:
+        metadata:
+          sidebarTitle: ReactionCreated
+          title: ReactionCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/ReactionResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  QuestionUpdated:
+    post:
+      description: Triggered when a question is updated by a user, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: QuestionUpdated
+          title: QuestionUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PostResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  QuestionCreated:
+    post:
+      description: Triggered when a question is created by a user, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: QuestionCreated
+          title: QuestionCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PostResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  PostUpdated:
+    post:
+      description: Triggered when a post is updated by a user, in a space.
+      x-mint:
+        metadata:
+          sidebarTitle: PostUpdated
+          title: PostUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PostResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  PostCreated:
+    post:
+      description: Triggered when a post is created by a user, in a space.
+      x-mint:
+        metadata:
+          sidebarTitle: PostCreated
+          title: PostCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PostResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  PercentagePollUpdated:
+    post:
+      description: Triggered when a percentage poll is updated by a member, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: PercentagePollUpdated
+          title: PercentagePollUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PercentagePollCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  PercentagePollCreated:
+    post:
+      description: Triggered when a percentage poll is created by a member, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: PercentagePollCreated
+          title: PercentagePollCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PercentagePollCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MultipleChoicePollUpdated:
+    post:
+      description: Triggered when a multiple choice poll is updated by a member, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: MultipleChoicePollUpdated
+          title: MultipleChoicePollUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MultipleChoicePollCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MultipleChoicePollCreated:
+    post:
+      description: Triggered when a multiple choice poll is created by a member, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: MultipleChoicePollCreated
+          title: MultipleChoicePollCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MultipleChoicePollCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberUpdated:
+    post:
+      description: Triggered when a member updates their profile
+      x-mint:
+        metadata:
+          sidebarTitle: MemberUpdated
+          title: MemberUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberUpdatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberTagRemoved:
+    post:
+      description: Triggered when a tag is removed from a member
+      x-mint:
+        metadata:
+          sidebarTitle: MemberTagRemoved
+          title: MemberTagRemoved
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberTagRemovePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberTagAdded:
+    post:
+      description: Triggered when a tag is added to a member
+      x-mint:
+        metadata:
+          sidebarTitle: MemberTagAdded
+          title: MemberTagAdded
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberTagAddPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberSubscriptionRenewed:
+    post:
+      description: Triggered when a member's subscription is renewed
+      x-mint:
+        metadata:
+          sidebarTitle: MemberSubscriptionRenewed
+          title: MemberSubscriptionRenewed
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberSubscriptionCanceled:
+    post:
+      description: Triggered when a member cancels their subscription
+      x-mint:
+        metadata:
+          sidebarTitle: MemberSubscriptionCanceled
+          title: MemberSubscriptionCanceled
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberRemovedFromPlan:
+    post:
+      description: Triggered when a member is removed from a plan
+      x-mint:
+        metadata:
+          sidebarTitle: MemberRemovedFromPlan
+          title: MemberRemovedFromPlan
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberPurchased:
+    post:
+      description: Triggered when a member purchases a plan
+      x-mint:
+        metadata:
+          sidebarTitle: MemberPurchased
+          title: MemberPurchased
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PurchaseResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberPurchaseRequested:
+    post:
+      description: Triggered when a member requests to purchase a plan
+      x-mint:
+        metadata:
+          sidebarTitle: MemberPurchaseRequested
+          title: MemberPurchaseRequested
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/InviteRequestRequest'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberPlanChanged:
+    post:
+      description: Triggered when a member changes their subscription plan (upgrade or downgrade)
+      x-mint:
+        metadata:
+          sidebarTitle: MemberPlanChanged
+          title: MemberPlanChanged
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberLeft:
+    post:
+      description: Triggered when a member leaves a space
+      x-mint:
+        metadata:
+          sidebarTitle: MemberLeft
+          title: MemberLeft
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberLeavePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberJoined:
+    post:
+      description: Triggered when a member joins a space
+      x-mint:
+        metadata:
+          sidebarTitle: MemberJoined
+          title: MemberJoined
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberJoinPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberJoinRequested:
+    post:
+      description: Triggered when a member requests an invitation to a space
+      x-mint:
+        metadata:
+          sidebarTitle: MemberJoinRequested
+          title: MemberJoinRequested
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberJoinRequestPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberCourseProgressUpdated:
+    post:
+      description: Triggered when a member updates their progress in a course
+      x-mint:
+        metadata:
+          sidebarTitle: MemberCourseProgressUpdated
+          title: MemberCourseProgressUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberCourseProgressUpdatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberCourseProgressStarted:
+    post:
+      description: Triggered when a member starts a course
+      x-mint:
+        metadata:
+          sidebarTitle: MemberCourseProgressStarted
+          title: MemberCourseProgressStarted
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberCourseProgressStartPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberCourseProgressCompleted:
+    post:
+      description: Triggered when a member completes a course
+      x-mint:
+        metadata:
+          sidebarTitle: MemberCourseProgressCompleted
+          title: MemberCourseProgressCompleted
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberCourseProgressCompletePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberBadgeRemoved:
+    post:
+      description: Triggered when a badge is removed from a member
+      x-mint:
+        metadata:
+          sidebarTitle: MemberBadgeRemoved
+          title: MemberBadgeRemoved
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberBadgeRemovePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberBadgeAdded:
+    post:
+      description: Triggered when a badge is added to a member
+      x-mint:
+        metadata:
+          sidebarTitle: MemberBadgeAdded
+          title: MemberBadgeAdded
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberBadgeAddPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  MemberAmbassadorLeveledUp:
+    post:
+      description: Triggered when a member reaches a new ambassador level
+      x-mint:
+        metadata:
+          sidebarTitle: MemberAmbassadorLeveledUp
+          title: MemberAmbassadorLeveledUp
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/MemberAmbassadorLevelUpPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  InviteRequested:
+    post:
+      description: Triggered when a member requests an invitation to a space
+      x-mint:
+        metadata:
+          sidebarTitle: InviteRequested
+          title: InviteRequested
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/InviteRequestRequest'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  HotColdPollUpdated:
+    post:
+      description: Triggered when a hot/cold poll is updated by a member, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: HotColdPollUpdated
+          title: HotColdPollUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/HotColdPollCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  HotColdPollCreated:
+    post:
+      description: Triggered when a hot/cold poll is created by a member, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: HotColdPollCreated
+          title: HotColdPollCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/HotColdPollCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  GiftLeaderboardUpdated:
+    post:
+      description: Triggered when a gift leaderboard is updated for a network
+      x-mint:
+        metadata:
+          sidebarTitle: GiftLeaderboardUpdated
+          title: GiftLeaderboardUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/GiftLeaderboardUpdatedPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  EventUpdated:
+    post:
+      description: Triggered when an event is updated by a user in a space
+      x-mint:
+        metadata:
+          sidebarTitle: EventUpdated
+          title: EventUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/EventCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  EventCreated:
+    post:
+      description: Triggered when an event is scheduled by a user in a space
+      x-mint:
+        metadata:
+          sidebarTitle: EventCreated
+          title: EventCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/EventCreatePayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  CustomFieldResponseUpdated:
+    post:
+      description: Triggered when a member updates their custom field response
+      x-mint:
+        metadata:
+          sidebarTitle: CustomFieldResponseUpdated
+          title: CustomFieldResponseUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/CustomFieldResponseUpdatedPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  CustomFieldResponseRemoved:
+    post:
+      description: Triggered when a member removes a custom field response
+      x-mint:
+        metadata:
+          sidebarTitle: CustomFieldResponseRemoved
+          title: CustomFieldResponseRemoved
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/CustomFieldResponseRemovedPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  CustomFieldResponseCreated:
+    post:
+      description: Triggered when a member creates a custom field response
+      x-mint:
+        metadata:
+          sidebarTitle: CustomFieldResponseCreated
+          title: CustomFieldResponseCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/CustomFieldResponseCreatedPayload'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  CommentCreated:
+    post:
+      description: Triggered when a comment is created by a user, on a post or other commentable content.
+      x-mint:
+        metadata:
+          sidebarTitle: CommentCreated
+          title: CommentCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/CommentResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  ArticleUpdated:
+    post:
+      description: Triggered when an article is updated by a user, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: ArticleUpdated
+          title: ArticleUpdated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PostResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+  ArticleCreated:
+    post:
+      description: Triggered when an article is created by a user, in a space
+      x-mint:
+        metadata:
+          sidebarTitle: ArticleCreated
+          title: ArticleCreated
+      tags:
+      - Webhooks
+      requestBody:
+        description: Webhook payload
+        content:
+          application/json:
+            schema:
+              required:
+              - event_id
+              - event_timestamp
+              - payload
+              properties:
+                event_id:
+                  type: string
+                  format: uuid
+                event_timestamp:
+                  type: string
+                  format: datetime
+                payload:
+                  $ref: '#/components/schemas/PostResponse'
+      responses:
+        '200':
+          description: 'Return any 2xx status to indicate that the payload has been successfully received.
+
+
+            Any other response will cause the webhook to retry up to 5 times, over a period of several hours.
+
+            '
+components:
+  schemas:
+    MemberTagAddPayload:
+      description: Payload sent when a tag is added to a member
+      type: object
+      required:
+      - member
+      - network_id
+      - tag
+      properties:
+        member:
+          description: The member who received the tag
+          $ref: '#/components/schemas/MemberResponse'
+        tag:
+          description: The tag that was added
+          $ref: '#/components/schemas/TagResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+    GiftLeaderboardUpdatedPayload:
+      description: Payload sent when a gift leaderboard is updated for a network
+      type: object
+      required:
+      - entries
+      - network_id
+      - recalculated_at
+      - type
+      properties:
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+        recalculated_at:
+          type: string
+          format: date-time
+          description: When the leaderboard was recalculated
+          example: '2026-07-05T21:11:42+00:00'
+        type:
+          type: string
+          description: 'The leaderboard type: received or sent'
+          enum:
+          - received
+          - sent
+        gift_definition:
+          description: The gift definition for per-definition leaderboards
+          $ref: '#/components/schemas/GiftDefinitionResponse'
+        entries:
+          description: Entries grouped by aggregation period
+          $ref: '#/components/schemas/GiftLeaderboardEntriesByPeriodResponse'
+    GiftLeaderboardEntryResponse:
+      description: A single ranked entry in a gift leaderboard
+      type: object
+      required:
+      - count
+      - member
+      - rank
+      properties:
+        rank:
+          type: integer
+          format: uint64
+          description: 1-indexed position on the leaderboard
+        member:
+          description: The member for this entry
+          $ref: '#/components/schemas/MemberResponse'
+        count:
+          type: integer
+          format: uint64
+          description: Gift count for the corresponding period
+    EventInstanceResponse:
+      description: A specific instance of a recurring event
+      type: object
+      required:
+      - ends_at
+      - instance_index
+      - post_id
+      - starts_at
+      properties:
+        post_id:
+          type: integer
+          format: uint64
+          description: The ID of the recurring event post
+        starts_at:
+          type: string
+          format: date-time
+          description: Start time of this specific instance
+          example: '2026-07-05T21:11:42+00:00'
+        ends_at:
+          type: string
+          format: date-time
+          description: End time of this specific instance
+          example: '2026-07-05T21:11:42+00:00'
+        instance_index:
+          type: integer
+          format: uint64
+          description: The index of this instance in the recurrence series
+    TagResponse:
+      description: Tags are custom field values used to categorize and label members
+      type: object
+      required:
+      - created_at
+      - custom_field_id
+      - id
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        title:
+          type: string
+          description: The title of the tag
+          example: VIP Member
+        description:
+          type: string
+          description: The description of the tag
+          example: Premium tier members
+        color:
+          type: string
+          description: The hex color code for the tag
+          example: '#FF5733'
+        custom_field_id:
+          type: integer
+          format: uint64
+          description: The ID of the custom field this tag belongs to
+    CustomFieldResponseUpdatedPayload:
+      description: Payload sent when a member updates their custom field response
+      type: object
+      required:
+      - custom_field
+      - member
+      - network_id
+      properties:
+        member:
+          description: The member who updated their response
+          $ref: '#/components/schemas/MemberResponse'
+        custom_field:
+          description: The custom field that was updated
+          $ref: '#/components/schemas/CustomFieldResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+        previous_text:
+          type: string
+          description: Previous text value (for text-based custom fields)
+        new_text:
+          type: string
+          description: New text value (for text-based custom fields)
+        previous_segments:
+          type: array
+          description: Previous segments (for dropdown custom fields)
+          items:
+            $ref: '#/components/schemas/SegmentResponse'
+        new_segments:
+          type: array
+          description: New segments (for dropdown custom fields)
+          items:
+            $ref: '#/components/schemas/SegmentResponse'
+    HotColdPollCreatePayload:
+      description: Payload sent when a hot/cold poll is created
+      type: object
+      required:
+      - created_at
+      - creator
+      - id
+      - permalink
+      - post_type
+      - space
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:43+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:43+00:00'
+        post_type:
+          type: string
+          description: The type of post
+          example: hot_cold_poll
+        title:
+          type: string
+          description: The poll question/title
+        creator:
+          description: The member who created the poll
+          $ref: '#/components/schemas/UserResponse'
+        space:
+          description: The space where the poll was created
+          $ref: '#/components/schemas/SpaceResponse'
+        images:
+          type: array
+          description: Array of image URLs associated with the poll
+          items:
+            type: string
+        permalink:
+          type: string
+          description: The permanent URL to the poll
+    CustomFieldResponse:
+      description: Custom Fields are configurable fields that can be added to capture additional member information
+      type: object
+      required:
+      - created_at
+      - id
+      - response_type
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        title:
+          type: string
+          description: The title of the custom field
+          example: Favorite Color
+        response_type:
+          type: string
+          description: The type of response this custom field accepts
+          example: dropdown_single_select
+    AssetResponse:
+      description: File or media asset attached to content
+      type: object
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        url:
+          type: string
+          format: url
+          description: URL to access the asset
+        type:
+          type: string
+          description: The type of asset (Asset, StaticAsset, etc.)
+        name:
+          type: string
+          description: Original filename of the asset
+    MemberBadgeRemovePayload:
+      description: Payload sent when a badge is removed from a member
+      type: object
+      required:
+      - badge
+      - member
+      - network_id
+      properties:
+        member:
+          description: The member who lost the badge
+          $ref: '#/components/schemas/MemberResponse'
+        badge:
+          description: The badge that was removed
+          $ref: '#/components/schemas/BadgeResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+    CategoryResponse:
+      description: A category (segment) in the network
+      type: object
+      required:
+      - id
+      - title
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The category's integer ID
+        title:
+          type: string
+          description: The category's title
+    InviteRequestRequest:
+      description: A request to be invited to a space
+      type: object
+      required:
+      - created_at
+      - id
+      - member_email
+      - network_id
+      - status
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:43+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:43+00:00'
+        network_id:
+          type: integer
+          format: uint64
+          description: ID of the network
+        space_id:
+          type: integer
+          format: uint64
+          description: ID of the space (if applicable)
+        plan_id:
+          type: integer
+          format: uint64
+          description: ID of the plan (if applicable)
+        member_id:
+          type: integer
+          format: uint64
+          description: ID of the member making the request (if logged in)
+        member_email:
+          type: string
+          format: email
+          description: Email of the member
+          example: ada.lovelace@example.com
+        member_first_name:
+          type: string
+          description: Member's first name
+        member_last_name:
+          type: string
+          description: Member's last name
+        member_location:
+          type: string
+          description: Member's location
+        member_avatar:
+          type: string
+          description: URL to the member's avatar image
+        status:
+          type: string
+          description: Status of the invite request (pending, approved, rejected, invalid)
+        referred_by_user_id:
+          type: integer
+          format: uint64
+          description: ID of the user who referred this member
+    RsvpResponse:
+      description: An RSVP for an event
+      type: object
+      required:
+      - event
+      - id
+      - member
+      - status
+      - updated
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        updated:
+          type: string
+          format: date-time
+          description: The last updated timestamp
+          example: '2026-07-05T21:11:42+00:00'
+        status:
+          type: string
+          description: 'The RSVP status: yes, maybe, or no'
+        event:
+          description: The event being RSVPed to
+          $ref: '#/components/schemas/EventCreatePayload'
+        member:
+          description: The member who set the RSVP
+          $ref: '#/components/schemas/MemberResponse'
+        event_instance:
+          description: The specific event instance for recurring events
+          $ref: '#/components/schemas/EventInstanceResponse'
+    PercentagePollCreatePayload:
+      description: Payload sent when a percentage poll is created
+      type: object
+      required:
+      - created_at
+      - creator
+      - id
+      - permalink
+      - post_type
+      - space
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:43+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:43+00:00'
+        post_type:
+          type: string
+          description: The type of post
+          example: percentage_poll
+        title:
+          type: string
+          description: The poll question/title
+        creator:
+          description: The member who created the poll
+          $ref: '#/components/schemas/UserResponse'
+        space:
+          description: The space where the poll was created
+          $ref: '#/components/schemas/SpaceResponse'
+        images:
+          type: array
+          description: Array of image URLs associated with the poll
+          items:
+            type: string
+        permalink:
+          type: string
+          description: The permanent URL to the poll
+    PostResponse:
+      description: Posts are created by users within spaces
+      type: object
+      required:
+      - comments_enabled
+      - content_type
+      - created_at
+      - creator_id
+      - description
+      - id
+      - images
+      - last_activity_at
+      - permalink
+      - post_type
+      - published_at
+      - space_id
+      - status
+      - summary
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        creator_id:
+          type: integer
+          format: uint64
+          description: The ID of the user that created the post
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the post was created
+        summary:
+          type: string
+          description: A short summary of the post's contents
+        description:
+          type: string
+          description: The posts description
+        post_type:
+          type: string
+          description: The type of post
+        images:
+          type: array
+          description: An array of image URLs associated with the post
+          items:
+            type: string
+        title:
+          type: string
+          description: The title of the post
+        status:
+          type: string
+          description: The post's current status
+        published_at:
+          type: string
+          format: date-time
+          description: The date the post was published
+          example: '2026-07-05T21:11:42+00:00'
+        last_activity_at:
+          type: string
+          format: date-time
+          description: The time the of last activity on the post
+          example: '2026-07-05T21:11:42+00:00'
+        content_type:
+          type: string
+          description: The type of post content attached to the post
+        comments_enabled:
+          type: boolean
+          description: Whether or not comments are enabled on this post
+        permalink:
+          type: string
+          format: url
+          description: The post's unique address within the network
+    MemberJoinPayload:
+      description: Payload sent when a member joins a space
+      type: object
+      required:
+      - member
+      - network_id
+      - space_id
+      properties:
+        member:
+          description: The member who joined
+          $ref: '#/components/schemas/MemberResponse'
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space the member joined
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+    EventCreatePayload:
+      description: Payload sent when an event is created
+      type: object
+      required:
+      - created_at
+      - creator
+      - creator_id
+      - event_type
+      - id
+      - permalink
+      - post_in_feed
+      - post_type
+      - restricted_event
+      - rsvp_closed
+      - rsvp_enabled
+      - space
+      - space_id
+      - starts_at
+      - summary
+      - time_zone
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        post_type:
+          type: string
+          description: The type of post (always 'event' for this hook)
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the event was created
+        creator_id:
+          type: integer
+          format: uint64
+          description: The ID of the user who created the event
+        title:
+          type: string
+          description: The title of the event
+        summary:
+          type: string
+          description: The description/summary of the event
+        event_type:
+          type: string
+          description: 'The type of event. Possible values: local, live_chat, online_meeting, zoom_meeting, zoom_webinar, webinar, local_meetup'
+        starts_at:
+          type: string
+          description: Event start time in ISO 8601 format
+        ends_at:
+          type: string
+          description: Event end time in ISO 8601 format
+        time_zone:
+          type: string
+          description: The time zone of the event
+        location:
+          type: string
+          description: The location of the event
+        frequency:
+          type: string
+          description: 'Recurrence frequency: ''daily'', ''weekly'', ''monthly'', or ''yearly'''
+        interval:
+          type: integer
+          format: uint64
+          description: Recurrence interval (e.g., 1 for every week, 2 for every 2 weeks)
+        rsvp_enabled:
+          type: boolean
+          description: Whether RSVPs are enabled for this event
+        rsvp_closed:
+          type: boolean
+          description: Whether RSVPs are closed/locked
+        restricted_event:
+          type: boolean
+          description: Whether the event is restricted
+        post_in_feed:
+          type: boolean
+          description: Whether the event is visible in the feed
+        creator:
+          description: The member who created the event
+          $ref: '#/components/schemas/MemberResponse'
+        space:
+          description: The space where the event was created
+          $ref: '#/components/schemas/SpaceResponse'
+        images:
+          type: array
+          description: Array of image URLs
+          items:
+            type: string
+        permalink:
+          type: string
+          description: Canonical URL to the event
+    MemberCourseProgressStartPayload:
+      description: Payload sent when a member starts a course
+      type: object
+      required:
+      - course
+      - member
+      properties:
+        member:
+          description: The member who started the course
+          $ref: '#/components/schemas/MemberResponse'
+        course:
+          description: The course space
+          $ref: '#/components/schemas/SpaceResponse'
+        progress_percent:
+          type: integer
+          format: uint64
+          description: The member's overall course progress percentage (0-100)
+    ReportedContentCreatedPayload:
+      description: Payload sent when content is reported
+      type: object
+      required:
+      - reported_content
+      properties:
+        reported_content:
+          description: The report that was created
+          $ref: '#/components/schemas/ReportedContentResponse'
+    UserResponse:
+      type: object
+      required:
+      - admin
+      - created_at
+      - email
+      - id
+      - name
+      - short_bio
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        name:
+          type: string
+          description: The user's full name
+        email:
+          type: string
+          format: email
+          description: The user's email address
+          example: ada.lovelace@example.com
+        short_bio:
+          type: string
+          description: A short biography of the user
+        admin:
+          type: boolean
+          description: Whether or not the user is an admin of the network
+    PurchaseDetailResponse:
+      description: Detailed purchase information
+      type: object
+      required:
+      - created_at
+      - id
+      - purchased_at
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        tax_percent:
+          type: integer
+          format: uint64
+          description: Tax percentage applied
+        payment_platform:
+          type: string
+          description: Payment platform (stripe, apple, web3)
+        purchased_at:
+          type: string
+          format: date-time
+          description: When the purchase was made
+          example: '2026-07-05T21:11:42+00:00'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+    MemberJoinRequestPayload:
+      description: Payload sent when someone requests an invitation to join a space
+      type: object
+      required:
+      - created_at
+      - id
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: When the join request was created
+          example: '2026-07-05T21:11:42+00:00'
+        email:
+          type: string
+          format: email
+          description: The requester's email address
+          example: ada.lovelace@example.com
+        first_name:
+          type: string
+          description: The requester's first name
+        last_name:
+          type: string
+          description: The requester's last name
+        space:
+          description: The space the member is requesting to join
+          $ref: '#/components/schemas/SpaceResponse'
+    EmbeddedLinkResponse:
+      description: Embedded link preview data for rich link previews
+      type: object
+      required:
+      - id
+      - url
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        url:
+          type: string
+          format: url
+          description: The URL of the embedded link
+        title:
+          type: string
+          description: The title of the linked content
+        description:
+          type: string
+          description: Description of the linked content
+        favicon_url:
+          type: string
+          format: url
+          description: URL to the favicon of the linked site
+    SpaceResponse:
+      type: object
+      required:
+      - created_at
+      - id
+      - name
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        name:
+          type: string
+          description: The Space's name
+        collection_id:
+          type: integer
+          format: uint64
+          description: The ID of the collection this space belongs to
+    SubscriptionPlanResponse:
+      description: Plan information for a subscription
+      type: object
+      required:
+      - amount
+      - currency
+      - has_free_trial
+      - interval
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The plan ID (null when the underlying bundle has been deleted)
+        name:
+          type: string
+          description: The plan name (null when the underlying bundle has been deleted)
+        amount:
+          type: integer
+          format: uint64
+          description: The plan amount in cents
+        currency:
+          type: string
+          description: The plan currency code
+        interval:
+          type: string
+          description: The billing interval (day, week, month, year, etc.)
+        type:
+          type: string
+          description: The plan type (free, subscription, one-time-payment)
+        has_free_trial:
+          type: boolean
+          description: Whether the plan has a free trial
+    CustomFieldResponseRemovedPayload:
+      description: Payload sent when a member removes a custom field response
+      type: object
+      required:
+      - custom_field
+      - member
+      - network_id
+      properties:
+        member:
+          description: The member who removed the response
+          $ref: '#/components/schemas/MemberResponse'
+        custom_field:
+          description: The custom field that lost a response
+          $ref: '#/components/schemas/CustomFieldResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+        text:
+          type: string
+          description: Text value that was removed (for text-based custom fields)
+        segments:
+          type: array
+          description: Segments that were removed (for dropdown custom fields)
+          items:
+            $ref: '#/components/schemas/SegmentResponse'
+    CustomFieldResponseCreatedPayload:
+      description: Payload sent when a member creates a custom field response
+      type: object
+      required:
+      - custom_field
+      - member
+      - network_id
+      properties:
+        member:
+          description: The member who created the response
+          $ref: '#/components/schemas/MemberResponse'
+        custom_field:
+          description: The custom field that received a response
+          $ref: '#/components/schemas/CustomFieldResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+        text:
+          type: string
+          description: Text value (for text-based custom fields)
+        segments:
+          type: array
+          description: Segments (for dropdown custom fields)
+          items:
+            $ref: '#/components/schemas/SegmentResponse'
+    MultipleChoicePollCreatePayload:
+      description: Payload sent when a multiple choice poll is created
+      type: object
+      required:
+      - choices
+      - created_at
+      - creator
+      - id
+      - permalink
+      - post_type
+      - space
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:43+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:43+00:00'
+        post_type:
+          type: string
+          description: The type of post
+          example: multiple_choice_poll
+        title:
+          type: string
+          description: The poll question/title
+        creator:
+          description: The member who created the poll
+          $ref: '#/components/schemas/UserResponse'
+        space:
+          description: The space where the poll was created
+          $ref: '#/components/schemas/SpaceResponse'
+        images:
+          type: array
+          description: Array of image URLs associated with the poll
+          items:
+            type: string
+        permalink:
+          type: string
+          description: The permanent URL to the poll
+        choices:
+          type: array
+          description: The poll choices
+          items:
+            $ref: '#/components/schemas/PollChoiceResponse'
+        choice_1:
+          description: First poll choice
+          $ref: '#/components/schemas/PollChoiceResponse'
+        choice_2:
+          description: Second poll choice
+          $ref: '#/components/schemas/PollChoiceResponse'
+        choice_3:
+          description: Third poll choice
+          $ref: '#/components/schemas/PollChoiceResponse'
+        choice_4:
+          description: Fourth poll choice
+          $ref: '#/components/schemas/PollChoiceResponse'
+        choice_5:
+          description: Fifth poll choice
+          $ref: '#/components/schemas/PollChoiceResponse'
+    MemberAmbassadorLevelUpPayload:
+      description: Payload sent when a member reaches a new ambassador level
+      type: object
+      required:
+      - ambassador_level_id
+      - ambassador_level_name
+      - member
+      - network_id
+      - referral_count
+      properties:
+        member:
+          description: The member who leveled up
+          $ref: '#/components/schemas/MemberResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+        ambassador_level_id:
+          type: integer
+          format: uint64
+          description: The new ambassador level ID (1=Bronze, 2=Silver, 3=Gold)
+        ambassador_level_name:
+          type: string
+          description: The name of the new ambassador level
+        referral_count:
+          type: integer
+          format: uint64
+          description: The member's total referral count
+    MemberTagRemovePayload:
+      description: Payload sent when a tag is removed from a member
+      type: object
+      required:
+      - member
+      - network_id
+      - tag
+      properties:
+        member:
+          description: The member who lost the tag
+          $ref: '#/components/schemas/MemberResponse'
+        tag:
+          description: The tag that was removed
+          $ref: '#/components/schemas/TagResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+    MemberResponse:
+      description: A member of a network
+      type: object
+      required:
+      - created_at
+      - email
+      - id
+      - member_type
+      - permalink
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        email:
+          type: string
+          format: email
+          description: The member's email address
+          example: ada.lovelace@example.com
+        member_type:
+          type: string
+          description: 'The member''s type: ''full'' (belongs to the network) or ''limited'' (belongs only to specific spaces)'
+        first_name:
+          type: string
+          description: The member's first name
+        last_name:
+          type: string
+          description: The member's last name
+        time_zone:
+          type: string
+          description: The member's time zone
+        location:
+          type: string
+          description: The member's location
+        bio:
+          type: string
+          description: The member's bio
+        referral_count:
+          type: integer
+          format: uint64
+          description: Number of referrals made by this member
+        avatar:
+          type: string
+          description: URL to the member's avatar image
+        categories:
+          type: string
+          description: Array of category objects with id and title
+        permalink:
+          type: string
+          description: Canonical URL to the member's profile page
+        ambassador_level:
+          type: string
+          description: The member's ambassador level
+    CommentResponse:
+      description: Comments are created by users on posts, chats, and other commentable content
+      type: object
+      required:
+      - author_id
+      - cheer_count
+      - created_at
+      - depth
+      - id
+      - permalink
+      - reply_count
+      - replyable
+      - space_id
+      - targetable_id
+      - targetable_type
+      - text
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        targetable_id:
+          type: integer
+          format: uint64
+          description: The ID of the item being commented on (e.g., post ID)
+        targetable_type:
+          type: string
+          description: The type of item being commented on (e.g., 'Post')
+        text:
+          type: string
+          description: The formatted comment text with HTML and links
+        replyable:
+          type: boolean
+          description: Whether this comment can be replied to
+        depth:
+          type: integer
+          format: uint64
+          description: The nesting depth of this comment (1 for top-level, 2+ for replies)
+        cheer_count:
+          type: integer
+          format: uint64
+          description: The number of cheers (likes) this comment has received
+        reply_count:
+          type: integer
+          format: uint64
+          description: The number of replies to this comment
+        reply_to_id:
+          type: integer
+          format: uint64
+          description: The ID of the parent comment if this is a reply
+        author_id:
+          type: integer
+          format: uint64
+          description: The ID of the user who created the comment
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the comment was created
+        files:
+          type: array
+          description: An array of file/asset objects attached to the comment
+          items:
+            $ref: '#/components/schemas/AssetResponse'
+        embedded_link:
+          description: Embedded link preview data
+          $ref: '#/components/schemas/EmbeddedLinkResponse'
+        permalink:
+          type: string
+          format: url
+          description: The comment's unique address within the network
+    MemberLeavePayload:
+      description: Payload sent when a member leaves a space
+      type: object
+      required:
+      - member
+      - network_id
+      - space_id
+      properties:
+        member:
+          description: The member who left
+          $ref: '#/components/schemas/MemberResponse'
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space the member left
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+    SegmentResponse:
+      description: Segments are custom field options used to categorize members
+      type: object
+      required:
+      - created_at
+      - custom_field_id
+      - id
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        title:
+          type: string
+          description: The title of the segment
+          example: Gold Member
+        description:
+          type: string
+          description: The description of the segment
+          example: Premium tier members
+        color:
+          type: string
+          description: The hex color code for the segment
+          example: '#FFD700'
+        custom_field_id:
+          type: integer
+          format: uint64
+          description: The ID of the custom field this segment belongs to
+    MemberBadgeAddPayload:
+      description: Payload sent when a badge is added to a member
+      type: object
+      required:
+      - badge
+      - member
+      - network_id
+      properties:
+        member:
+          description: The member who received the badge
+          $ref: '#/components/schemas/MemberResponse'
+        badge:
+          description: The badge that was added
+          $ref: '#/components/schemas/BadgeResponse'
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+    PurchasePlanResponse:
+      description: Plan information for a purchase
+      type: object
+      required:
+      - amount
+      - currency
+      - has_free_trial
+      - interval
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The plan ID (null when the underlying bundle has been deleted)
+        name:
+          type: string
+          description: The plan name (null when the underlying bundle has been deleted)
+        amount:
+          type: integer
+          format: uint64
+          description: The plan amount in cents
+        currency:
+          type: string
+          description: The plan currency code
+        interval:
+          type: string
+          description: The billing interval (one_time for purchases)
+        type:
+          type: string
+          description: The plan type (free or one-time-payment)
+        has_free_trial:
+          type: boolean
+          description: Whether the plan has a free trial
+    SubscriptionResponse:
+      description: A payment subscription for a plan
+      type: object
+      required:
+      - created_at
+      - email
+      - member_id
+      - permalink
+      - plan
+      - subscription
+      - updated_at
+      properties:
+        member_id:
+          type: integer
+          format: uint64
+          description: The subscriber's integer ID
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the subscriber was created
+          example: '2026-07-05T21:11:42+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the subscriber was last modified
+          example: '2026-07-05T21:11:42+00:00'
+        email:
+          type: string
+          format: email
+          description: The subscriber's email address
+          example: ada.lovelace@example.com
+        first_name:
+          type: string
+          description: The subscriber's first name
+        last_name:
+          type: string
+          description: The subscriber's last name
+        time_zone:
+          type: string
+          description: The subscriber's time zone
+        location:
+          type: string
+          description: The subscriber's location
+        referral_count:
+          type: integer
+          format: uint64
+          description: Number of referrals made by this subscriber
+        avatar:
+          type: string
+          description: URL to the subscriber's avatar image
+        categories:
+          type: array
+          description: Array of category objects. Contains the user's primary segment if present.
+          items:
+            $ref: '#/components/schemas/CategoryResponse'
+        permalink:
+          type: string
+          description: Canonical URL to the subscriber's profile page
+        ambassador_level:
+          type: string
+          description: The subscriber's ambassador level
+        plan:
+          description: The subscription plan
+          $ref: '#/components/schemas/SubscriptionPlanResponse'
+        subscription:
+          description: Detailed subscription information
+          $ref: '#/components/schemas/SubscriptionDetailResponse'
+    GiftDefinitionResponse:
+      description: A gift definition in a network
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The gift definition ID
+        name:
+          type: string
+          description: The name of the gift definition
+    SubscriptionDetailResponse:
+      description: Detailed subscription information
+      type: object
+      required:
+      - id
+      - purchased_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        current_period_start:
+          type: string
+          format: date-time
+          description: Start of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        current_period_end:
+          type: string
+          format: date-time
+          description: End of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        payment_platform:
+          type: string
+          description: Payment platform (stripe, apple, etc.)
+        canceled_at:
+          type: string
+          format: date-time
+          description: When the subscription was canceled
+          example: '2026-07-05T21:11:42+00:00'
+        trial_length:
+          type: integer
+          format: uint64
+          description: Length of trial in days
+        trial_start:
+          type: string
+          format: date-time
+          description: Trial start date
+          example: '2026-07-05T21:11:42+00:00'
+        trial_end:
+          type: string
+          format: date-time
+          description: Trial end date
+          example: '2026-07-05T21:11:42+00:00'
+        purchased_at:
+          type: string
+          format: date-time
+          description: When the subscription was purchased
+          example: '2026-07-05T21:11:42+00:00'
+    BadgeResponse:
+      description: Badges are custom field values used to recognize and reward members
+      type: object
+      required:
+      - created_at
+      - custom_field_id
+      - id
+      - title
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded for exceptional contributions
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FFD700'
+        custom_field_id:
+          type: integer
+          format: uint64
+          description: The ID of the custom field this badge belongs to
+        avatar_url:
+          type: string
+          description: URL to the badge image
+    MemberCourseProgressUpdatePayload:
+      description: Payload sent when a member updates their progress in a course
+      type: object
+      required:
+      - course
+      - member
+      properties:
+        member:
+          description: The member who updated course progress
+          $ref: '#/components/schemas/MemberResponse'
+        course:
+          description: The course space
+          $ref: '#/components/schemas/SpaceResponse'
+        progress_percent:
+          type: integer
+          format: uint64
+          description: The member's overall course progress percentage (0-100)
+    PurchaseResponse:
+      description: A purchase of a plan by a member
+      type: object
+      required:
+      - member_email
+      - member_id
+      - plan
+      - purchase
+      properties:
+        member_id:
+          type: integer
+          format: uint64
+          description: ID of the member who made the purchase
+        member_email:
+          type: string
+          format: email
+          description: Email of the member
+          example: ada.lovelace@example.com
+        member_first_name:
+          type: string
+          description: Member's first name
+        member_last_name:
+          type: string
+          description: Member's last name
+        member_time_zone:
+          type: string
+          description: Member's time zone
+        member_location:
+          type: string
+          description: Member's location
+        member_referral_count:
+          type: integer
+          format: uint64
+          description: Number of referrals made by this member
+        member_avatar:
+          type: string
+          description: URL to the member's avatar image
+        member_categories:
+          type: string
+          description: Array of category objects with id and title
+        member_permalink:
+          type: string
+          description: URL to member's profile page
+        member_ambassador_level:
+          type: string
+          description: The member's ambassador level
+        plan:
+          description: The purchase plan
+          $ref: '#/components/schemas/PurchasePlanResponse'
+        purchase:
+          description: Detailed purchase information
+          $ref: '#/components/schemas/PurchaseDetailResponse'
+    ReportedContentResponse:
+      description: A report of content (post, comment, or chat) that violates community guidelines
+      type: object
+      required:
+      - blacklist_type
+      - created_at
+      - id
+      - network_id
+      - space_id
+      - targetable_id
+      - targetable_type
+      - updated_at
+      - user_id
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:43+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:43+00:00'
+        user_id:
+          type: integer
+          format: uint64
+          description: The ID of the user who reported the content
+        targetable_id:
+          type: integer
+          format: uint64
+          description: The ID of the reported content
+        targetable_type:
+          type: string
+          description: The type of content being reported (Post, Comment, Chat)
+        blacklist_type:
+          type: string
+          description: The type of report (spam, offensive, other, not_interesting)
+        reason:
+          type: string
+          description: The reason provided by the reporter
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the report was made
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+    GiftLeaderboardEntriesByPeriodResponse:
+      description: Gift leaderboard entries grouped by aggregation period
+      type: object
+      required:
+      - all_time
+      properties:
+        all_time:
+          type: array
+          description: All-time ranked entries
+          items:
+            $ref: '#/components/schemas/GiftLeaderboardEntryResponse'
+    MemberCourseProgressCompletePayload:
+      description: Payload sent when a member completes a course
+      type: object
+      required:
+      - course
+      - member
+      properties:
+        member:
+          description: The member who completed the course
+          $ref: '#/components/schemas/MemberResponse'
+        course:
+          description: The course space
+          $ref: '#/components/schemas/SpaceResponse'
+        progress_percent:
+          type: integer
+          format: uint64
+          description: The member's overall course progress percentage (0-100)
+    ReactionResponse:
+      description: A reaction to a post or comment
+      type: object
+      required:
+      - base_emoji
+      - created_at
+      - emoji
+      - id
+      - member_id
+      - network_id
+      - space_id
+      - targetable_id
+      - targetable_space_id
+      - targetable_type
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the reaction was created
+          example: 123
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network where the reaction was created
+          example: 100
+        targetable_id:
+          type: integer
+          format: uint64
+          description: The ID of the post or comment being reacted to
+          example: 456
+        targetable_type:
+          type: string
+          description: The type of object being reacted to (Post or Comment)
+          example: Post
+        targetable_space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space where the target post or comment is located
+          example: 123
+        emoji:
+          type: string
+          description: The emoji used for the reaction (may include skin tone modifiers)
+          example: 👍
+        base_emoji:
+          type: string
+          description: The base emoji without skin tone modifiers
+          example: 👍
+        member_id:
+          type: integer
+          format: uint64
+          description: The ID of the member who created the reaction
+          example: 789
+    PollChoiceResponse:
+      description: A choice option in a multiple choice poll
+      type: object
+      required:
+      - id
+      - text
+      properties:
+        id:
+          type: string
+          description: The choice ID
+        text:
+          type: string
+          description: The choice text
+    MemberUpdatePayload:
+      description: Payload sent when a member updates their profile
+      type: object
+      required:
+      - member
+      - network_id
+      properties:
+        member:
+          description: The member who was updated
+          $ref: '#/components/schemas/MemberResponse'
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space (null for network-level updates)
+        network_id:
+          type: integer
+          format: uint64
+          description: The ID of the network
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: The Mighty Networks Admin AbuseReports Courseworks API
+  title: Mighty Networks Admin Courseworks API
   description: An API for managing your Mighty Networks network
 servers:
 - url: https://api.mn.co
@@ -294,57 +294,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
-    CourseworkRequest:
-      description: Coursework items (lessons, quizzes, sections) within a course
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          description: The type of coursework to create (lesson, quiz, or section)
-        parent_id:
-          type: integer
-          format: uint64
-          description: The ID of the parent coursework item (section or overview). If omitted, defaults to course overview
-        title:
-          type: string
-          description: The title of the coursework item
-        description:
-          type: string
-          description: The description/body content of the coursework item
-        status:
-          type: string
-          description: The visibility status (posted, hidden, pending). Defaults to hidden
-        completion_criteria:
-          type: string
-          description: How completion is tracked (none, visited, button, video, minimum_correct_percentage)
-        unlocking_criteria:
-          type: string
-          description: When content becomes available (none, sequential, time_from_course_join, scheduled_date)
     CourseworkResponse:
       description: Coursework items (lessons, quizzes, sections) within a course
       type: object
@@ -418,6 +368,42 @@ components:
           type: string
           format: url
           description: The coursework item's unique address within the network
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    CourseworkRequest:
+      description: Coursework items (lessons, quizzes, sections) within a course
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          description: The type of coursework to create (lesson, quiz, or section)
+        parent_id:
+          type: integer
+          format: uint64
+          description: The ID of the parent coursework item (section or overview). If omitted, defaults to course overview
+        title:
+          type: string
+          description: The title of the coursework item
+        description:
+          type: string
+          description: The description/body content of the coursework item
+        status:
+          type: string
+          description: The visibility status (posted, hidden, pending). Defaults to hidden
+        completion_criteria:
+          type: string
+          description: How completion is tracked (none, visited, button, video, minimum_correct_percentage)
+        unlocking_criteria:
+          type: string
+          description: When content becomes available (none, sequential, time_from_course_join, scheduled_date)
     CourseworkUpdateRequest:
       description: Update fields for a coursework item
       type: object
@@ -442,6 +428,20 @@ components:
         unlocking_criteria:
           type: string
           description: When content becomes available (none, sequential, time_from_course_join, scheduled_date)
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

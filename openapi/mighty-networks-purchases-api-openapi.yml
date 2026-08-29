@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: The Mighty Networks Admin AbuseReports Purchases API
+  title: Mighty Networks Admin Purchases API
   description: An API for managing your Mighty Networks network
 servers:
 - url: https://api.mn.co
@@ -123,29 +123,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    ErrorResponse:
+    PurchasePlanResponse:
+      description: Plan information for a purchase
       type: object
       required:
-      - error
+      - amount
+      - currency
+      - has_free_trial
+      - interval
+      - type
       properties:
-        error:
+        id:
+          type: integer
+          format: uint64
+          description: The plan ID (null when the underlying bundle has been deleted)
+        name:
           type: string
-          description: An error message explaining the problem encountered
+          description: The plan name (null when the underlying bundle has been deleted)
+        amount:
+          type: integer
+          format: uint64
+          description: The plan amount in cents
+        currency:
+          type: string
+          description: The plan currency code
+        interval:
+          type: string
+          description: The billing interval (one_time for purchases)
+        type:
+          type: string
+          description: The plan type (free or one-time-payment)
+        has_free_trial:
+          type: boolean
+          description: Whether the plan has a free trial
     PurchaseResponse:
       description: A purchase of a plan by a member
       type: object
@@ -198,6 +209,14 @@ components:
         purchase:
           description: Detailed purchase information
           $ref: '#/components/schemas/PurchaseDetailResponse'
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     PurchaseDetailResponse:
       description: Detailed purchase information
       type: object
@@ -234,39 +253,20 @@ components:
           format: date-time
           description: The date and time the record was last modified
           example: '2026-07-05T21:11:41+00:00'
-    PurchasePlanResponse:
-      description: Plan information for a purchase
-      type: object
-      required:
-      - amount
-      - currency
-      - has_free_trial
-      - interval
-      - type
-      properties:
-        id:
-          type: integer
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
           format: uint64
-          description: The plan ID (null when the underlying bundle has been deleted)
-        name:
-          type: string
-          description: The plan name (null when the underlying bundle has been deleted)
-        amount:
-          type: integer
-          format: uint64
-          description: The plan amount in cents
-        currency:
-          type: string
-          description: The plan currency code
-        interval:
-          type: string
-          description: The billing interval (one_time for purchases)
-        type:
-          type: string
-          description: The plan type (free or one-time-payment)
-        has_free_trial:
-          type: boolean
-          description: Whether the plan has a free trial
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

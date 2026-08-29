@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: The Mighty Networks Admin AbuseReports Assets API
+  title: Mighty Networks Admin Assets API
   description: An API for managing your Mighty Networks network
 servers:
 - url: https://api.mn.co
@@ -115,20 +115,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   schemas:
     ErrorResponse:
       type: object
@@ -160,6 +146,20 @@ components:
         name:
           type: string
           description: Original filename of the asset
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

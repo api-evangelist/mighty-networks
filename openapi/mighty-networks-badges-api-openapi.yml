@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: The Mighty Networks Admin AbuseReports Badges API
+  title: Mighty Networks Admin Badges API
   description: An API for managing your Mighty Networks network
 servers:
 - url: https://api.mn.co
@@ -366,40 +366,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
-    MemberBadgeRequest:
-      description: Request to add a badge to a member
-      type: object
-      required:
-      - badge_id
-      properties:
-        badge_id:
-          type: integer
-          format: uint64
-          description: The ID of the badge to add to the member
-          example: 12345
     BadgeResponse:
       description: Badges are custom field values used to recognize and reward members
       type: object
@@ -444,27 +411,24 @@ components:
         avatar_url:
           type: string
           description: URL to the badge image
-    BadgeUpdateRequest:
-      description: Request to update a badge
+    ErrorResponse:
       type: object
-      required: []
+      required:
+      - error
       properties:
-        title:
+        error:
           type: string
-          description: The title of the badge
-          example: Top Contributor
-        description:
-          type: string
-          description: The description of the badge
-          example: Awarded to active community members
-        color:
-          type: string
-          description: The hex color code for the badge
-          example: '#FF5733'
-        avatar_id:
+          description: An error message explaining the problem encountered
+    MemberBadgeRequest:
+      description: Request to add a badge to a member
+      type: object
+      required:
+      - badge_id
+      properties:
+        badge_id:
           type: integer
           format: uint64
-          description: The ID of the asset to use as the badge image
+          description: The ID of the badge to add to the member
           example: 12345
     BadgeRequest:
       description: Request to create a badge
@@ -490,6 +454,42 @@ components:
           format: uint64
           description: The ID of the asset to use as the badge image
           example: 12345
+    BadgeUpdateRequest:
+      description: Request to update a badge
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded to active community members
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FF5733'
+        avatar_id:
+          type: integer
+          format: uint64
+          description: The ID of the asset to use as the badge image
+          example: 12345
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: The Mighty Networks Admin AbuseReports Collections API
+  title: Mighty Networks Admin Collections API
   description: An API for managing your Mighty Networks network
 servers:
 - url: https://api.mn.co
@@ -299,24 +299,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CollectionCreateRequest:
-      description: Request to create a new collection
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The collection's name
-          example: Featured Courses
-        description:
-          type: string
-          description: The collection's description
-          example: Our most popular courses
-        visible_to_members:
-          type: boolean
-          description: Whether the collection is visible to members
-          example: true
     CollectionResponse:
       description: A collection of spaces within a network
       type: object
@@ -368,6 +350,33 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
+    CollectionUpdateRequest:
+      description: Request to update a collection
+      type: object
+      required: []
+      properties:
+        name:
+          type: string
+          description: The collection's name
+          example: Updated Collection
+        description:
+          type: string
+          description: The collection's description
+          example: Updated description
+        visible_to_members:
+          type: boolean
+          description: Whether the collection is visible to members
+    CollectionOrderRequest:
+      description: Request to reorder spaces within a collection
+      type: object
+      required:
+      - spaces
+      properties:
+        spaces:
+          type: array
+          description: Array of space position assignments
+          items:
+            $ref: '#/components/schemas/CollectionSpacePosition'
     CollectionSpacePosition:
       description: A space position assignment within a collection
       type: object
@@ -385,33 +394,24 @@ components:
           format: uint64
           description: The target position for the space (1-based)
           example: 1
-    CollectionOrderRequest:
-      description: Request to reorder spaces within a collection
+    CollectionCreateRequest:
+      description: Request to create a new collection
       type: object
       required:
-      - spaces
-      properties:
-        spaces:
-          type: array
-          description: Array of space position assignments
-          items:
-            $ref: '#/components/schemas/CollectionSpacePosition'
-    CollectionUpdateRequest:
-      description: Request to update a collection
-      type: object
-      required: []
+      - name
       properties:
         name:
           type: string
           description: The collection's name
-          example: Updated Collection
+          example: Featured Courses
         description:
           type: string
           description: The collection's description
-          example: Updated description
+          example: Our most popular courses
         visible_to_members:
           type: boolean
           description: Whether the collection is visible to members
+          example: true
   parameters:
     networkId:
       name: network_id

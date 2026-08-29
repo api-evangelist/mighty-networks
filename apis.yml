@@ -1466,6 +1466,16 @@ apis:
       https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
+- aid: mighty-networks:mighty-networks-webhooks-api
+  name: Mighty Networks Webhooks API
+  description: The Webhooks API from Mighty Networks — 0 operation(s) for webhooks.
+  humanURL: https://docs.mightynetworks.com/headless-api
+  baseURL: https://api.mn.co/networks
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/mighty-networks-webhooks-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/mighty-networks-agentic-access.yml

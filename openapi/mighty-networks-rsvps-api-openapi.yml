@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: The Mighty Networks Admin AbuseReports Rsvps API
+  title: Mighty Networks Admin Rsvps API
   description: An API for managing your Mighty Networks network
 servers:
 - url: https://api.mn.co
@@ -358,14 +358,6 @@ components:
         event_instance:
           description: The specific event instance for recurring events
           $ref: '#/components/schemas/EventInstanceResponse'
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     EventInstanceResponse:
       description: A specific instance of a recurring event
       type: object
@@ -393,92 +385,14 @@ components:
           type: integer
           format: uint64
           description: The index of this instance in the recurrence series
-    MemberResponse:
-      description: A member of a network
+    ErrorResponse:
       type: object
       required:
-      - created_at
-      - email
-      - id
-      - member_type
-      - permalink
-      - updated_at
+      - error
       properties:
-        id:
-          type: integer
-          format: uint64
-          description: The record's integer ID
-          example: '1234'
-        created_at:
+        error:
           type: string
-          format: date-time
-          description: The date and time the record was created
-          example: '2026-07-05T21:11:41+00:00'
-        updated_at:
-          type: string
-          format: date-time
-          description: The date and time the record was last modified
-          example: '2026-07-05T21:11:41+00:00'
-        email:
-          type: string
-          format: email
-          description: The member's email address
-          example: ada.lovelace@example.com
-        member_type:
-          type: string
-          description: 'The member''s type: ''full'' (belongs to the network) or ''limited'' (belongs only to specific spaces)'
-        first_name:
-          type: string
-          description: The member's first name
-        last_name:
-          type: string
-          description: The member's last name
-        time_zone:
-          type: string
-          description: The member's time zone
-        location:
-          type: string
-          description: The member's location
-        bio:
-          type: string
-          description: The member's bio
-        referral_count:
-          type: integer
-          format: uint64
-          description: Number of referrals made by this member
-        avatar:
-          type: string
-          description: URL to the member's avatar image
-        categories:
-          type: string
-          description: Array of category objects with id and title
-        permalink:
-          type: string
-          description: Canonical URL to the member's profile page
-        ambassador_level:
-          type: string
-          description: The member's ambassador level
-    RsvpRequest:
-      description: Request to create or update an RSVP
-      type: object
-      required:
-      - member_id
-      - status
-      properties:
-        member_id:
-          type: integer
-          format: uint64
-          description: The ID of the member to RSVP on behalf of
-          example: 123
-        status:
-          type: string
-          description: 'The RSVP status. Must be one of: yes, maybe, no'
-          example: 'yes'
-        instance_at:
-          type: string
-          format: date-time
-          description: The specific event instance for recurring events (ISO8601 format)
-          example: '2025-03-15T14:00:00Z'
+          description: An error message explaining the problem encountered
     EventCreatePayload:
       description: Payload sent when an event is created
       type: object
@@ -582,6 +496,92 @@ components:
         permalink:
           type: string
           description: Canonical URL to the event
+    MemberResponse:
+      description: A member of a network
+      type: object
+      required:
+      - created_at
+      - email
+      - id
+      - member_type
+      - permalink
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        email:
+          type: string
+          format: email
+          description: The member's email address
+          example: ada.lovelace@example.com
+        member_type:
+          type: string
+          description: 'The member''s type: ''full'' (belongs to the network) or ''limited'' (belongs only to specific spaces)'
+        first_name:
+          type: string
+          description: The member's first name
+        last_name:
+          type: string
+          description: The member's last name
+        time_zone:
+          type: string
+          description: The member's time zone
+        location:
+          type: string
+          description: The member's location
+        bio:
+          type: string
+          description: The member's bio
+        referral_count:
+          type: integer
+          format: uint64
+          description: Number of referrals made by this member
+        avatar:
+          type: string
+          description: URL to the member's avatar image
+        categories:
+          type: string
+          description: Array of category objects with id and title
+        permalink:
+          type: string
+          description: Canonical URL to the member's profile page
+        ambassador_level:
+          type: string
+          description: The member's ambassador level
+    RsvpRequest:
+      description: Request to create or update an RSVP
+      type: object
+      required:
+      - member_id
+      - status
+      properties:
+        member_id:
+          type: integer
+          format: uint64
+          description: The ID of the member to RSVP on behalf of
+          example: 123
+        status:
+          type: string
+          description: 'The RSVP status. Must be one of: yes, maybe, no'
+          example: 'yes'
+        instance_at:
+          type: string
+          format: date-time
+          description: The specific event instance for recurring events (ISO8601 format)
+          example: '2025-03-15T14:00:00Z'
   parameters:
     networkId:
       name: network_id
