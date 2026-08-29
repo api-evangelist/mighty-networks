@@ -1477,6 +1477,9 @@ apis:
   - type: OpenAPI
     url: openapi/mighty-networks-webhooks-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/mighty-networks-capability-edges.yml
+  name: Mighty Networks Business Capability Map
 - type: AgenticAccess
   url: agentic-access/mighty-networks-agentic-access.yml
 - type: DomainSecurity
