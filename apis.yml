@@ -11,6 +11,18 @@ description: Mighty Networks is a community, courses, and membership platform wh
   subscriptions, badges, tags, custom fields, and invites - plus a beta Headless
   GraphQL API for building custom user-context clients and 40-plus outbound webhook
   event types. API access requires a Scale, Growth, or Mighty Pro plan.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
