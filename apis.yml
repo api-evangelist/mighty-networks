@@ -85,7 +85,7 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
-  - Abuse Reports
+  - AbuseReports
   tags_raw:
   - AbuseReports
   properties:
@@ -1248,7 +1248,7 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
-  - RSVPs
+  - Rsvps
   tags_raw:
   - Rsvps
   properties:
@@ -1472,6 +1472,8 @@ apis:
   humanURL: https://docs.mightynetworks.com/headless-api
   baseURL: https://api.mn.co/networks
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
