@@ -2,15 +2,13 @@ aid: mighty-networks
 url: https://raw.githubusercontent.com/api-evangelist/mighty-networks/refs/heads/main/apis.yml
 name: Mighty Networks
 kind: company
-description: Mighty Networks is a community, courses, and membership platform where
-  creators, brands, and businesses run branded networks made up of spaces, members,
-  posts, events, courses, and paid plans. After years of offering only a Zapier
-  integration, Mighty Networks now ships a documented public Admin API - a REST
-  interface (OpenAPI 3.1, base https://api.mn.co/admin/v1) authenticated with a
-  Bearer API token for managing members, spaces, posts, events, courses, plans,
-  subscriptions, badges, tags, custom fields, and invites - plus a beta Headless
-  GraphQL API for building custom user-context clients and 40-plus outbound webhook
-  event types. API access requires a Scale, Growth, or Mighty Pro plan.
+description: Mighty Networks is a community, courses, and membership platform where creators, brands,
+  and businesses run branded networks made up of spaces, members, posts, events, courses, and paid plans.
+  After years of offering only a Zapier integration, Mighty Networks now ships a documented public Admin
+  API - a REST interface (OpenAPI 3.1, base https://api.mn.co/admin/v1) authenticated with a Bearer API
+  token for managing members, spaces, posts, events, courses, plans, subscriptions, badges, tags, custom
+  fields, and invites - plus a beta Headless GraphQL API for building custom user-context clients and
+  40-plus outbound webhook event types. API access requires a Scale, Growth, or Mighty Pro plan.
 deliveryModel:
   model: saas
   open_source: false
@@ -53,7 +51,7 @@ tags_raw:
 - Events
 - Subscriptions
 created: '2026-07-05'
-modified: '2026-07-05'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: mighty-networks:mighty-networks-headless-graphql-api
@@ -74,16 +72,14 @@ apis:
     type: Documentation
   - url: https://docs.mightynetworks.com/headless-authentication
     type: Authentication
-  description: >-
-    Beta GraphQL interface that powers the official Mighty Networks clients, for building custom user-context
-    clients, integrations, and back-office tools. Requests go to /networks/:network_id_or_subdomain/graphql
+  description: Beta GraphQL interface that powers the official Mighty Networks clients, for building custom
+    user-context clients, integrations, and back-office tools. Requests go to /networks/:network_id_or_subdomain/graphql
     and use OAuth 2.0 short-lived access tokens acting on behalf of a specific member, moderator, or host.
     Available on Mighty Pro.
 - aid: mighty-networks:mighty-networks-abusereports-api
   name: Mighty Networks AbuseReports API
   description: Manage abuse reports for your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Abuse Reports
@@ -95,52 +91,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-answers-api
   name: Mighty Networks Answers API
   description: Manage member responses to custom fields
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Answers
@@ -150,52 +135,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-assets-api
   name: Mighty Networks Assets API
   description: Manage assets for your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Assets
@@ -205,52 +179,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-badges-api
   name: Mighty Networks Badges API
   description: Manage badges for your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Badges
@@ -260,52 +223,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-collections-api
   name: Mighty Networks Collections API
   description: Manage collections in your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Collection
@@ -317,52 +269,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-comments-api
   name: Mighty Networks Comments API
   description: Manage comments on posts
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Comments
@@ -372,52 +313,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-courseworks-api
   name: Mighty Networks Courseworks API
   description: Manage course content (lessons, quizzes, sections)
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Courseworks
@@ -427,52 +357,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-customfields-api
   name: Mighty Networks CustomFields API
   description: Manage custom fields for your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Custom Fields
@@ -484,52 +403,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-events-api
   name: Mighty Networks Events API
   description: Events are scheduled gatherings that members can RSVP to and engage with
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Event
@@ -541,52 +449,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-invites-api
   name: Mighty Networks Invites API
   description: Invites allow you to invite users to your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Invites
@@ -596,52 +493,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-me-api
   name: Mighty Networks Me API
   description: Metadata about the requesting user
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Me
@@ -651,52 +537,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-members-api
   name: Mighty Networks Members API
   description: Manage members of your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Members
@@ -706,52 +581,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-mute-api
   name: Mighty Networks Mute API
   description: Mute posts for users
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Mute
@@ -761,52 +625,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-networks-api
-  name: Mighty Networks Networks API
+  name: Mighty Networks API
   description: Networks are the top-level organizational unit under which other resources are nested
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Networks
@@ -816,52 +669,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-options-api
   name: Mighty Networks Options API
   description: Manage dropdown custom field options
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Options
@@ -871,52 +713,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-passwordresets-api
   name: Mighty Networks PasswordResets API
   description: Manage member password resets
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - PasswordResets
@@ -926,52 +757,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-plans-api
   name: Mighty Networks Plans API
   description: Manage plans in your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Plans
@@ -981,52 +801,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-polls-api
   name: Mighty Networks Polls API
   description: Polls and Questions allow members to share opinions and engage with each other
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Polls
@@ -1036,52 +845,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-posts-api
   name: Mighty Networks Posts API
   description: Posts also include Articles.
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Posts
@@ -1091,52 +889,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-purchases-api
   name: Mighty Networks Purchases API
   description: Manage purchases and subscriptions for your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Purchases
@@ -1146,52 +933,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-reactions-api
   name: Mighty Networks Reactions API
   description: Manage reactions on comments
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Reactions
@@ -1201,52 +977,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-rsvps-api
   name: Mighty Networks Rsvps API
   description: Manage event RSVPs for your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - RSVPs
@@ -1258,53 +1023,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-spaces-api
   name: Mighty Networks Spaces API
-  description: >-
-    Spaces are the organizational units within a Network where content and members are organized
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  description: Spaces are the organizational units within a Network where content and members are organized
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Spaces
@@ -1314,52 +1067,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-subscriptions-api
   name: Mighty Networks Subscriptions API
   description: Manage payment subscriptions - recurring payments from members to hosts for plans
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Subscription
@@ -1371,52 +1113,41 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-tags-api
   name: Mighty Networks Tags API
   description: Manage tags for your network
-  humanURL: >-
-    https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+  humanURL: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
   - Tags
@@ -1426,45 +1157,35 @@ apis:
   - type: Documentation
     url: https://docs.mightynetworks.com/members
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   - type: Documentation
     url: https://docs.mightynetworks.com/spaces
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network
   - type: Documentation
     url: https://docs.mightynetworks.com/posts
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
+    url: https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
+    url: https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
+    url: https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network
   - type: APIReference
     url: https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
+    url: https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
+    url: https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network
   - type: Documentation
     url: https://docs.mightynetworks.com/networks
   - type: APIReference
-    url: >-
-      https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
+    url: https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key
   - type: Documentation
     url: https://docs.mightynetworks.com/api-reference/webhooks/memberjoined
 - aid: mighty-networks:mighty-networks-webhooks-api
