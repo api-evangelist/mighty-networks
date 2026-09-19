@@ -1191,6 +1191,8 @@ apis:
     https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network
   baseURL: https://api.mn.co/admin/v1
   tags:
+  - Space
+  tags_raw:
   - Spaces
   properties:
   - type: OpenAPI
