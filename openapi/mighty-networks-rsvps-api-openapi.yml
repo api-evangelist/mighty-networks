@@ -296,103 +296,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    SpaceResponse:
-      type: object
-      required:
-      - created_at
-      - id
-      - name
-      - updated_at
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The record's integer ID
-          example: '1234'
-        created_at:
-          type: string
-          format: date-time
-          description: The date and time the record was created
-          example: '2026-07-05T21:11:41+00:00'
-        updated_at:
-          type: string
-          format: date-time
-          description: The date and time the record was last modified
-          example: '2026-07-05T21:11:41+00:00'
-        name:
-          type: string
-          description: The Space's name
-        collection_id:
-          type: integer
-          format: uint64
-          description: The ID of the collection this space belongs to
-    RsvpResponse:
-      description: An RSVP for an event
-      type: object
-      required:
-      - event
-      - id
-      - member
-      - status
-      - updated
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The record's integer ID
-          example: '1234'
-        updated:
-          type: string
-          format: date-time
-          description: The last updated timestamp
-          example: '2026-07-05T21:11:42+00:00'
-        status:
-          type: string
-          description: 'The RSVP status: yes, maybe, or no'
-        event:
-          description: The event being RSVPed to
-          $ref: '#/components/schemas/EventCreatePayload'
-        member:
-          description: The member who set the RSVP
-          $ref: '#/components/schemas/MemberResponse'
-        event_instance:
-          description: The specific event instance for recurring events
-          $ref: '#/components/schemas/EventInstanceResponse'
-    EventInstanceResponse:
-      description: A specific instance of a recurring event
-      type: object
-      required:
-      - ends_at
-      - instance_index
-      - post_id
-      - starts_at
-      properties:
-        post_id:
-          type: integer
-          format: uint64
-          description: The ID of the recurring event post
-        starts_at:
-          type: string
-          format: date-time
-          description: Start time of this specific instance
-          example: '2026-07-05T21:11:42+00:00'
-        ends_at:
-          type: string
-          format: date-time
-          description: End time of this specific instance
-          example: '2026-07-05T21:11:42+00:00'
-        instance_index:
-          type: integer
-          format: uint64
-          description: The index of this instance in the recurrence series
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     EventCreatePayload:
       description: Payload sent when an event is created
       type: object
@@ -496,6 +399,33 @@ components:
         permalink:
           type: string
           description: Canonical URL to the event
+    EventInstanceResponse:
+      description: A specific instance of a recurring event
+      type: object
+      required:
+      - ends_at
+      - instance_index
+      - post_id
+      - starts_at
+      properties:
+        post_id:
+          type: integer
+          format: uint64
+          description: The ID of the recurring event post
+        starts_at:
+          type: string
+          format: date-time
+          description: Start time of this specific instance
+          example: '2026-07-05T21:11:42+00:00'
+        ends_at:
+          type: string
+          format: date-time
+          description: End time of this specific instance
+          example: '2026-07-05T21:11:42+00:00'
+        instance_index:
+          type: integer
+          format: uint64
+          description: The index of this instance in the recurrence series
     MemberResponse:
       description: A member of a network
       type: object
@@ -582,6 +512,76 @@ components:
           format: date-time
           description: The specific event instance for recurring events (ISO8601 format)
           example: '2025-03-15T14:00:00Z'
+    SpaceResponse:
+      type: object
+      required:
+      - created_at
+      - id
+      - name
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        name:
+          type: string
+          description: The Space's name
+        collection_id:
+          type: integer
+          format: uint64
+          description: The ID of the collection this space belongs to
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    RsvpResponse:
+      description: An RSVP for an event
+      type: object
+      required:
+      - event
+      - id
+      - member
+      - status
+      - updated
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        updated:
+          type: string
+          format: date-time
+          description: The last updated timestamp
+          example: '2026-07-05T21:11:42+00:00'
+        status:
+          type: string
+          description: 'The RSVP status: yes, maybe, or no'
+        event:
+          description: The event being RSVPed to
+          $ref: '#/components/schemas/EventCreatePayload'
+        member:
+          description: The member who set the RSVP
+          $ref: '#/components/schemas/MemberResponse'
+        event_instance:
+          description: The specific event instance for recurring events
+          $ref: '#/components/schemas/EventInstanceResponse'
   parameters:
     networkId:
       name: network_id

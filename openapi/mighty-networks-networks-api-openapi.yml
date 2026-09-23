@@ -14,7 +14,7 @@ tags:
 paths:
   /admin/v1/networks/{network_id}/:
     get:
-      summary: Returns details of the Network - must match the Network owning the requesting API key
+      summary: Returns details of the Network - must match the Network owning the requesting…
       operationId: show_network
       tags:
       - Networks

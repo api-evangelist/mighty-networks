@@ -187,14 +187,28 @@ components:
           type: string
           format: url
           description: URL to the favicon of the linked site
-    ErrorResponse:
+    AssetResponse:
+      description: File or media asset attached to content
       type: object
       required:
-      - error
+      - id
+      - type
       properties:
-        error:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        url:
           type: string
-          description: An error message explaining the problem encountered
+          format: url
+          description: URL to access the asset
+        type:
+          type: string
+          description: The type of asset (Asset, StaticAsset, etc.)
+        name:
+          type: string
+          description: Original filename of the asset
     CommentRequest:
       description: Comments are created by members on posts, chats, and other commentable content
       type: object
@@ -208,6 +222,14 @@ components:
           type: integer
           format: uint64
           description: The ID of the parent comment if this is a reply
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     CommentResponse:
       description: Comments are created by users on posts, chats, and other commentable content
       type: object
@@ -290,28 +312,6 @@ components:
           type: string
           format: url
           description: The comment's unique address within the network
-    AssetResponse:
-      description: File or media asset attached to content
-      type: object
-      required:
-      - id
-      - type
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The record's integer ID
-          example: '1234'
-        url:
-          type: string
-          format: url
-          description: URL to access the asset
-        type:
-          type: string
-          description: The type of asset (Asset, StaticAsset, etc.)
-        name:
-          type: string
-          description: Original filename of the asset
   parameters:
     networkId:
       name: network_id

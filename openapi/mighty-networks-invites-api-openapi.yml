@@ -443,6 +443,33 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
+    InviteRequest:
+      description: Invites allow users and admins to invite new users to the network
+      type: object
+      required:
+      - recipient_email
+      properties:
+        recipient_email:
+          type: string
+          description: The recipients email address
+          example: claude@example.com
+        recipient_first_name:
+          type: string
+          description: The recipient's first name
+          example: Claude
+        recipient_last_name:
+          type: string
+          description: The recipient's last name
+          example: Monet
+        user_id:
+          type: integer
+          format: uint64
+          description: 'The ID of the user to record as the creator of the invite.
+
+
+            If not provided, defaults to the owner of the authored API key.
+
+            '
     InviteResponse:
       description: Invites allow users and admins to invite new users to the network
       type: object
@@ -491,33 +518,6 @@ components:
           format: uint64
           description: 'Deprecated: Use sender_id instead'
           deprecated: true
-    InviteRequest:
-      description: Invites allow users and admins to invite new users to the network
-      type: object
-      required:
-      - recipient_email
-      properties:
-        recipient_email:
-          type: string
-          description: The recipients email address
-          example: claude@example.com
-        recipient_first_name:
-          type: string
-          description: The recipient's first name
-          example: Claude
-        recipient_last_name:
-          type: string
-          description: The recipient's last name
-          example: Monet
-        user_id:
-          type: integer
-          format: uint64
-          description: 'The ID of the user to record as the creator of the invite.
-
-
-            If not provided, defaults to the owner of the authored API key.
-
-            '
   parameters:
     networkId:
       name: network_id

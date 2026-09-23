@@ -367,6 +367,63 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    BadgeUpdateRequest:
+      description: Request to update a badge
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded to active community members
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FF5733'
+        avatar_id:
+          type: integer
+          format: uint64
+          description: The ID of the asset to use as the badge image
+          example: 12345
+    MemberBadgeRequest:
+      description: Request to add a badge to a member
+      type: object
+      required:
+      - badge_id
+      properties:
+        badge_id:
+          type: integer
+          format: uint64
+          description: The ID of the badge to add to the member
+          example: 12345
+    BadgeRequest:
+      description: Request to create a badge
+      type: object
+      required:
+      - avatar_id
+      - title
+      properties:
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded to active community members
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FF5733'
+        avatar_id:
+          type: integer
+          format: uint64
+          description: The ID of the asset to use as the badge image
+          example: 12345
     BadgeResponse:
       description: Badges are custom field values used to recognize and reward members
       type: object
@@ -419,63 +476,6 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
-    MemberBadgeRequest:
-      description: Request to add a badge to a member
-      type: object
-      required:
-      - badge_id
-      properties:
-        badge_id:
-          type: integer
-          format: uint64
-          description: The ID of the badge to add to the member
-          example: 12345
-    BadgeRequest:
-      description: Request to create a badge
-      type: object
-      required:
-      - avatar_id
-      - title
-      properties:
-        title:
-          type: string
-          description: The title of the badge
-          example: Top Contributor
-        description:
-          type: string
-          description: The description of the badge
-          example: Awarded to active community members
-        color:
-          type: string
-          description: The hex color code for the badge
-          example: '#FF5733'
-        avatar_id:
-          type: integer
-          format: uint64
-          description: The ID of the asset to use as the badge image
-          example: 12345
-    BadgeUpdateRequest:
-      description: Request to update a badge
-      type: object
-      required: []
-      properties:
-        title:
-          type: string
-          description: The title of the badge
-          example: Top Contributor
-        description:
-          type: string
-          description: The description of the badge
-          example: Awarded to active community members
-        color:
-          type: string
-          description: The hex color code for the badge
-          example: '#FF5733'
-        avatar_id:
-          type: integer
-          format: uint64
-          description: The ID of the asset to use as the badge image
-          example: 12345
   parameters:
     networkId:
       name: network_id

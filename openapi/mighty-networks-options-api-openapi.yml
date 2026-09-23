@@ -258,6 +258,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
     CustomFieldOptionResponse:
       description: Custom field options are the selectable values for dropdown custom fields
@@ -310,20 +324,6 @@ components:
           type: integer
           format: uint64
           description: The ID of the member who created this option
-    CustomFieldOptionRequest:
-      description: Request body for creating a custom field option
-      type: object
-      required:
-      - title
-      properties:
-        title:
-          type: string
-          description: The title of the option
-          example: Blue
-        description:
-          type: string
-          description: Description of the option
-          example: Select this if blue is your favorite color
     CustomFieldOptionUpdateRequest:
       description: Request body for updating a custom field option
       type: object
@@ -345,20 +345,20 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
+    CustomFieldOptionRequest:
+      description: Request body for creating a custom field option
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+          description: The title of the option
+          example: Blue
+        description:
+          type: string
+          description: Description of the option
+          example: Select this if blue is your favorite color
   securitySchemes:
     bearerAuth:
       type: http

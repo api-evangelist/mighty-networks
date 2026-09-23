@@ -129,20 +129,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CategoryResponse:
-      description: A category (segment) in the network
-      type: object
-      required:
-      - id
-      - title
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The category's integer ID
-        title:
-          type: string
-          description: The category's title
     SubscriptionResponse:
       description: A payment subscription for a plan
       type: object
@@ -210,39 +196,20 @@ components:
         subscription:
           description: Detailed subscription information
           $ref: '#/components/schemas/SubscriptionDetailResponse'
-    SubscriptionPlanResponse:
-      description: Plan information for a subscription
+    CategoryResponse:
+      description: A category (segment) in the network
       type: object
       required:
-      - amount
-      - currency
-      - has_free_trial
-      - interval
-      - type
+      - id
+      - title
       properties:
         id:
           type: integer
           format: uint64
-          description: The plan ID (null when the underlying bundle has been deleted)
-        name:
+          description: The category's integer ID
+        title:
           type: string
-          description: The plan name (null when the underlying bundle has been deleted)
-        amount:
-          type: integer
-          format: uint64
-          description: The plan amount in cents
-        currency:
-          type: string
-          description: The plan currency code
-        interval:
-          type: string
-          description: The billing interval (day, week, month, year, etc.)
-        type:
-          type: string
-          description: The plan type (free, subscription, one-time-payment)
-        has_free_trial:
-          type: boolean
-          description: Whether the plan has a free trial
+          description: The category's title
     SubscriptionDetailResponse:
       description: Detailed subscription information
       type: object
@@ -300,6 +267,39 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
+    SubscriptionPlanResponse:
+      description: Plan information for a subscription
+      type: object
+      required:
+      - amount
+      - currency
+      - has_free_trial
+      - interval
+      - type
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The plan ID (null when the underlying bundle has been deleted)
+        name:
+          type: string
+          description: The plan name (null when the underlying bundle has been deleted)
+        amount:
+          type: integer
+          format: uint64
+          description: The plan amount in cents
+        currency:
+          type: string
+          description: The plan currency code
+        interval:
+          type: string
+          description: The billing interval (day, week, month, year, etc.)
+        type:
+          type: string
+          description: The plan type (free, subscription, one-time-payment)
+        has_free_trial:
+          type: boolean
+          description: Whether the plan has a free trial
   parameters:
     networkId:
       name: network_id

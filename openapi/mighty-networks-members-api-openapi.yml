@@ -367,12 +367,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
-      summary: 'Add a member directly to a free/nonpaid plan, granting them access
-
-
-        The member will be granted access immediately; no invite is sent.
-
-        '
+      summary: Add a member directly to a free/nonpaid plan, granting them access The member…
       operationId: create_members
       tags:
       - Members
@@ -717,63 +712,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    MemberCreateRequest:
-      description: Request body for creating a new member in the network
-      type: object
-      required:
-      - email
-      - first_name
-      - last_name
-      properties:
-        email:
-          type: string
-          format: email
-          description: Email address of the new member
-          example: user@example.com
-        first_name:
-          type: string
-          description: First name of the new member
-          example: John
-        last_name:
-          type: string
-          description: Last name of the new member
-          example: Doe
-        role:
-          type: string
-          description: Role for the member (host, moderator, contributor). Defaults to 'contributor'.
-          example: contributor
-        member_type:
-          type: string
-          description: Type of member to create. 'full' (default) joins the whole network; 'limited' is added only to the spaces listed in space_ids.
-          example: full
-        space_ids:
-          type: array
-          description: IDs of the spaces a limited member joins. Required when member_type is 'limited'; ignored otherwise. Duplicate IDs are ignored.
-          items:
-            type: integer
-            format: uint64
-        send_welcome_email:
-          type: boolean
-          description: Whether to send a welcome email to the new member. Defaults to true.
-          example: true
-    BanRequest:
-      description: Request body for banning a user from the network
-      type: object
-      required: []
-      properties:
-        ban_reason:
-          type: string
-          description: The reason for banning the user
-          example: Spam
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     MemberResponse:
       description: A member of a network
       type: object
@@ -888,11 +841,6 @@ components:
         permalink:
           type: string
           description: Canonical URL to the plan's about page
-    EmptyResponse:
-      description: Empty response body
-      type: object
-      required: []
-      properties: {}
     MemberUpdateRequest:
       description: Request body for updating a member's role and profile information
       type: object
@@ -915,20 +863,67 @@ components:
           type: string
           description: New last name for the member
           example: Smith
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
+    EmptyResponse:
+      description: Empty response body
+      type: object
+      required: []
+      properties: {}
+    BanRequest:
+      description: Request body for banning a user from the network
+      type: object
+      required: []
+      properties:
+        ban_reason:
+          type: string
+          description: The reason for banning the user
+          example: Spam
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    MemberCreateRequest:
+      description: Request body for creating a new member in the network
+      type: object
+      required:
+      - email
+      - first_name
+      - last_name
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the new member
+          example: user@example.com
+        first_name:
+          type: string
+          description: First name of the new member
+          example: John
+        last_name:
+          type: string
+          description: Last name of the new member
+          example: Doe
+        role:
+          type: string
+          description: Role for the member (host, moderator, contributor). Defaults to 'contributor'.
+          example: contributor
+        member_type:
+          type: string
+          description: Type of member to create. 'full' (default) joins the whole network; 'limited' is added only to the spaces listed in space_ids.
+          example: full
+        space_ids:
+          type: array
+          description: IDs of the spaces a limited member joins. Required when member_type is 'limited'; ignored otherwise. Duplicate IDs are ignored.
+          items:
+            type: integer
+            format: uint64
+        send_welcome_email:
+          type: boolean
+          description: Whether to send a welcome email to the new member. Defaults to true.
+          example: true
   securitySchemes:
     bearerAuth:
       type: http

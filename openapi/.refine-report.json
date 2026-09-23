@@ -31,7 +31,9 @@
     "mighty-networks-tags-api-openapi.yml",
     "mighty-networks-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [
     "mighty-networks-admin-api-openapi.json: dangling $ref: #/components/schemas/AbuseReportResponsePaged",
     "mighty-networks-admin-api-openapi.json: dangling $ref: #/components/schemas/BadgeResponsePaged",
@@ -59,17 +61,19 @@
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "mighty-networks-admin-api-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "mighty-networks-admin-api-openapi.json: declared missing tag: Webhooks"
+    "mighty-networks-admin-api-openapi.json: declared missing tag: Webhooks",
+    "superseded outputs removed: mighty-networks-abuse-reports-api-openapi.yml, mighty-networks-custom-fields-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 27 total)"
   ],
   "skipped": [
-    "mighty-networks-abusereports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mighty-networks-abuse-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-answers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-badges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-courseworks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "mighty-networks-customfields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mighty-networks-custom-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-invites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-me-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -86,6 +90,7 @@
     "mighty-networks-rsvps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-spaces-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mighty-networks-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "mighty-networks-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "mighty-networks-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mighty-networks-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

@@ -84,7 +84,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
-      summary: 'Remove a member from a plan (revoke purchase access). Note: Cannot remove members from Apple In-App Purchases.'
+      summary: Remove a member from a plan (revoke purchase access).
       operationId: delete_purchases
       tags:
       - Purchases
@@ -123,6 +123,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
     PurchasePlanResponse:
       description: Plan information for a purchase
@@ -157,6 +171,14 @@ components:
         has_free_trial:
           type: boolean
           description: Whether the plan has a free trial
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     PurchaseResponse:
       description: A purchase of a plan by a member
       type: object
@@ -209,14 +231,6 @@ components:
         purchase:
           description: Detailed purchase information
           $ref: '#/components/schemas/PurchaseDetailResponse'
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     PurchaseDetailResponse:
       description: Detailed purchase information
       type: object
@@ -253,20 +267,6 @@ components:
           format: date-time
           description: The date and time the record was last modified
           example: '2026-07-05T21:11:41+00:00'
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

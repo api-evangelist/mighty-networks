@@ -299,6 +299,34 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    CollectionOrderRequest:
+      description: Request to reorder spaces within a collection
+      type: object
+      required:
+      - spaces
+      properties:
+        spaces:
+          type: array
+          description: Array of space position assignments
+          items:
+            $ref: '#/components/schemas/CollectionSpacePosition'
+    CollectionSpacePosition:
+      description: A space position assignment within a collection
+      type: object
+      required:
+      - position
+      - space_id
+      properties:
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space to reposition
+          example: 123
+        position:
+          type: integer
+          format: uint64
+          description: The target position for the space (1-based)
+          example: 1
     CollectionResponse:
       description: A collection of spaces within a network
       type: object
@@ -342,14 +370,6 @@ components:
         explorable:
           type: boolean
           description: Whether the collection contains discoverable spaces or promoted plan
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     CollectionUpdateRequest:
       description: Request to update a collection
       type: object
@@ -366,34 +386,14 @@ components:
         visible_to_members:
           type: boolean
           description: Whether the collection is visible to members
-    CollectionOrderRequest:
-      description: Request to reorder spaces within a collection
+    ErrorResponse:
       type: object
       required:
-      - spaces
+      - error
       properties:
-        spaces:
-          type: array
-          description: Array of space position assignments
-          items:
-            $ref: '#/components/schemas/CollectionSpacePosition'
-    CollectionSpacePosition:
-      description: A space position assignment within a collection
-      type: object
-      required:
-      - position
-      - space_id
-      properties:
-        space_id:
-          type: integer
-          format: uint64
-          description: The ID of the space to reposition
-          example: 123
-        position:
-          type: integer
-          format: uint64
-          description: The target position for the space (1-based)
-          example: 1
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     CollectionCreateRequest:
       description: Request to create a new collection
       type: object

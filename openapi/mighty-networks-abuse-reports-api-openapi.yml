@@ -9,7 +9,7 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: AbuseReports
+- name: Abuse Reports
   description: Manage abuse reports for your network
 paths:
   /admin/v1/networks/{network_id}/abuse_reports:
@@ -17,7 +17,7 @@ paths:
       summary: Returns a list of abuse reports for the current network
       operationId: list_abuse_reports
       tags:
-      - AbuseReports
+      - Abuse Reports
       parameters:
       - name: page
         in: query

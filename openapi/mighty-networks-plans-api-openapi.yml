@@ -112,7 +112,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
-      summary: Archive a plan. This will cancel all associated subscriptions and revoke access.
+      summary: Archive a plan. This will cancel all associated subscriptions and revoke access
       operationId: delete_plans
       tags:
       - Plans

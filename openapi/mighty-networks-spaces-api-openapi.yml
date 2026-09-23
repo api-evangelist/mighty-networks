@@ -271,7 +271,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
+    SpaceRequest:
+      description: Request to create or update a space
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the space
     SpaceResponse:
       type: object
       required:
@@ -310,15 +333,6 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
-    SpaceRequest:
-      description: Request to create or update a space
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The name of the space
     SpaceUpdateRequest:
       description: Request to update a space
       type: object
@@ -333,20 +347,6 @@ components:
           format: uint64
           description: The ID of the collection to move the space to
           example: 123
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http
