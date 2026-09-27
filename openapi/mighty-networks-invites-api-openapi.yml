@@ -260,7 +260,7 @@ paths:
   /admin/v1/networks/{network_id}/invites:
     get:
       summary: Returns a list of invitations for the current network
-      operationId: list_invites
+      operationId: getAdminV1NetworksByNetworkIdInvites
       tags:
       - Invites
       parameters:
@@ -292,9 +292,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteResponsePaged'
+      x-operation-id-source: normalized
+      x-operation-id-original: list_invites
     post:
       summary: Create a new invite and send an email to the intended recipient
-      operationId: create_invites
+      operationId: postAdminV1NetworksByNetworkIdInvites
       tags:
       - Invites
       parameters:
@@ -319,10 +321,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: create_invites
   /admin/v1/networks/{network_id}/invites/{id}/:
     patch:
       summary: Update an invite
-      operationId: update_invites
+      operationId: patchAdminV1NetworksByNetworkIdInvitesById
       tags:
       - Invites
       parameters:
@@ -371,9 +375,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: update_invites
     put:
       summary: Update an invite
-      operationId: replace_invites
+      operationId: putAdminV1NetworksByNetworkIdInvitesById
       tags:
       - Invites
       parameters:
@@ -399,9 +405,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: replace_invites
     delete:
       summary: Delete an unaccepted invite
-      operationId: delete_invites
+      operationId: deleteAdminV1NetworksByNetworkIdInvitesById
       tags:
       - Invites
       parameters:
@@ -433,43 +441,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: delete_invites
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
-    InviteRequest:
-      description: Invites allow users and admins to invite new users to the network
-      type: object
-      required:
-      - recipient_email
-      properties:
-        recipient_email:
-          type: string
-          description: The recipients email address
-          example: claude@example.com
-        recipient_first_name:
-          type: string
-          description: The recipient's first name
-          example: Claude
-        recipient_last_name:
-          type: string
-          description: The recipient's last name
-          example: Monet
-        user_id:
-          type: integer
-          format: uint64
-          description: 'The ID of the user to record as the creator of the invite.
-
-
-            If not provided, defaults to the owner of the authored API key.
-
-            '
     InviteResponse:
       description: Invites allow users and admins to invite new users to the network
       type: object
@@ -518,6 +493,41 @@ components:
           format: uint64
           description: 'Deprecated: Use sender_id instead'
           deprecated: true
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    InviteRequest:
+      description: Invites allow users and admins to invite new users to the network
+      type: object
+      required:
+      - recipient_email
+      properties:
+        recipient_email:
+          type: string
+          description: The recipients email address
+          example: claude@example.com
+        recipient_first_name:
+          type: string
+          description: The recipient's first name
+          example: Claude
+        recipient_last_name:
+          type: string
+          description: The recipient's last name
+          example: Monet
+        user_id:
+          type: integer
+          format: uint64
+          description: 'The ID of the user to record as the creator of the invite.
+
+
+            If not provided, defaults to the owner of the authored API key.
+
+            '
   parameters:
     networkId:
       name: network_id

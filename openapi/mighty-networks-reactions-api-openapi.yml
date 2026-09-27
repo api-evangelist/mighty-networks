@@ -120,7 +120,7 @@ paths:
   /admin/v1/networks/{network_id}/comments/{comment_id}/reactions:
     get:
       summary: Returns a list of reactions for a specific comment
-      operationId: list_reactions
+      operationId: getAdminV1NetworksByNetworkIdCommentsByCommentIdReactions
       tags:
       - Reactions
       parameters:
@@ -159,9 +159,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: list_reactions
     post:
       summary: Create a new reaction on a comment
-      operationId: create_reactions
+      operationId: postAdminV1NetworksByNetworkIdCommentsByCommentIdReactions
       tags:
       - Reactions
       parameters:
@@ -199,9 +201,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: create_reactions
     delete:
       summary: Delete the reaction from a comment
-      operationId: delete_reactions
+      operationId: deleteAdminV1NetworksByNetworkIdCommentsByCommentIdReactions
       tags:
       - Reactions
       parameters:
@@ -222,16 +226,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: delete_reactions
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     ReactionRequest:
       description: A reaction request for creating reactions on posts or comments
       type: object
@@ -241,6 +239,14 @@ components:
         emoji:
           type: string
           description: The emoji used for the reaction (may include skin tone modifiers)
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     ReactionResponse:
       description: A reaction to a post or comment
       type: object

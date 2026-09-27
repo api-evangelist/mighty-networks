@@ -57,7 +57,7 @@ paths:
   /admin/v1/networks/{network_id}/spaces:
     get:
       summary: Returns a list of spaces for the current network
-      operationId: list_spaces
+      operationId: getAdminV1NetworksByNetworkIdSpaces
       tags:
       - Spaces
       parameters:
@@ -83,6 +83,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpaceResponsePaged'
+      x-operation-id-source: normalized
+      x-operation-id-original: list_spaces
     post:
       summary: Create a new space in the network
       operationId: create_spaces
@@ -271,30 +273,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    SpaceRequest:
-      description: Request to create or update a space
+    SpaceUpdateRequest:
+      description: Request to update a space
       type: object
-      required:
-      - name
+      required: []
       properties:
         name:
           type: string
           description: The name of the space
+          example: Updated Space Name
+        collection_id:
+          type: integer
+          format: uint64
+          description: The ID of the collection to move the space to
+          example: 123
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     SpaceResponse:
       type: object
       required:
@@ -325,28 +326,29 @@ components:
           type: integer
           format: uint64
           description: The ID of the collection this space belongs to
-    ErrorResponse:
+    SpaceRequest:
+      description: Request to create or update a space
       type: object
       required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
-    SpaceUpdateRequest:
-      description: Request to update a space
-      type: object
-      required: []
+      - name
       properties:
         name:
           type: string
           description: The name of the space
-          example: Updated Space Name
-        collection_id:
-          type: integer
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
           format: uint64
-          description: The ID of the collection to move the space to
-          example: 123
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

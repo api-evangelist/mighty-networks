@@ -57,7 +57,7 @@ paths:
   /admin/v1/networks/{network_id}/plans:
     get:
       summary: Return all plans in the network
-      operationId: list_plans
+      operationId: getAdminV1NetworksByNetworkIdPlans
       tags:
       - Plans
       parameters:
@@ -83,6 +83,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PlanResponsePaged'
+      x-operation-id-source: normalized
+      x-operation-id-original: list_plans
   /admin/v1/networks/{network_id}/plans/{id}/:
     get:
       summary: Return a single plan by ID
@@ -143,7 +145,7 @@ paths:
   /admin/v1/networks/{network_id}/plans/{plan_id}/members/{id}/:
     delete:
       summary: Remove a member from a plan by canceling their subscription or purchase
-      operationId: delete_plans
+      operationId: deleteAdminV1NetworksByNetworkIdPlansByPlanIdMembersById
       tags:
       - Plans
       parameters:
@@ -177,16 +179,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: delete_plans
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     PlanResponse:
       description: A plan represents a purchasable offering in your network
       type: object
@@ -236,6 +232,14 @@ components:
         permalink:
           type: string
           description: Canonical URL to the plan's about page
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
   parameters:
     networkId:
       name: network_id

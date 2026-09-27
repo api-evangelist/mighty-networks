@@ -162,7 +162,7 @@ paths:
   /admin/v1/networks/{network_id}/badges:
     get:
       summary: Return all badges for the network
-      operationId: list_badges
+      operationId: getAdminV1NetworksByNetworkIdBadges
       tags:
       - Badges
       parameters:
@@ -188,9 +188,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadgeResponsePaged'
+      x-operation-id-source: normalized
+      x-operation-id-original: list_badges
     post:
       summary: Create a new badge
-      operationId: create_badges
+      operationId: postAdminV1NetworksByNetworkIdBadges
       tags:
       - Badges
       parameters:
@@ -215,10 +217,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: create_badges
   /admin/v1/networks/{network_id}/badges/{id}/:
     get:
       summary: Return a single badge by ID
-      operationId: show_badge
+      operationId: getAdminV1NetworksByNetworkIdBadgesById
       tags:
       - Badges
       parameters:
@@ -243,6 +247,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: show_badge
     patch:
       summary: Update a badge
       operationId: update_badges
@@ -344,7 +350,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       summary: Delete a badge
-      operationId: delete_badges
+      operationId: deleteAdminV1NetworksByNetworkIdBadgesById
       tags:
       - Badges
       parameters:
@@ -365,47 +371,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: delete_badges
 components:
   schemas:
     BadgeUpdateRequest:
       description: Request to update a badge
       type: object
       required: []
-      properties:
-        title:
-          type: string
-          description: The title of the badge
-          example: Top Contributor
-        description:
-          type: string
-          description: The description of the badge
-          example: Awarded to active community members
-        color:
-          type: string
-          description: The hex color code for the badge
-          example: '#FF5733'
-        avatar_id:
-          type: integer
-          format: uint64
-          description: The ID of the asset to use as the badge image
-          example: 12345
-    MemberBadgeRequest:
-      description: Request to add a badge to a member
-      type: object
-      required:
-      - badge_id
-      properties:
-        badge_id:
-          type: integer
-          format: uint64
-          description: The ID of the badge to add to the member
-          example: 12345
-    BadgeRequest:
-      description: Request to create a badge
-      type: object
-      required:
-      - avatar_id
-      - title
       properties:
         title:
           type: string
@@ -476,6 +449,41 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
+    MemberBadgeRequest:
+      description: Request to add a badge to a member
+      type: object
+      required:
+      - badge_id
+      properties:
+        badge_id:
+          type: integer
+          format: uint64
+          description: The ID of the badge to add to the member
+          example: 12345
+    BadgeRequest:
+      description: Request to create a badge
+      type: object
+      required:
+      - avatar_id
+      - title
+      properties:
+        title:
+          type: string
+          description: The title of the badge
+          example: Top Contributor
+        description:
+          type: string
+          description: The description of the badge
+          example: Awarded to active community members
+        color:
+          type: string
+          description: The hex color code for the badge
+          example: '#FF5733'
+        avatar_id:
+          type: integer
+          format: uint64
+          description: The ID of the asset to use as the badge image
+          example: 12345
   parameters:
     networkId:
       name: network_id

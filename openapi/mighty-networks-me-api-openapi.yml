@@ -29,6 +29,19 @@ paths:
                 $ref: '#/components/schemas/MeResponse'
 components:
   schemas:
+    MeResponse:
+      description: Details of the currently requesting authorization context
+      type: object
+      required:
+      - network
+      - user
+      properties:
+        user:
+          description: The authenticated user
+          $ref: '#/components/schemas/UserResponse'
+        network:
+          description: The authenticated network
+          $ref: '#/components/schemas/NetworkResponse'
     NetworkResponse:
       description: Networks are the main organizational unit within Mighty, and house all other objects
       type: object
@@ -77,19 +90,6 @@ components:
           type: string
           description: The network description
           example: A great network
-    MeResponse:
-      description: Details of the currently requesting authorization context
-      type: object
-      required:
-      - network
-      - user
-      properties:
-        user:
-          description: The authenticated user
-          $ref: '#/components/schemas/UserResponse'
-        network:
-          description: The authenticated network
-          $ref: '#/components/schemas/NetworkResponse'
     UserResponse:
       type: object
       required:

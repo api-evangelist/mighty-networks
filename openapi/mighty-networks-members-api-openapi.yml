@@ -285,7 +285,7 @@ paths:
   /admin/v1/networks/{network_id}/spaces/{space_id}/members/{user_id}/ban:
     post:
       summary: Ban a user from the network
-      operationId: create_members
+      operationId: postAdminV1NetworksByNetworkIdSpacesBySpaceIdMembersByUserIdBan
       tags:
       - Members
       parameters:
@@ -324,10 +324,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: create_members
   /admin/v1/networks/{network_id}/plans/{plan_id}/members:
     get:
       summary: Return members of the given plan
-      operationId: list_members
+      operationId: getAdminV1NetworksByNetworkIdPlansByPlanIdMembers
       tags:
       - Members
       parameters:
@@ -366,9 +368,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: list_members
     post:
       summary: Add a member directly to a free/nonpaid plan, granting them access The member…
-      operationId: create_members
+      operationId: postAdminV1NetworksByNetworkIdPlansByPlanIdMembers
       tags:
       - Members
       parameters:
@@ -406,10 +410,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: create_members
   /admin/v1/networks/{network_id}/plans/{plan_id}/members/{member_id}/:
     get:
       summary: Return a single member by member ID
-      operationId: show_member
+      operationId: getAdminV1NetworksByNetworkIdPlansByPlanIdMembersByMemberId
       tags:
       - Members
       parameters:
@@ -441,10 +447,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: show_member
   /admin/v1/networks/{network_id}/members:
     get:
       summary: Return members of the given network
-      operationId: list_members
+      operationId: getAdminV1NetworksByNetworkIdMembers
       tags:
       - Members
       parameters:
@@ -470,9 +478,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MemberResponsePaged'
+      x-operation-id-source: normalized
+      x-operation-id-original: list_members
     post:
       summary: Create a new member in the network
-      operationId: create_members
+      operationId: postAdminV1NetworksByNetworkIdMembers
       tags:
       - Members
       parameters:
@@ -497,10 +507,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: create_members
   /admin/v1/networks/{network_id}/members/{id}/:
     get:
       summary: Return a single member by ID
-      operationId: show_member
+      operationId: getAdminV1NetworksByNetworkIdMembersById
       tags:
       - Members
       parameters:
@@ -525,9 +537,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: show_member
     patch:
       summary: Update a member's role in the network
-      operationId: update_members
+      operationId: patchAdminV1NetworksByNetworkIdMembersById
       tags:
       - Members
       parameters:
@@ -584,9 +598,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: update_members
     put:
       summary: Update a member's role in the network
-      operationId: replace_members
+      operationId: putAdminV1NetworksByNetworkIdMembersById
       tags:
       - Members
       parameters:
@@ -624,9 +640,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: replace_members
     delete:
       summary: Delete a member's account (soft delete)
-      operationId: delete_members
+      operationId: deleteAdminV1NetworksByNetworkIdMembersById
       tags:
       - Members
       parameters:
@@ -653,10 +671,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: delete_members
   /admin/v1/networks/{network_id}/members/by_email:
     get:
       summary: Return a single member by email address
-      operationId: show_member
+      operationId: getAdminV1NetworksByNetworkIdMembersByEmail
       tags:
       - Members
       parameters:
@@ -681,10 +701,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: show_member
   /admin/v1/networks/{network_id}/members/{id}/network_membership:
     delete:
       summary: Remove a member from the network (can rejoin)
-      operationId: delete_members
+      operationId: deleteAdminV1NetworksByNetworkIdMembersByIdNetworkMembership
       tags:
       - Members
       parameters:
@@ -711,22 +733,120 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      x-operation-id-source: normalized
+      x-operation-id-original: delete_members
 components:
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   schemas:
+    EmptyResponse:
+      description: Empty response body
+      type: object
+      required: []
+      properties: {}
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    MemberCreateRequest:
+      description: Request body for creating a new member in the network
+      type: object
+      required:
+      - email
+      - first_name
+      - last_name
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the new member
+          example: user@example.com
+        first_name:
+          type: string
+          description: First name of the new member
+          example: John
+        last_name:
+          type: string
+          description: Last name of the new member
+          example: Doe
+        role:
+          type: string
+          description: Role for the member (host, moderator, contributor). Defaults to 'contributor'.
+          example: contributor
+        member_type:
+          type: string
+          description: Type of member to create. 'full' (default) joins the whole network; 'limited' is added only to the spaces listed in space_ids.
+          example: full
+        space_ids:
+          type: array
+          description: IDs of the spaces a limited member joins. Required when member_type is 'limited'; ignored otherwise. Duplicate IDs are ignored.
+          items:
+            type: integer
+            format: uint64
+        send_welcome_email:
+          type: boolean
+          description: Whether to send a welcome email to the new member. Defaults to true.
+          example: true
+    BanRequest:
+      description: Request body for banning a user from the network
+      type: object
+      required: []
+      properties:
+        ban_reason:
+          type: string
+          description: The reason for banning the user
+          example: Spam
+    PlanResponse:
+      description: A plan represents a purchasable offering in your network
+      type: object
+      required:
+      - created_at
+      - id
+      - name
+      - permalink
+      - updated_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the record was created
+          example: '2026-07-05T21:11:41+00:00'
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the record was last modified
+          example: '2026-07-05T21:11:41+00:00'
+        name:
+          type: string
+          description: The plan's name
+        description:
+          type: string
+          description: The plan's description
+        status:
+          type: string
+          description: The plan's status (visible, hidden, pending, rejected, archived, legacy)
+        pricing_type:
+          type: string
+          description: The pricing type (free, subscription, one_time, installment, one_time_installment, token_gated, nonpaid)
+        visible_to_members:
+          type: boolean
+          description: Whether the plan is visible to members
+        external:
+          type: boolean
+          description: Whether the plan includes network membership
+        multiple:
+          type: boolean
+          description: Whether the plan includes multiple spaces
+        permalink:
+          type: string
+          description: Canonical URL to the plan's about page
     MemberResponse:
       description: A member of a network
       type: object
@@ -792,55 +912,6 @@ components:
         ambassador_level:
           type: string
           description: The member's ambassador level
-    PlanResponse:
-      description: A plan represents a purchasable offering in your network
-      type: object
-      required:
-      - created_at
-      - id
-      - name
-      - permalink
-      - updated_at
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The record's integer ID
-          example: '1234'
-        created_at:
-          type: string
-          format: date-time
-          description: The date and time the record was created
-          example: '2026-07-05T21:11:41+00:00'
-        updated_at:
-          type: string
-          format: date-time
-          description: The date and time the record was last modified
-          example: '2026-07-05T21:11:41+00:00'
-        name:
-          type: string
-          description: The plan's name
-        description:
-          type: string
-          description: The plan's description
-        status:
-          type: string
-          description: The plan's status (visible, hidden, pending, rejected, archived, legacy)
-        pricing_type:
-          type: string
-          description: The pricing type (free, subscription, one_time, installment, one_time_installment, token_gated, nonpaid)
-        visible_to_members:
-          type: boolean
-          description: Whether the plan is visible to members
-        external:
-          type: boolean
-          description: Whether the plan includes network membership
-        multiple:
-          type: boolean
-          description: Whether the plan includes multiple spaces
-        permalink:
-          type: string
-          description: Canonical URL to the plan's about page
     MemberUpdateRequest:
       description: Request body for updating a member's role and profile information
       type: object
@@ -863,67 +934,20 @@ components:
           type: string
           description: New last name for the member
           example: Smith
-    EmptyResponse:
-      description: Empty response body
-      type: object
-      required: []
-      properties: {}
-    BanRequest:
-      description: Request body for banning a user from the network
-      type: object
-      required: []
-      properties:
-        ban_reason:
-          type: string
-          description: The reason for banning the user
-          example: Spam
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
-    MemberCreateRequest:
-      description: Request body for creating a new member in the network
-      type: object
-      required:
-      - email
-      - first_name
-      - last_name
-      properties:
-        email:
-          type: string
-          format: email
-          description: Email address of the new member
-          example: user@example.com
-        first_name:
-          type: string
-          description: First name of the new member
-          example: John
-        last_name:
-          type: string
-          description: Last name of the new member
-          example: Doe
-        role:
-          type: string
-          description: Role for the member (host, moderator, contributor). Defaults to 'contributor'.
-          example: contributor
-        member_type:
-          type: string
-          description: Type of member to create. 'full' (default) joins the whole network; 'limited' is added only to the spaces listed in space_ids.
-          example: full
-        space_ids:
-          type: array
-          description: IDs of the spaces a limited member joins. Required when member_type is 'limited'; ignored otherwise. Duplicate IDs are ignored.
-          items:
-            type: integer
-            format: uint64
-        send_welcome_email:
-          type: boolean
-          description: Whether to send a welcome email to the new member. Defaults to true.
-          example: true
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

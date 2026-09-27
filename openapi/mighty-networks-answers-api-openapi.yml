@@ -200,6 +200,29 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
+    CustomFieldAnswerRequest:
+      description: Request to create or update a custom field answer
+      type: object
+      required: []
+      properties:
+        text:
+          type: string
+          description: The text response for text-based custom fields
+          example: I love hiking and photography
+        segment_ids:
+          type: array
+          description: Array of segment IDs for dropdown custom fields
+          items:
+            type: integer
+            format: uint64
     SegmentResponse:
       description: Segments are custom field options used to categorize members
       type: object
@@ -291,29 +314,6 @@ components:
           format: date-time
           description: When this response was last edited
           example: '2025-01-15T10:30:00Z'
-    CustomFieldAnswerRequest:
-      description: Request to create or update a custom field answer
-      type: object
-      required: []
-      properties:
-        text:
-          type: string
-          description: The text response for text-based custom fields
-          example: I love hiking and photography
-        segment_ids:
-          type: array
-          description: Array of segment IDs for dropdown custom fields
-          items:
-            type: integer
-            format: uint64
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
   parameters:
     networkId:
       name: network_id
