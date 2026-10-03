@@ -259,6 +259,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    CustomFieldOptionRequest:
+      description: Request body for creating a custom field option
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+          description: The title of the option
+          example: Blue
+        description:
+          type: string
+          description: Description of the option
+          example: Select this if blue is your favorite color
     ErrorResponse:
       type: object
       required:
@@ -267,6 +281,19 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
+    CustomFieldOptionUpdateRequest:
+      description: Request body for updating a custom field option
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the option
+          example: Blue
+        description:
+          type: string
+          description: Description of the option
+          example: Select this if blue is your favorite color
     CustomFieldOptionResponse:
       description: Custom field options are the selectable values for dropdown custom fields
       type: object
@@ -318,33 +345,6 @@ components:
           type: integer
           format: uint64
           description: The ID of the member who created this option
-    CustomFieldOptionUpdateRequest:
-      description: Request body for updating a custom field option
-      type: object
-      required: []
-      properties:
-        title:
-          type: string
-          description: The title of the option
-          example: Blue
-        description:
-          type: string
-          description: Description of the option
-          example: Select this if blue is your favorite color
-    CustomFieldOptionRequest:
-      description: Request body for creating a custom field option
-      type: object
-      required:
-      - title
-      properties:
-        title:
-          type: string
-          description: The title of the option
-          example: Blue
-        description:
-          type: string
-          description: Description of the option
-          example: Select this if blue is your favorite color
   parameters:
     networkId:
       name: network_id

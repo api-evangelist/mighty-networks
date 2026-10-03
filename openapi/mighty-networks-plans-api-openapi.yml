@@ -183,6 +183,14 @@ paths:
       x-operation-id-original: delete_plans
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     PlanResponse:
       description: A plan represents a purchasable offering in your network
       type: object
@@ -232,14 +240,6 @@ components:
         permalink:
           type: string
           description: Canonical URL to the plan's about page
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
   parameters:
     networkId:
       name: network_id

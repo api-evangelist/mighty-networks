@@ -274,6 +274,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    SpaceRequest:
+      description: Request to create or update a space
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the space
     SpaceUpdateRequest:
       description: Request to update a space
       type: object
@@ -288,14 +297,6 @@ components:
           format: uint64
           description: The ID of the collection to move the space to
           example: 123
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     SpaceResponse:
       type: object
       required:
@@ -326,15 +327,14 @@ components:
           type: integer
           format: uint64
           description: The ID of the collection this space belongs to
-    SpaceRequest:
-      description: Request to create or update a space
+    ErrorResponse:
       type: object
       required:
-      - name
+      - error
       properties:
-        name:
+        error:
           type: string
-          description: The name of the space
+          description: An error message explaining the problem encountered
   parameters:
     networkId:
       name: network_id

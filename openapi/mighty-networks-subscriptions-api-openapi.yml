@@ -128,7 +128,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
+    CategoryResponse:
+      description: A category (segment) in the network
+      type: object
+      required:
+      - id
+      - title
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The category's integer ID
+        title:
+          type: string
+          description: The category's title
     ErrorResponse:
       type: object
       required:
@@ -137,39 +165,55 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
-    SubscriptionPlanResponse:
-      description: Plan information for a subscription
+    SubscriptionDetailResponse:
+      description: Detailed subscription information
       type: object
       required:
-      - amount
-      - currency
-      - has_free_trial
-      - interval
-      - type
+      - id
+      - purchased_at
       properties:
         id:
           type: integer
           format: uint64
-          description: The plan ID (null when the underlying bundle has been deleted)
-        name:
+          description: The record's integer ID
+          example: '1234'
+        current_period_start:
           type: string
-          description: The plan name (null when the underlying bundle has been deleted)
-        amount:
+          format: date-time
+          description: Start of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        current_period_end:
+          type: string
+          format: date-time
+          description: End of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        payment_platform:
+          type: string
+          description: Payment platform (stripe, apple, etc.)
+        canceled_at:
+          type: string
+          format: date-time
+          description: When the subscription was canceled
+          example: '2026-07-05T21:11:42+00:00'
+        trial_length:
           type: integer
           format: uint64
-          description: The plan amount in cents
-        currency:
+          description: Length of trial in days
+        trial_start:
           type: string
-          description: The plan currency code
-        interval:
+          format: date-time
+          description: Trial start date
+          example: '2026-07-05T21:11:42+00:00'
+        trial_end:
           type: string
-          description: The billing interval (day, week, month, year, etc.)
-        type:
+          format: date-time
+          description: Trial end date
+          example: '2026-07-05T21:11:42+00:00'
+        purchased_at:
           type: string
-          description: The plan type (free, subscription, one-time-payment)
-        has_free_trial:
-          type: boolean
-          description: Whether the plan has a free trial
+          format: date-time
+          description: When the subscription was purchased
+          example: '2026-07-05T21:11:42+00:00'
     SubscriptionResponse:
       description: A payment subscription for a plan
       type: object
@@ -237,83 +281,39 @@ components:
         subscription:
           description: Detailed subscription information
           $ref: '#/components/schemas/SubscriptionDetailResponse'
-    SubscriptionDetailResponse:
-      description: Detailed subscription information
+    SubscriptionPlanResponse:
+      description: Plan information for a subscription
       type: object
       required:
-      - id
-      - purchased_at
+      - amount
+      - currency
+      - has_free_trial
+      - interval
+      - type
       properties:
         id:
           type: integer
           format: uint64
-          description: The record's integer ID
-          example: '1234'
-        current_period_start:
+          description: The plan ID (null when the underlying bundle has been deleted)
+        name:
           type: string
-          format: date-time
-          description: Start of current billing period
-          example: '2026-07-05T21:11:42+00:00'
-        current_period_end:
-          type: string
-          format: date-time
-          description: End of current billing period
-          example: '2026-07-05T21:11:42+00:00'
-        payment_platform:
-          type: string
-          description: Payment platform (stripe, apple, etc.)
-        canceled_at:
-          type: string
-          format: date-time
-          description: When the subscription was canceled
-          example: '2026-07-05T21:11:42+00:00'
-        trial_length:
+          description: The plan name (null when the underlying bundle has been deleted)
+        amount:
           type: integer
           format: uint64
-          description: Length of trial in days
-        trial_start:
+          description: The plan amount in cents
+        currency:
           type: string
-          format: date-time
-          description: Trial start date
-          example: '2026-07-05T21:11:42+00:00'
-        trial_end:
+          description: The plan currency code
+        interval:
           type: string
-          format: date-time
-          description: Trial end date
-          example: '2026-07-05T21:11:42+00:00'
-        purchased_at:
+          description: The billing interval (day, week, month, year, etc.)
+        type:
           type: string
-          format: date-time
-          description: When the subscription was purchased
-          example: '2026-07-05T21:11:42+00:00'
-    CategoryResponse:
-      description: A category (segment) in the network
-      type: object
-      required:
-      - id
-      - title
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The category's integer ID
-        title:
-          type: string
-          description: The category's title
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
+          description: The plan type (free, subscription, one-time-payment)
+        has_free_trial:
+          type: boolean
+          description: Whether the plan has a free trial
   securitySchemes:
     bearerAuth:
       type: http

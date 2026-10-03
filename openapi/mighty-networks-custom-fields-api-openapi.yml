@@ -248,15 +248,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     CustomFieldRequest:
       description: Request body for creating a custom field
       type: object
@@ -303,33 +309,14 @@ components:
           description: Array of option texts for dropdown types
           items:
             type: string
-    CustomFieldUpdateRequest:
-      description: Request body for updating a custom field
+    ErrorResponse:
       type: object
-      required: []
+      required:
+      - error
       properties:
-        title:
+        error:
           type: string
-          description: The title of the custom field
-          example: Favorite Color
-        description:
-          type: string
-          description: Description of the custom field
-          example: Select your favorite color
-        placeholder:
-          type: string
-          description: Placeholder text for the custom field input
-          example: Enter your answer here
-        status:
-          type: string
-          description: Status of the custom field (visible, hidden, billing_disabled)
-          example: visible
-        notify_all_members:
-          type: boolean
-          description: Whether to notify all members when making the custom field visible
-        primary:
-          type: boolean
-          description: Whether this is the primary custom field
+          description: An error message explaining the problem encountered
     CustomFieldResponse:
       description: Custom Fields are configurable fields that can be added to capture additional member information
       type: object
@@ -363,20 +350,33 @@ components:
           type: string
           description: The type of response this custom field accepts
           example: dropdown_single_select
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
+    CustomFieldUpdateRequest:
+      description: Request body for updating a custom field
+      type: object
+      required: []
+      properties:
+        title:
+          type: string
+          description: The title of the custom field
+          example: Favorite Color
+        description:
+          type: string
+          description: Description of the custom field
+          example: Select your favorite color
+        placeholder:
+          type: string
+          description: Placeholder text for the custom field input
+          example: Enter your answer here
+        status:
+          type: string
+          description: Status of the custom field (visible, hidden, billing_disabled)
+          example: visible
+        notify_all_members:
+          type: boolean
+          description: Whether to notify all members when making the custom field visible
+        primary:
+          type: boolean
+          description: Whether this is the primary custom field
   securitySchemes:
     bearerAuth:
       type: http

@@ -301,14 +301,35 @@ paths:
       x-operation-id-original: replace_collections
 components:
   schemas:
-    ErrorResponse:
+    CollectionCreateRequest:
+      description: Request to create a new collection
       type: object
       required:
-      - error
+      - name
       properties:
-        error:
+        name:
           type: string
-          description: An error message explaining the problem encountered
+          description: The collection's name
+          example: Featured Courses
+        description:
+          type: string
+          description: The collection's description
+          example: Our most popular courses
+        visible_to_members:
+          type: boolean
+          description: Whether the collection is visible to members
+          example: true
+    CollectionOrderRequest:
+      description: Request to reorder spaces within a collection
+      type: object
+      required:
+      - spaces
+      properties:
+        spaces:
+          type: array
+          description: Array of space position assignments
+          items:
+            $ref: '#/components/schemas/CollectionSpacePosition'
     CollectionResponse:
       description: A collection of spaces within a network
       type: object
@@ -352,35 +373,14 @@ components:
         explorable:
           type: boolean
           description: Whether the collection contains discoverable spaces or promoted plan
-    CollectionOrderRequest:
-      description: Request to reorder spaces within a collection
+    ErrorResponse:
       type: object
       required:
-      - spaces
+      - error
       properties:
-        spaces:
-          type: array
-          description: Array of space position assignments
-          items:
-            $ref: '#/components/schemas/CollectionSpacePosition'
-    CollectionCreateRequest:
-      description: Request to create a new collection
-      type: object
-      required:
-      - name
-      properties:
-        name:
+        error:
           type: string
-          description: The collection's name
-          example: Featured Courses
-        description:
-          type: string
-          description: The collection's description
-          example: Our most popular courses
-        visible_to_members:
-          type: boolean
-          description: Whether the collection is visible to members
-          example: true
+          description: An error message explaining the problem encountered
     CollectionSpacePosition:
       description: A space position assignment within a collection
       type: object

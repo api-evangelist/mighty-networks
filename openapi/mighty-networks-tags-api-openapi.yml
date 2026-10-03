@@ -375,6 +375,20 @@ paths:
       x-operation-id-source: normalized
       x-operation-id-original: delete_tags
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
     TagResponse:
       description: Tags are custom field values used to categorize and label members
@@ -425,6 +439,17 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
+    MemberTagAddRequest:
+      description: Request to add a tag to a member
+      type: object
+      required:
+      - tag_id
+      properties:
+        tag_id:
+          type: integer
+          format: uint64
+          description: The ID of the tag to add to the member
+          example: 123
     TagRequest:
       description: Request to create a tag
       type: object
@@ -443,17 +468,6 @@ components:
           type: string
           description: The hex color code for the tag
           example: '#FF5733'
-    MemberTagAddRequest:
-      description: Request to add a tag to a member
-      type: object
-      required:
-      - tag_id
-      properties:
-        tag_id:
-          type: integer
-          format: uint64
-          description: The ID of the tag to add to the member
-          example: 123
     TagUpdateRequest:
       description: Request to update a tag
       type: object
@@ -471,20 +485,6 @@ components:
           type: string
           description: The hex color code for the tag
           example: '#FF5733'
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

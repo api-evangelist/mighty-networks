@@ -200,14 +200,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     CustomFieldAnswerRequest:
       description: Request to create or update a custom field answer
       type: object
@@ -264,6 +256,14 @@ components:
           type: integer
           format: uint64
           description: The ID of the custom field this segment belongs to
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     CustomFieldAnswerResponse:
       description: A user's response to a custom field question
       type: object
