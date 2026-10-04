@@ -143,77 +143,6 @@ components:
           description: Network subdomain
           format: /^[a-z][a-z0-9-]+$/
   schemas:
-    CategoryResponse:
-      description: A category (segment) in the network
-      type: object
-      required:
-      - id
-      - title
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The category's integer ID
-        title:
-          type: string
-          description: The category's title
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
-    SubscriptionDetailResponse:
-      description: Detailed subscription information
-      type: object
-      required:
-      - id
-      - purchased_at
-      properties:
-        id:
-          type: integer
-          format: uint64
-          description: The record's integer ID
-          example: '1234'
-        current_period_start:
-          type: string
-          format: date-time
-          description: Start of current billing period
-          example: '2026-07-05T21:11:42+00:00'
-        current_period_end:
-          type: string
-          format: date-time
-          description: End of current billing period
-          example: '2026-07-05T21:11:42+00:00'
-        payment_platform:
-          type: string
-          description: Payment platform (stripe, apple, etc.)
-        canceled_at:
-          type: string
-          format: date-time
-          description: When the subscription was canceled
-          example: '2026-07-05T21:11:42+00:00'
-        trial_length:
-          type: integer
-          format: uint64
-          description: Length of trial in days
-        trial_start:
-          type: string
-          format: date-time
-          description: Trial start date
-          example: '2026-07-05T21:11:42+00:00'
-        trial_end:
-          type: string
-          format: date-time
-          description: Trial end date
-          example: '2026-07-05T21:11:42+00:00'
-        purchased_at:
-          type: string
-          format: date-time
-          description: When the subscription was purchased
-          example: '2026-07-05T21:11:42+00:00'
     SubscriptionResponse:
       description: A payment subscription for a plan
       type: object
@@ -314,6 +243,77 @@ components:
         has_free_trial:
           type: boolean
           description: Whether the plan has a free trial
+    SubscriptionDetailResponse:
+      description: Detailed subscription information
+      type: object
+      required:
+      - id
+      - purchased_at
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The record's integer ID
+          example: '1234'
+        current_period_start:
+          type: string
+          format: date-time
+          description: Start of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        current_period_end:
+          type: string
+          format: date-time
+          description: End of current billing period
+          example: '2026-07-05T21:11:42+00:00'
+        payment_platform:
+          type: string
+          description: Payment platform (stripe, apple, etc.)
+        canceled_at:
+          type: string
+          format: date-time
+          description: When the subscription was canceled
+          example: '2026-07-05T21:11:42+00:00'
+        trial_length:
+          type: integer
+          format: uint64
+          description: Length of trial in days
+        trial_start:
+          type: string
+          format: date-time
+          description: Trial start date
+          example: '2026-07-05T21:11:42+00:00'
+        trial_end:
+          type: string
+          format: date-time
+          description: Trial end date
+          example: '2026-07-05T21:11:42+00:00'
+        purchased_at:
+          type: string
+          format: date-time
+          description: When the subscription was purchased
+          example: '2026-07-05T21:11:42+00:00'
+    CategoryResponse:
+      description: A category (segment) in the network
+      type: object
+      required:
+      - id
+      - title
+      properties:
+        id:
+          type: integer
+          format: uint64
+          description: The category's integer ID
+        title:
+          type: string
+          description: The category's title
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
   securitySchemes:
     bearerAuth:
       type: http

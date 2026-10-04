@@ -358,14 +358,6 @@ components:
           type: string
           format: url
           description: The post's unique address within the network
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     PostUpdateRequest:
       description: Request to update a post or article
       type: object
@@ -377,6 +369,14 @@ components:
         description:
           type: string
           description: The description/body content of the post
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
   securitySchemes:
     bearerAuth:
       type: http

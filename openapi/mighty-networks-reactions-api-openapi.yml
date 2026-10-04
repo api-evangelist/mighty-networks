@@ -229,24 +229,21 @@ paths:
       x-operation-id-source: normalized
       x-operation-id-original: delete_reactions
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    ReactionRequest:
-      description: A reaction request for creating reactions on posts or comments
-      type: object
-      required:
-      - emoji
-      properties:
-        emoji:
-          type: string
-          description: The emoji used for the reaction (may include skin tone modifiers)
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     ReactionResponse:
       description: A reaction to a post or comment
       type: object
@@ -315,20 +312,23 @@ components:
           format: uint64
           description: The ID of the member who created the reaction
           example: 789
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
+    ReactionRequest:
+      description: A reaction request for creating reactions on posts or comments
+      type: object
+      required:
+      - emoji
+      properties:
+        emoji:
+          type: string
+          description: The emoji used for the reaction (may include skin tone modifiers)
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
   securitySchemes:
     bearerAuth:
       type: http

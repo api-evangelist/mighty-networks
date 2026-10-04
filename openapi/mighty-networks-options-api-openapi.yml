@@ -273,14 +273,6 @@ components:
           type: string
           description: Description of the option
           example: Select this if blue is your favorite color
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     CustomFieldOptionUpdateRequest:
       description: Request body for updating a custom field option
       type: object
@@ -345,6 +337,14 @@ components:
           type: integer
           format: uint64
           description: The ID of the member who created this option
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
   parameters:
     networkId:
       name: network_id

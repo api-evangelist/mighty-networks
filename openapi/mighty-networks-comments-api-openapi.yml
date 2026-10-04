@@ -160,6 +160,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
     CommentRequest:
       description: Comments are created by members on posts, chats, and other commentable content
@@ -200,14 +214,6 @@ components:
           type: string
           format: url
           description: URL to the favicon of the linked site
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          type: string
-          description: An error message explaining the problem encountered
     AssetResponse:
       description: File or media asset attached to content
       type: object
@@ -230,6 +236,14 @@ components:
         name:
           type: string
           description: Original filename of the asset
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          description: An error message explaining the problem encountered
     CommentResponse:
       description: Comments are created by users on posts, chats, and other commentable content
       type: object
@@ -312,20 +326,6 @@ components:
           type: string
           format: url
           description: The comment's unique address within the network
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
   securitySchemes:
     bearerAuth:
       type: http

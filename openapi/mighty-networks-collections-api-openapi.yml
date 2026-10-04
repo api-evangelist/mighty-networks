@@ -300,36 +300,54 @@ paths:
       x-operation-id-source: normalized
       x-operation-id-original: replace_collections
 components:
+  parameters:
+    networkId:
+      name: network_id
+      in: path
+      description: The Network's unique integer ID, or subdomain
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+          description: Unique numeric network ID
+          format: uint64
+        - type: string
+          description: Network subdomain
+          format: /^[a-z][a-z0-9-]+$/
   schemas:
-    CollectionCreateRequest:
-      description: Request to create a new collection
+    CollectionSpacePosition:
+      description: A space position assignment within a collection
       type: object
       required:
-      - name
+      - position
+      - space_id
+      properties:
+        space_id:
+          type: integer
+          format: uint64
+          description: The ID of the space to reposition
+          example: 123
+        position:
+          type: integer
+          format: uint64
+          description: The target position for the space (1-based)
+          example: 1
+    CollectionUpdateRequest:
+      description: Request to update a collection
+      type: object
+      required: []
       properties:
         name:
           type: string
           description: The collection's name
-          example: Featured Courses
+          example: Updated Collection
         description:
           type: string
           description: The collection's description
-          example: Our most popular courses
+          example: Updated description
         visible_to_members:
           type: boolean
           description: Whether the collection is visible to members
-          example: true
-    CollectionOrderRequest:
-      description: Request to reorder spaces within a collection
-      type: object
-      required:
-      - spaces
-      properties:
-        spaces:
-          type: array
-          description: Array of space position assignments
-          items:
-            $ref: '#/components/schemas/CollectionSpacePosition'
     CollectionResponse:
       description: A collection of spaces within a network
       type: object
@@ -373,6 +391,24 @@ components:
         explorable:
           type: boolean
           description: Whether the collection contains discoverable spaces or promoted plan
+    CollectionCreateRequest:
+      description: Request to create a new collection
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The collection's name
+          example: Featured Courses
+        description:
+          type: string
+          description: The collection's description
+          example: Our most popular courses
+        visible_to_members:
+          type: boolean
+          description: Whether the collection is visible to members
+          example: true
     ErrorResponse:
       type: object
       required:
@@ -381,53 +417,17 @@ components:
         error:
           type: string
           description: An error message explaining the problem encountered
-    CollectionSpacePosition:
-      description: A space position assignment within a collection
+    CollectionOrderRequest:
+      description: Request to reorder spaces within a collection
       type: object
       required:
-      - position
-      - space_id
+      - spaces
       properties:
-        space_id:
-          type: integer
-          format: uint64
-          description: The ID of the space to reposition
-          example: 123
-        position:
-          type: integer
-          format: uint64
-          description: The target position for the space (1-based)
-          example: 1
-    CollectionUpdateRequest:
-      description: Request to update a collection
-      type: object
-      required: []
-      properties:
-        name:
-          type: string
-          description: The collection's name
-          example: Updated Collection
-        description:
-          type: string
-          description: The collection's description
-          example: Updated description
-        visible_to_members:
-          type: boolean
-          description: Whether the collection is visible to members
-  parameters:
-    networkId:
-      name: network_id
-      in: path
-      description: The Network's unique integer ID, or subdomain
-      required: true
-      schema:
-        oneOf:
-        - type: integer
-          description: Unique numeric network ID
-          format: uint64
-        - type: string
-          description: Network subdomain
-          format: /^[a-z][a-z0-9-]+$/
+        spaces:
+          type: array
+          description: Array of space position assignments
+          items:
+            $ref: '#/components/schemas/CollectionSpacePosition'
   securitySchemes:
     bearerAuth:
       type: http
