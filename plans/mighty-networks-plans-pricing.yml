@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 aid: mighty-networks
 name: Mighty Networks Plans and Pricing
 description: >-
@@ -56,3 +60,38 @@ freeTrial:
 notes: >-
   Plan names, prices, and included allowances change over time. The Admin API is
   documented as requiring a network on the Scale, Growth, or Mighty Pro plan.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units:
+  - negotiated
+  plans:
+  - name: Launch
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: Scale
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: Growth
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - negotiated
+    periods: []
+  - name: Mighty Pro
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - negotiated
+    periods: []
