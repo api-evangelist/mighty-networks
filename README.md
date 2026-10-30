@@ -1,4 +1,4 @@
-# Mighty Networks (mighty-networks)
+# Mighty Networks
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,160 +64,165 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Mighty Networks is a community, courses, and membership platform where creators, brands, and businesses run branded networks made up of spaces, members, posts, events, courses, and paid plans. For years Mighty Networks offered only a Zapier integration and no traditional developer API. That has changed: Mighty Networks now ships a documented public **Admin API** — a REST interface (OpenAPI 3.1, base `https://api.mn.co/admin/v1`) authenticated with a long-lived Bearer API token — alongside a **beta Headless GraphQL API** for user-context clients and **40+ outbound webhook** event types.
+Mighty Networks is a community, courses, and membership platform where creators, brands, and businesses run branded networks made up of spaces, members, posts, events, courses, and paid plans. After years of offering only a Zapier integration, Mighty Networks now ships a documented public Admin API - a REST interface (OpenAPI 3.1, base https://api.mn.co/admin/v1) authenticated with a Bearer API token for managing members, spaces, posts, events, courses, plans, subscriptions, badges, tags, custom fields, and invites - plus a beta Headless GraphQL API for building custom user-context clients and 40-plus outbound webhook event types. API access requires a Scale, Growth, or Mighty Pro plan.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/mighty-networks/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/mighty-networks/refs/heads/main/apis.yml)
+**Areas:** Community · Courses · Membership · Creator Economy · Event · Subscription
 
-## Access Model
+## Mighty Networks on APIs.io
 
-- **Admin API** — REST, base `https://api.mn.co/admin/v1`, described by a public OpenAPI 3.1 document ([`api.mn.co/admin/v1/spec.json`](https://api.mn.co/admin/v1/spec.json), mirrored in [`openapi/`](openapi/mighty-networks-admin-api-openapi.json)). Authenticated with a Bearer API token from the network admin panel: `Authorization: Bearer YOUR_API_TOKEN`. 137 operations across 25 resource groups. Requires a **Scale, Growth, or Mighty Pro** plan.
-- **Headless API (beta)** — GraphQL, `POST https://api.mn.co/networks/:network_id_or_subdomain/graphql`, authenticated with **OAuth 2.0** short-lived, user-context access tokens (member, moderator, or host). Powers the official Mighty Networks clients. Available on **Mighty Pro**.
-- **Webhooks** — 40+ outbound event types delivered as HTTP POST callbacks (member, content, comment, reaction, course-progress, event, RSVP, poll, purchase, subscription, plan, badge, tag, and custom-field events).
-- **Zapier** — the historical integration path, still available on Scale and above; the only automation option on the entry-level Launch plan.
+Everything profiled for Mighty Networks is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mighty-networks/](https://apis.io/providers/mighty-networks/)** — or go straight to one of the APIs or properties below.
 
-There is **no documented public WebSocket API** — the API surface is request/response REST and GraphQL plus outbound webhooks. See [`review.yml`](review.yml).
+### APIs (27)
 
-## Tags
+- [Mighty Networks Headless GraphQL API](https://apis.io/apis/mighty-networks/mighty-networks-headless-graphql-api/) — Beta GraphQL interface that powers the official Mighty Networks clients, for building custom user-context clients, integrations, and back-office tools.…
+- [Mighty Networks Answers API](https://apis.io/apis/mighty-networks/mighty-networks-answers-api/) — Manage member responses to custom fields
+- [Mighty Networks Assets API](https://apis.io/apis/mighty-networks/mighty-networks-assets-api/) — Manage assets for your network
+- [Mighty Networks Badges API](https://apis.io/apis/mighty-networks/mighty-networks-badges-api/) — Manage badges for your network
+- [Mighty Networks Collections API](https://apis.io/apis/mighty-networks/mighty-networks-collections-api/) — Manage collections in your network
+- [Mighty Networks Comments API](https://apis.io/apis/mighty-networks/mighty-networks-comments-api/) — Manage comments on posts
+- [Mighty Networks Courseworks API](https://apis.io/apis/mighty-networks/mighty-networks-courseworks-api/) — Manage course content (lessons, quizzes, sections)
+- [Mighty Networks Events API](https://apis.io/apis/mighty-networks/mighty-networks-events-api/) — Events are scheduled gatherings that members can RSVP to and engage with
+- [Mighty Networks Invites API](https://apis.io/apis/mighty-networks/mighty-networks-invites-api/) — Invites allow you to invite users to your network
+- [Mighty Networks Me API](https://apis.io/apis/mighty-networks/mighty-networks-me-api/) — Metadata about the requesting user
+- [Mighty Networks Members API](https://apis.io/apis/mighty-networks/mighty-networks-members-api/) — Manage members of your network
+- [Mighty Networks Mute API](https://apis.io/apis/mighty-networks/mighty-networks-mute-api/) — Mute posts for users
+- [Mighty Networks API](https://apis.io/apis/mighty-networks/mighty-networks-networks-api/) — Networks are the top-level organizational unit under which other resources are nested
+- [Mighty Networks Options API](https://apis.io/apis/mighty-networks/mighty-networks-options-api/) — Manage dropdown custom field options
+- [Mighty Networks PasswordResets API](https://apis.io/apis/mighty-networks/mighty-networks-passwordresets-api/) — Manage member password resets
+- [Mighty Networks Plans API](https://apis.io/apis/mighty-networks/mighty-networks-plans-api/) — Manage plans in your network
+- [Mighty Networks Polls API](https://apis.io/apis/mighty-networks/mighty-networks-polls-api/) — Polls and Questions allow members to share opinions and engage with each other
+- [Mighty Networks Posts API](https://apis.io/apis/mighty-networks/mighty-networks-posts-api/) — Posts also include Articles.
+- [Mighty Networks Purchases API](https://apis.io/apis/mighty-networks/mighty-networks-purchases-api/) — Manage purchases and subscriptions for your network
+- [Mighty Networks Reactions API](https://apis.io/apis/mighty-networks/mighty-networks-reactions-api/) — Manage reactions on comments
+- [Mighty Networks Rsvps API](https://apis.io/apis/mighty-networks/mighty-networks-rsvps-api/) — Manage event RSVPs for your network
+- [Mighty Networks Spaces API](https://apis.io/apis/mighty-networks/mighty-networks-spaces-api/) — Spaces are the organizational units within a Network where content and members are organized
+- [Mighty Networks Subscriptions API](https://apis.io/apis/mighty-networks/mighty-networks-subscriptions-api/) — Manage payment subscriptions - recurring payments from members to hosts for plans
+- [Mighty Networks Tags API](https://apis.io/apis/mighty-networks/mighty-networks-tags-api/) — Manage tags for your network
+- [Mighty Networks Webhooks API](https://apis.io/apis/mighty-networks/mighty-networks-webhooks-api/) — The Webhooks API from Mighty Networks — 0 operation(s) for webhooks.
+- [Mighty Networks Abuse Reports API](https://apis.io/apis/mighty-networks/mighty-networks-abuse-reports-api/) — Manage abuse reports for your network
+- [Mighty Networks Custom Fields API](https://apis.io/apis/mighty-networks/mighty-networks-custom-fields-api/) — Manage custom fields for your network
 
-- Community
-- Courses
-- Membership
-- Creator Economy
-- Events
-- Subscriptions
+### Published properties
 
-## Timestamps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+#### Agentic access (1)
 
-## APIs
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The ~137 real Admin API operations are grouped into 14 logical REST/webhook APIs plus the Headless GraphQL API for cataloging. Every referenced endpoint is present in the published OpenAPI document.
+- [Mighty Networks Agentic Access](https://apis.io/agentic-access/mighty-networks/mighty-networks-agentic-access/)
 
-### Mighty Networks Members API
+#### Collections (25)
 
-Create, list, get, update, ban, and remove members across a network, its spaces, and its plans. Look up members by id, email, member id, or user id, manage network and space roles, and directly add members to free plans.
+Postman and Open Collection request collections.
 
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/members/return-members-of-the-given-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
+- [The Mighty Networks Admin AbuseReports API](https://apis.io/collections/mighty-networks/open-mighty-networks-abusereports-api/)
+- [The Mighty Networks Admin AbuseReports Answers API](https://apis.io/collections/mighty-networks/open-mighty-networks-answers-api/)
+- [The Mighty Networks Admin AbuseReports Assets API](https://apis.io/collections/mighty-networks/open-mighty-networks-assets-api/)
+- [The Mighty Networks Admin AbuseReports Badges API](https://apis.io/collections/mighty-networks/open-mighty-networks-badges-api/)
+- [The Mighty Networks Admin AbuseReports Collections API](https://apis.io/collections/mighty-networks/open-mighty-networks-collections-api/)
+- [The Mighty Networks Admin AbuseReports Comments API](https://apis.io/collections/mighty-networks/open-mighty-networks-comments-api/)
+- [The Mighty Networks Admin AbuseReports Courseworks API](https://apis.io/collections/mighty-networks/open-mighty-networks-courseworks-api/)
+- [The Mighty Networks Admin AbuseReports CustomFields API](https://apis.io/collections/mighty-networks/open-mighty-networks-customfields-api/)
+- [The Mighty Networks Admin AbuseReports Events API](https://apis.io/collections/mighty-networks/open-mighty-networks-events-api/)
+- [The Mighty Networks Admin AbuseReports Invites API](https://apis.io/collections/mighty-networks/open-mighty-networks-invites-api/)
+- [The Mighty Networks Admin AbuseReports Me API](https://apis.io/collections/mighty-networks/open-mighty-networks-me-api/)
+- [The Mighty Networks Admin AbuseReports Members API](https://apis.io/collections/mighty-networks/open-mighty-networks-members-api/)
+- [The Mighty Networks Admin AbuseReports Mute API](https://apis.io/collections/mighty-networks/open-mighty-networks-mute-api/)
+- [The Mighty Admin AbuseReports Networks API](https://apis.io/collections/mighty-networks/open-mighty-networks-networks-api/)
+- [The Mighty Networks Admin AbuseReports Options API](https://apis.io/collections/mighty-networks/open-mighty-networks-options-api/)
+- [The Mighty Networks Admin AbuseReports PasswordResets API](https://apis.io/collections/mighty-networks/open-mighty-networks-passwordresets-api/)
+- [The Mighty Networks Admin AbuseReports Plans API](https://apis.io/collections/mighty-networks/open-mighty-networks-plans-api/)
+- [The Mighty Networks Admin AbuseReports Polls API](https://apis.io/collections/mighty-networks/open-mighty-networks-polls-api/)
+- [The Mighty Networks Admin AbuseReports Posts API](https://apis.io/collections/mighty-networks/open-mighty-networks-posts-api/)
+- [The Mighty Networks Admin AbuseReports Purchases API](https://apis.io/collections/mighty-networks/open-mighty-networks-purchases-api/)
+- [The Mighty Networks Admin AbuseReports Reactions API](https://apis.io/collections/mighty-networks/open-mighty-networks-reactions-api/)
+- [The Mighty Networks Admin AbuseReports Rsvps API](https://apis.io/collections/mighty-networks/open-mighty-networks-rsvps-api/)
+- [The Mighty Networks Admin AbuseReports Spaces API](https://apis.io/collections/mighty-networks/open-mighty-networks-spaces-api/)
+- [The Mighty Networks Admin AbuseReports Subscriptions API](https://apis.io/collections/mighty-networks/open-mighty-networks-subscriptions-api/)
+- [The Mighty Networks Admin AbuseReports Tags API](https://apis.io/collections/mighty-networks/open-mighty-networks-tags-api/)
 
-### Mighty Networks Spaces API
+#### Security (2)
 
-Manage spaces — the organizational units that hold content and members. Create, list, get, update, and delete spaces, list a member's spaces, and organize spaces into collections.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/spaces/returns-a-list-of-spaces-for-the-current-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
+- [Mighty Networks Authentication](https://apis.io/security/mighty-networks/mighty-networks-authentication/)
+- [Mighty Networks Domain Security](https://apis.io/security/mighty-networks/mighty-networks-domain-security/)
 
-### Mighty Networks Posts API
+#### Plans and pricing (1)
 
-Create, list, get, update, and delete posts and articles across the network, optionally notifying members when new content is published.
+Published plans, tiers and prices.
 
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/posts/returns-a-list-of-posts-for-the-current-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
+- [Mighty Networks Plans Pricing](https://apis.io/plans/mighty-networks/mighty-networks-plans-pricing/)
 
-### Mighty Networks Comments and Reactions API
+#### Rate limits (1)
 
-Manage engagement on content — comments on posts, reactions on posts and comments, and muting or unmuting a post for a specific user.
+Published request limits.
 
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/comments/returns-a-list-of-comments-for-a-specific-post)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
+- [Mighty Networks Rate Limits](https://apis.io/rate-limits/mighty-networks/mighty-networks-rate-limits/)
 
-### Mighty Networks Events and RSVPs API
+#### FinOps (1)
 
-Create, list, get, update, and delete scheduled events, and manage the RSVPs members create against them.
+What the API costs to run, by operation.
 
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/events/returns-a-paginated-list-of-events-in-the-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
+- [Mighty Networks Finops](https://apis.io/finops/mighty-networks/mighty-networks-finops/)
 
-### Mighty Networks Courses API
+## Where to find this API
 
-Build and manage course content within a space course — create, list, get, update, and delete coursework items such as lessons, quizzes, and sections.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/courseworks/returns-a-list-of-coursework-items-for-the-given-space-course)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Plans and Subscriptions API
-
-List and get plans, archive plans, list plan members, and manage the purchases and payment subscriptions members hold, including canceling a subscription or revoking purchase access.
-
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/plans/return-all-plans-in-the-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Invites API
-
-Invite people into a network or a specific plan — create and send, list, get, update, resend, revoke, and delete unaccepted invites.
-
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/invites/returns-a-list-of-invitations-for-the-current-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Badges and Tags API
-
-Create, update, and delete badges and tags, list them for the network, and add or remove badges and tags on individual members.
-
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/badges/return-all-badges-for-the-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Custom Fields API
-
-Define and collect structured member profile data — custom fields, dropdown options, and each member's answers to those fields.
-
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/customfields/return-custom-fields-of-the-given-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Polls and Questions API
-
-Create, list, get, update, and delete polls and questions that let members share opinions and engage with each other.
-
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/polls/returns-a-paginated-list-of-polls-and-questions-in-the-network)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Network and Collections API
-
-Read details of the network that owns the API key, manage collections that group spaces, upload image and file assets, and inspect the authenticated access token via the Me endpoint.
-
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [API Reference](https://docs.mightynetworks.com/api-reference/networks/returns-details-of-the-network--must-match-the-network-owning-the-requesting-api-key)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Webhooks
-
-Subscribe to 40+ outbound webhook event types delivered as HTTP POST callbacks — member joins and updates, posts and articles, comments, reactions, course progress, events and RSVPs, polls, purchases, subscriptions, plan changes, badges, tags, and custom-field responses.
-
-- **Base URL:** `https://api.mn.co/admin/v1`
-- [Documentation](https://docs.mightynetworks.com/api-reference/webhooks/memberjoined)
-- [OpenAPI](openapi/mighty-networks-admin-api-openapi.json)
-
-### Mighty Networks Headless GraphQL API
-
-Beta GraphQL interface that powers the official Mighty Networks clients, for building custom user-context clients, integrations, and back-office tools. Requests go to `/networks/:network_id_or_subdomain/graphql` and use OAuth 2.0 short-lived access tokens acting on behalf of a specific member, moderator, or host. Available on Mighty Pro.
-
-- **Base URL:** `https://api.mn.co/networks`
-- [Documentation](https://docs.mightynetworks.com/headless-api)
-- [Authentication](https://docs.mightynetworks.com/headless-authentication)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/mighty-networks)
 - [Website](https://www.mightynetworks.com)
 - [Documentation](https://docs.mightynetworks.com)
-- [Changelog](https://docs.mightynetworks.com/admin-api-changelog)
-- [Plans](plans/mighty-networks-plans-pricing.yml)
-- [Rate Limits](rate-limits/mighty-networks-rate-limits.yml)
-- [Fin Ops](finops/mighty-networks-finops.yml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 45.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 27.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mighty-networks/](https://apis.io/providers/mighty-networks/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mighty Networks: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mighty-networks/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
